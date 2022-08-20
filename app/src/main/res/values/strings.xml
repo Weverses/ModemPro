@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Modem X55 Pro</string>
+    <string name="app_title" translatable="false">Modem X55 Pro</string>
+    <string name="title1">NR Settings</string>
+    <string name="title2">Band Settings</string>
+    <string name="title3">Test feature Settings</string>
+    <string name="title4">Other</string>
+    <string name="xposed_description">Only Support QCOM SM8250(X55),modem version 2.5.x</string>
+    <string name="tips">Tips</string>
+    <string name="warning">Warning</string>
+    <string name="not_support">You seem to be using an outdated version of LSPosed or LSPosed is not active, please update LSPosed or activate it and try again.</string>
+    <string name="done">OK</string>
+    <string name="dual_nr_title">Dual NR</string>
+    <string name="dual_nr_summary">Main and secondary SIM-card enable 5G at the same time(the secondary SIM-card only support NSA)</string>
+    <string name="dual_sa_title">Dual SA</string>
+    <string name="dual_sa_summary">the secondary SIM-card will support SA NR(test)</string>
+    <string name="n1_title">N1 Band</string>
+    <string name="n1_summary">Support N1 Band(NR)</string>
+    <string name="n5_title">N5 Band</string>
+    <string name="reboot">Reboot</string>
+    <string name="reboot_tips">Are you sure to reboot?</string>
+    <string name="cancel">Cancel</string>
+    <string name="n5_summary">Support N5 Band(NR)</string>
+    <string name="reboot_system">Reboot system</string>
+    <string name="n8_title">N8 Band</string>
+    <string name="n8_summary">Support N8 Band(NR)</string>
+    <string name="n28_title">N28 Band</string>
+    <string name="n28_summary">Support N28 Band(NR)</string>
+    <string name="more">More</string>
+    <string name="finished">Finished</string>
+</resources>

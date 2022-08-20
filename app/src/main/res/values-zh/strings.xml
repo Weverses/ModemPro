@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">X55基带进化</string>
+    <string name="title1">5G设置</string>
+    <string name="title2">频段设置</string>
+    <string name="title3">实验性功能设置</string>
+    <string name="title4">其他</string>
+    <string name="xposed_description">为小米系865/870基带版本为2.5.x的且使用MIUI的设备解锁一些功能</string>
+    <string name="tips">提示</string>
+    <string name="warning">警告</string>
+    <string name="not_support">您似乎正在使用过时的 LSPosed 版本或 LSPosed 未激活，请更新 LSPosed 或者激活后再试。</string>
+    <string name="dual_nr_title">双卡5G(SA+NSA)</string>
+    <string name="dual_nr_summary">开启后，主卡副卡可以同时开启5G网络（副卡仅NSA），受限于NSA网络覆盖，副卡可能并不能稳定5G驻网</string>
+    <string name="dual_sa_title">双卡SA(SA+SA)</string>
+    <string name="dual_sa_summary">开启后，副卡可以开启SA网络(测试功能，效果未知)</string>
+    <string name="done">确定</string>
+    <string name="reboot">重启</string>
+    <string name="n1_title">解锁N1频段</string>
+    <string name="n1_summary">开启后可支持N1频段</string>
+    <string name="n5_title">解锁N5频段</string>
+    <string name="n5_summary">SM8250仅12X/K40S原生支持N5频段，开启后，可为小米10系列/K30Pro/K30SU/K40支持N5频段</string>
+    <string name="reboot_system">重启系统</string>
+    <string name="reboot_tips">确定重启系统？</string>
+    <string name="cancel">取消</string>
+    <string name="n8_title">解锁N8频段</string>
+    <string name="n8_summary">补全除了12X/K40S机型外缺失的N8频段</string>
+    <string name="n28_title">解锁N28频段</string>
+    <string name="n28_summary">开启后可支持缺失的N28频段</string>
+    <string name="more">实验性功能</string>
+    <string name="finished">运行完成</string>
+</resources>
