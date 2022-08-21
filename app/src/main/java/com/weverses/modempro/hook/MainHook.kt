@@ -24,22 +24,25 @@ class MainHook : IXposedHookLoadPackage {
             // Init hooks
             when (lpparam.packageName) {
                 "android" -> {
-                    if (Utils.getBoolean("dual_nr", false)) {
+                    if (Utils.getBoolean("dual_nr", true)) {
                         initHooks(DualNRSupport)
                     }
-                    if (Utils.getBoolean("dual_sa", false)) {
+                    if (Utils.getBoolean("dual_sa", true)) {
                         initHooks(DualSASupport)
+                    }
+                    if (Utils.getBoolean("test_hook", true)) {
+                        initHooks(Test)
                     }
                     if (Utils.getBoolean("n1_band", true)) {
                         initHooks(N1Band)
                     }
-                    if (Utils.getBoolean("n5_band", false)) {
+                    if (Utils.getBoolean("n5_band", true)) {
                         initHooks(N5Band)
                     }
-                    if (Utils.getBoolean("n8_band", false)) {
+                    if (Utils.getBoolean("n8_band", true)) {
                         initHooks(N8Band)
                     }
-                    if (Utils.getBoolean("n28_band", false)) {
+                    if (Utils.getBoolean("n28_band", true)) {
                         initHooks(N28Band)
                     }
                 }

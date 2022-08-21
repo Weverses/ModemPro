@@ -84,6 +84,13 @@ class MainActivity : MIUIActivity() {
                     ),
                     SwitchV("dual_sa", true)
                 )
+                TextSummaryWithSwitch(
+                    TextSummaryV(
+                        textId = R.string.test_hook_title,
+                        tipsId = R.string.test_hook_summary
+                    ),
+                    SwitchV("hook_test", true)
+                )
 
                 Line()
                 TitleText(textId = R.string.title4)
