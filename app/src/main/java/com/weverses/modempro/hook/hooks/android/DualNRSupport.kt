@@ -1,7 +1,7 @@
 package com.weverses.modempro.hook.hooks.android
 
 import com.github.kyuubiran.ezxhelper.utils.findMethod
-import com.github.kyuubiran.ezxhelper.utils.hookAfter
+import com.github.kyuubiran.ezxhelper.utils.hookBefore
 import com.weverses.modempro.hook.hooks.BaseHook
 import de.robv.android.xposed.XposedBridge
 
@@ -10,7 +10,7 @@ object DualNRSupport : BaseHook() {
         try {
             findMethod("miui.telephony.TelephonyManagerEx") {
                 name == "isDualNrSupported"
-            }.hookAfter {
+            }.hookBefore {
                 it.result = true
             }
             XposedBridge.log("ModemX55Pro: Hook isDualNrSupported success!")
