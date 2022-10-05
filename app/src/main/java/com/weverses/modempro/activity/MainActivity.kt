@@ -55,20 +55,6 @@ class MainActivity : MIUIActivity() {
                 )
                 TextSummaryWithSwitch(
                     TextSummaryV(
-                        textId = R.string.n5_title,
-                        tipsId = R.string.n5_summary
-                    ),
-                    SwitchV("n5_band", true)
-                )
-                TextSummaryWithSwitch(
-                    TextSummaryV(
-                        textId = R.string.n8_title,
-                        tipsId = R.string.n8_summary
-                    ),
-                    SwitchV("n8_band", true)
-                )
-                TextSummaryWithSwitch(
-                    TextSummaryV(
                         textId = R.string.n28_title,
                         tipsId = R.string.n28_summary
                     ),
@@ -83,13 +69,6 @@ class MainActivity : MIUIActivity() {
                         tipsId = R.string.dual_sa_summary
                     ),
                     SwitchV("dual_sa", true)
-                )
-                TextSummaryWithSwitch(
-                    TextSummaryV(
-                        textId = R.string.test_hook_title,
-                        tipsId = R.string.test_hook_summary
-                    ),
-                    SwitchV("hook_test", true)
                 )
 
                 Line()

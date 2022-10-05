@@ -5,6 +5,7 @@ import com.github.kyuubiran.ezxhelper.utils.Log
 import com.github.kyuubiran.ezxhelper.utils.Log.logexIfThrow
 import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.hook.hooks.android.*
+import com.weverses.modempro.hook.hooks.phone.DualNrSupport
 import com.weverses.modempro.util.Utils
 import de.robv.android.xposed.IXposedHookLoadPackage
 import de.robv.android.xposed.callbacks.XC_LoadPackage
@@ -30,20 +31,16 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("dual_sa", true)) {
                         initHooks(DualSASupport)
                     }
-                    if (Utils.getBoolean("test_hook", true)) {
-                        initHooks(Test)
-                    }
                     if (Utils.getBoolean("n1_band", true)) {
                         initHooks(N1Band)
                     }
-                    if (Utils.getBoolean("n5_band", true)) {
-                        initHooks(N5Band)
-                    }
-                    if (Utils.getBoolean("n8_band", true)) {
-                        initHooks(N8Band)
-                    }
                     if (Utils.getBoolean("n28_band", true)) {
                         initHooks(N28Band)
+                    }
+                }
+                "com.android.phone" -> {
+                    if (Utils.getBoolean("dual_nr", true)) {
+                        initHooks(DualNrSupport)
                     }
                 }
             }
