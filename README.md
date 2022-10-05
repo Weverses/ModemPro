@@ -15,4 +15,4 @@
 ---
 
 ### License
-[GNU General Public License v3.0](https://github.com/YifePlayte/MaxFreeForm/blob/main/LICENSE)
+[GNU General Public License v3.0](https://github.com/Weverses/ModemPro/blob/main/LICENSE)
