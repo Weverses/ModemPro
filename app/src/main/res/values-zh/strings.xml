@@ -16,7 +16,7 @@
     <string name="done">确定</string>
     <string name="reboot">重启</string>
     <string name="test_hook_title">Hook测试</string>
-    <string name="test_hook_summary">Hook测试，非debug请勿开启 "android.util.MiuiMultiWindowUtils.multiFreeFormSupported()"</string>
+    <string name="test_hook_summary">Hook测试，非debug请勿开启 "android.util.apk.ApkSignatureVerifier.getMinimumSignatureSchemeVersionForTargetSdk()"</string>
     <string name="n1_title">解锁N1频段</string>
     <string name="n1_summary">开启后可支持N1频段</string>
     <string name="n5_title">解锁N5频段</string>
