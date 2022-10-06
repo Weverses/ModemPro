@@ -1,3 +1,7 @@
+import com.android.build.gradle.internal.api.BaseVariantOutputImpl
+import java.util.Properties
+
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -8,10 +12,10 @@ android {
 
     defaultConfig {
         applicationId = "com.weverses.modempro"
-        minSdk = 31
+        minSdk = 30
         targetSdk = 33
-        versionCode = 10
-        versionName = "1.0.0"
+        versionCode = 12
+        versionName = "1.2.0"
     }
 
     buildTypes {
@@ -19,6 +23,24 @@ android {
             isShrinkResources = true
             isMinifyEnabled = true
             proguardFiles("proguard-rules.pro")
+        }
+    }
+
+    val properties = Properties()
+    runCatching { properties.load(project.rootProject.file("local.properties").inputStream()) }
+    val keystorePath = properties.getProperty("KEYSTORE_PATH") ?: System.getenv("KEYSTORE_PATH")
+    val keystorePwd = properties.getProperty("KEYSTORE_PASS") ?: System.getenv("KEYSTORE_PASS")
+    val alias = properties.getProperty("KEY_ALIAS") ?: System.getenv("KEY_ALIAS")
+    val pwd = properties.getProperty("KEY_PASSWORD") ?: System.getenv("KEY_PASSWORD")
+    if (keystorePath != null) {
+        signingConfigs {
+            create("release") {
+                storeFile = file(keystorePath)
+                storePassword = keystorePwd
+                keyAlias = alias
+                keyPassword = pwd
+                enableV3Signing = true
+            }
         }
     }
 

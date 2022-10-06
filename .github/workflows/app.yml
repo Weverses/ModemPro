@@ -60,9 +60,3 @@ jobs:
       with:
         name: ModemPro_Debug
         path: "app/build/outputs/apk/debug/*.apk"
-
-    - name: Release apk
-      uses: ncipollo/release-action@v1.5.0
-      with:
-        artifacts: "build/app/outputs/apk/release/*.apk"
-        token: ${{ secrets.RELEASE_TOKEN }}

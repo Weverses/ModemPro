@@ -30,7 +30,7 @@
     <string name="n28_title">N28 Band</string>
     <string name="n28_summary">Support N28 Band(NR)</string>
     <string name="mtb_auth_title">Bypass MTB authentication</string>
-    <string name="mtb_auth_summary">Enter *#*#MODEMTEST#*#* on the dial interface to open the MTB Settings</string>
+    <string name="mtb_auth_summary">(Please note that this is a highly dangerous feature, be sure to fully back up the modem before using this function! We are not responsible for modem damage caused by this function)Enter *#*#MODEMTEST#*#* on the dial interface to open the MTB Settings</string>
     <string name="more">More</string>
     <string name="finished">Finished</string>
 </resources>
