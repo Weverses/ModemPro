@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">X55基带进化</string>
+    <string name="app_name">ModemPro</string>
     <string name="title1">5G设置</string>
     <string name="title2">频段设置</string>
     <string name="title3">MTB 设置</string>
     <string name="title4">实验性功能设置</string>
     <string name="title5">其他</string>
-    <string name="xposed_description">为小米系865/870基带版本为2.5.x的且使用MIUI的设备解锁一些功能</string>
+    <string name="xposed_description">为小米系865/870基带版本为2.5.x的且使用MIUI的设备基带解锁一些功能,但理论上大部分MIUI13机型都可用</string>
     <string name="tips">提示</string>
     <string name="warning">警告</string>
     <string name="not_support">您似乎正在使用过时的 LSPosed 版本或 LSPosed 未激活，请更新 LSPosed 或者激活后再试。</string>
@@ -16,8 +16,6 @@
     <string name="dual_sa_summary">开启后，副卡可以开启SA网络(测试功能，效果未知)</string>
     <string name="done">确定</string>
     <string name="reboot">重启</string>
-    <string name="test_hook_title">Hook测试</string>
-    <string name="test_hook_summary">Hook测试，非debug请勿开启 "android.util.apk.ApkSignatureVerifier.getMinimumSignatureSchemeVersionForTargetSdk()"</string>
     <string name="n1_title">解锁N1频段</string>
     <string name="n1_summary">开启后可支持N1频段</string>
     <string name="n5_title">解锁N5频段</string>

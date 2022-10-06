@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Modem X55 Pro</string>
-    <string name="app_title" translatable="false">Modem X55 Pro</string>
+    <string name="app_name">Modem Pro</string>
+    <string name="app_title" translatable="false">Modem Pro</string>
     <string name="title1">NR Settings</string>
     <string name="title2">Band Settings</string>
     <string name="title3">MTB Settings</string>
@@ -15,8 +15,6 @@
     <string name="dual_nr_summary">Main and secondary SIM-card enable 5G at the same time(the secondary SIM-card only support NSA)</string>
     <string name="dual_sa_title">Dual SA</string>
     <string name="dual_sa_summary">the secondary SIM-card will support SA NR(test)</string>
-    <string name="test_hook_title">Test Hook</string>
-    <string name="test_hook_summary">Hook test "android.util.apk.ApkSignatureVerifier.getMinimumSignatureSchemeVersionForTargetSdk()"</string>
     <string name="n1_title">N1 Band</string>
     <string name="n1_summary">Support N1 Band(NR)</string>
     <string name="n5_title">N5 Band</string>
