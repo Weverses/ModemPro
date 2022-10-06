@@ -3,8 +3,9 @@
     <string name="app_title" translatable="false">Modem X55 Pro</string>
     <string name="title1">NR Settings</string>
     <string name="title2">Band Settings</string>
-    <string name="title3">Test feature Settings</string>
-    <string name="title4">Other</string>
+    <string name="title3">MTB Settings</string>
+    <string name="title4">Test feature Settings</string>
+    <string name="title5">Other</string>
     <string name="xposed_description">Only Support QCOM SM8250(X55),modem version 2.5.x</string>
     <string name="tips">Tips</string>
     <string name="warning">Warning</string>
@@ -28,6 +29,8 @@
     <string name="n8_summary">Support N8 Band(NR)</string>
     <string name="n28_title">N28 Band</string>
     <string name="n28_summary">Support N28 Band(NR)</string>
+    <string name="mtb_auth_title">Bypass MTB authentication</string>
+    <string name="mtb_auth_summary">Enter *#*#MODEMTEST#*#* on the dial interface to open the MTB Settings</string>
     <string name="more">More</string>
     <string name="finished">Finished</string>
 </resources>
