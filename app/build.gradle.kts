@@ -18,14 +18,6 @@ android {
         versionName = "1.2.0"
     }
 
-    buildTypes {
-        named("release") {
-            isShrinkResources = true
-            isMinifyEnabled = true
-            proguardFiles("proguard-rules.pro")
-        }
-    }
-
     val properties = Properties()
     runCatching { properties.load(project.rootProject.file("local.properties").inputStream()) }
     val keystorePath = properties.getProperty("KEYSTORE_PATH") ?: System.getenv("KEYSTORE_PATH")
@@ -40,6 +32,22 @@ android {
                 keyAlias = alias
                 keyPassword = pwd
                 enableV3Signing = true
+            }
+        }
+    }
+
+    buildTypes {
+        named("release") {
+            isShrinkResources = true
+            isMinifyEnabled = true
+            proguardFiles("proguard-rules.pro")
+            if (keystorePath != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
+        }
+        debug {
+            if (keystorePath != null) {
+                signingConfig = signingConfigs.getByName("release")
             }
         }
     }
