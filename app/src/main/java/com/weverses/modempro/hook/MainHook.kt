@@ -5,6 +5,7 @@ import com.github.kyuubiran.ezxhelper.utils.Log
 import com.github.kyuubiran.ezxhelper.utils.Log.logexIfThrow
 import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.hook.hooks.android.*
+import com.weverses.modempro.hook.hooks.mtb.BypassAuthentication
 import com.weverses.modempro.hook.hooks.phone.DualNrSupport
 import com.weverses.modempro.util.Utils
 import de.robv.android.xposed.IXposedHookLoadPackage
@@ -12,7 +13,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage
 
 private const val TAG = "ModemPro"
 private val PACKAGE_NAME_HOOKED = setOf(
-    "android",
+    "android", "com.android.phone", "com.xiaomi.mtb"
 )
 
 class MainHook : IXposedHookLoadPackage {
@@ -41,6 +42,11 @@ class MainHook : IXposedHookLoadPackage {
                 "com.android.phone" -> {
                     if (Utils.getBoolean("dual_nr", true)) {
                         initHooks(DualNrSupport)
+                    }
+                }
+                "com.xiaomi.mtb" -> {
+                    if (Utils.getBoolean("mtb_auth", true)) {
+                        initHooks(BypassAuthentication)
                     }
                 }
             }

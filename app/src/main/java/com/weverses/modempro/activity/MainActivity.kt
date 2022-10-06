@@ -2,7 +2,6 @@ package com.weverses.modempro.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.Toast
 import cn.fkj233.ui.activity.MIUIActivity
 import cn.fkj233.ui.activity.view.SwitchV
 import cn.fkj233.ui.activity.view.TextSummaryV
@@ -65,6 +64,16 @@ class MainActivity : MIUIActivity() {
                 TitleText(textId = R.string.title3)
                 TextSummaryWithSwitch(
                     TextSummaryV(
+                        textId = R.string.mtb_auth_title,
+                        tipsId = R.string.mtb_auth_summary
+                    ),
+                    SwitchV("mtb_auth", true)
+                )
+
+                Line()
+                TitleText(textId = R.string.title4)
+                TextSummaryWithSwitch(
+                    TextSummaryV(
                         textId = R.string.dual_sa_title,
                         tipsId = R.string.dual_sa_summary
                     ),
@@ -72,7 +81,7 @@ class MainActivity : MIUIActivity() {
                 )
 
                 Line()
-                TitleText(textId = R.string.title4)
+                TitleText(textId = R.string.title5)
                 TextA(
                     textId = R.string.reboot_system,
                     onClickListener = {

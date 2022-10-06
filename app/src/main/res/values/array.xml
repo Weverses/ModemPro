@@ -3,5 +3,6 @@
     <string-array name="xposed_scope">
         <item>android</item>
         <item>com.android.phone</item>
+        <item>com.xiaomi.mtb</item>
     </string-array>
 </resources>
