@@ -46,18 +46,9 @@ jobs:
       env:
         KEYSTORE_PATH: "../keystore.jks"
         KEYSTORE_PASS: ${{ secrets.KEY_STORE_PASSWORD }}
-        KEY_ALIAS: ${{ secrets.ALIAS }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
         KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.0
-      with:
-        # Artifact name
-        name: Build_All # optional, default is artifact 
-        # A file, directory or wildcard pattern that describes what to upload
-        path: ./**/*.apk
-        # The desired behavior if no files are found using the provided path.
-        
     - name: Upload release
       uses: actions/upload-artifact@v2
       with:
@@ -69,3 +60,9 @@ jobs:
       with:
         name: ModemPro_Debug
         path: "app/build/outputs/apk/debug/*.apk"
+
+    - name: Release apk
+      uses: ncipollo/release-action@v1.5.0
+      with:
+        artifacts: "build/app/outputs/apk/release/*.apk"
+        token: ${{ secrets.RELEASE_TOKEN }}
