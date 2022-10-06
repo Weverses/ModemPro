@@ -7,14 +7,14 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.weverses.modempro"
         minSdk = 30
         targetSdk = 33
-        versionCode = 12
-        versionName = "1.2.0"
+        versionCode = 122
+        versionName = "1.2.2"
     }
 
     val properties = Properties()
