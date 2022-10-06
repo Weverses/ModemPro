@@ -8,7 +8,7 @@ import de.robv.android.xposed.XposedBridge
 object DualNrSupport : BaseHook() {
     override fun init() {
         try {
-            findMethod("com.android.phone.utils.FiveGUtils") {
+            findMethod("miui.telephony.TelephonyManagerEx") {
                 name == "isDualNrSupported"
             }.hookReturnConstant(true)
             XposedBridge.log("ModemX55Pro: Hook phone-isDualNrSupported success!")
