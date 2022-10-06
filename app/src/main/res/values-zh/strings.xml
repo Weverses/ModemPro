@@ -18,13 +18,9 @@
     <string name="reboot">重启</string>
     <string name="n1_title">解锁N1频段</string>
     <string name="n1_summary">开启后可支持N1频段</string>
-    <string name="n5_title">解锁N5频段</string>
-    <string name="n5_summary">SM8250仅12X/K40S原生支持N5频段，开启后，可为小米10系列/K30Pro/K30SU/K40支持N5频段</string>
     <string name="reboot_system">重启系统</string>
     <string name="reboot_tips">确定重启系统？</string>
     <string name="cancel">取消</string>
-    <string name="n8_title">解锁N8频段</string>
-    <string name="n8_summary">补全除了12X/K40S机型外缺失的N8频段</string>
     <string name="n28_title">解锁N28频段</string>
     <string name="n28_summary">开启后可支持缺失的N28频段</string>
     <string name="mtb_auth_title">绕过鲁班(MTB)鉴权</string>
