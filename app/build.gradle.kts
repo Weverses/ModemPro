@@ -13,8 +13,8 @@ android {
         applicationId = "com.weverses.modempro"
         minSdk = 30
         targetSdk = 33
-        versionCode = 122
-        versionName = "1.2.2"
+        versionCode = 124
+        versionName = "1.2.4"
     }
 
     val properties = Properties()

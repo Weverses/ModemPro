@@ -77,7 +77,7 @@ class MainActivity : MIUIActivity() {
                         textId = R.string.dual_sa_title,
                         tipsId = R.string.dual_sa_summary
                     ),
-                    SwitchV("dual_sa", true)
+                    SwitchV("dual_sa", false)
                 )
 
                 Line()

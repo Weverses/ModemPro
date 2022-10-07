@@ -11,9 +11,9 @@
     <string name="warning">警告</string>
     <string name="not_support">您似乎正在使用过时的 LSPosed 版本或 LSPosed 未激活，请更新 LSPosed 或者激活后再试。</string>
     <string name="dual_nr_title">双卡5G(SA+NSA)</string>
-    <string name="dual_nr_summary">开启后，主卡副卡可以同时开启5G网络（副卡仅NSA），受限于NSA网络覆盖，副卡可能并不能稳定5G驻网</string>
+    <string name="dual_nr_summary">开启后,主卡副卡可以同时开启5G网络(副卡仅NSA),受限于NSA网络覆盖,副卡可能并不能稳定5G驻网</string>
     <string name="dual_sa_title">双卡SA(SA+SA)</string>
-    <string name="dual_sa_summary">开启后，副卡可以开启SA网络(测试功能，效果未知)</string>
+    <string name="dual_sa_summary">开启后,副卡可以开启SA网络(865/870机型不可用)</string>
     <string name="done">确定</string>
     <string name="reboot">重启</string>
     <string name="n1_title">解锁N1频段</string>
@@ -24,7 +24,7 @@
     <string name="n28_title">解锁N28频段</string>
     <string name="n28_summary">开启后可支持缺失的N28频段</string>
     <string name="mtb_auth_title">绕过鲁班(MTB)鉴权</string>
-    <string name="mtb_auth_summary">(请注意，此项为高度危险性功能，请务必在使用该功能前完整备份基带!若因该功能导致的基带损坏概不负责!)开启后可解锁鲁班(MTB)功能，可在拨号界面输入 *#*#663368378#*#* (ModemTest) 打开鲁班界面</string>
+    <string name="mtb_auth_summary">(请注意,此项为高度危险性功能，请务必在使用该功能前完整备份基带!若因该功能导致的基带损坏概不负责!)开启后可解锁鲁班(MTB)功能,可在拨号界面输入 *#*#663368378#*#* (ModemTest) 打开鲁班界面</string>
     <string name="more">实验性功能</string>
     <string name="finished">运行完成</string>
 </resources>
