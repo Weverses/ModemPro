@@ -22,7 +22,7 @@
     <string name="reboot_tips">确定重启系统？</string>
     <string name="cancel">取消</string>
     <string name="n28_title">解锁N28频段</string>
-    <string name="n28_summary">开启后可支持缺失的N28频段</string>
+    <string name="n28_summary">开启后可支持部分机型缺失的N28频段</string>
     <string name="mtb_auth_title">绕过鲁班(MTB)鉴权</string>
     <string name="mtb_auth_summary">(请注意,此项为高度危险性功能，请务必在使用该功能前完整备份基带!若因该功能导致的基带损坏概不负责!)开启后可解锁鲁班(MTB)功能,可在拨号界面输入 *#*#663368378#*#* (ModemTest) 打开鲁班界面</string>
     <string name="more">实验性功能</string>
