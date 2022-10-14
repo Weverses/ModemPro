@@ -6,6 +6,7 @@ import com.github.kyuubiran.ezxhelper.utils.Log.logexIfThrow
 import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.hook.hooks.android.*
 import com.weverses.modempro.hook.hooks.mtb.BypassAuthentication
+import com.weverses.modempro.hook.hooks.mtb.isUserBuild
 import com.weverses.modempro.hook.hooks.phone.DualNrSupport
 import com.weverses.modempro.util.Utils
 import de.robv.android.xposed.IXposedHookLoadPackage
@@ -47,6 +48,7 @@ class MainHook : IXposedHookLoadPackage {
                 "com.xiaomi.mtb" -> {
                     if (Utils.getBoolean("mtb_auth", true)) {
                         initHooks(BypassAuthentication)
+                        initHooks(isUserBuild)
                     }
                 }
             }

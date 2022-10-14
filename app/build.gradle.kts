@@ -11,10 +11,10 @@ android {
 
     defaultConfig {
         applicationId = "com.weverses.modempro"
-        minSdk = 30
+        minSdk = 29
         targetSdk = 33
-        versionCode = 125
-        versionName = "1.2.5"
+        versionCode = 130
+        versionName = "1.3.0"
     }
 
     val properties = Properties()
