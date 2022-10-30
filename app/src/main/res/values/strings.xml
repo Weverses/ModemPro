@@ -17,10 +17,14 @@
     <string name="dual_sa_summary">the secondary SIM-card will support SA NR(test)</string>
     <string name="n1_title">N1 Band</string>
     <string name="n1_summary">Support N1 Band(NR)</string>
+    <string name="n5_title">N5 Band</string>
     <string name="reboot">Reboot</string>
     <string name="reboot_tips">Are you sure to reboot?</string>
     <string name="cancel">Cancel</string>
+    <string name="n5_summary">Support N5 Band(NR)</string>
     <string name="reboot_system">Reboot system</string>
+    <string name="n8_title">N8 Band</string>
+    <string name="n8_summary">Support N8 Band(NR)</string>
     <string name="n28_title">N28 Band</string>
     <string name="n28_summary">Support N28 Band(NR)</string>
     <string name="mtb_auth_title">Bypass MTB authentication</string>
