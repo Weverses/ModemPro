@@ -60,6 +60,14 @@ class MainActivity : MIUIActivity() {
                     SwitchV("n28_band", true)
                 )
 
+                TextSummaryWithSwitch(
+                    TextSummaryV(
+                        textId = R.string.n5_n8_title,
+                        tipsId = R.string.n5_n8_summary),
+                    SwitchV("n5_n8_band", true)
+                )
+
+
                 Line()
                 TitleText(textId = R.string.title3)
                 TextSummaryWithSwitch(

@@ -8,6 +8,7 @@ import com.weverses.modempro.hook.hooks.android.*
 import com.weverses.modempro.hook.hooks.mtb.BypassAuthentication
 import com.weverses.modempro.hook.hooks.mtb.isUserBuild
 import com.weverses.modempro.hook.hooks.phone.DualNrSupport
+import com.weverses.modempro.hook.hooks.phone.N5N8BandPhone
 import com.weverses.modempro.util.Utils
 import de.robv.android.xposed.IXposedHookLoadPackage
 import de.robv.android.xposed.callbacks.XC_LoadPackage
@@ -39,10 +40,25 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("n28_band", true)) {
                         initHooks(N28Band)
                     }
+                    if (Utils.getBoolean("n5_n8_band", true)) {
+                        initHooks(N5N8Band)
+                    }
                 }
                 "com.android.phone" -> {
                     if (Utils.getBoolean("dual_nr", true)) {
                         initHooks(DualNrSupport)
+                    }
+                    if (Utils.getBoolean("dual_sa", true)) {
+                        initHooks(DualSaSupport)
+                    }
+                    if (Utils.getBoolean("n1_band", true)) {
+                        initHooks(N1BandPhone)
+                    }
+                    if (Utils.getBoolean("n28_band", true)) {
+                        initHooks(N28BandPhone)
+                    }
+                    if (Utils.getBoolean("n5_n8_band", true)) {
+                        initHooks(N5N8BandPhone)
                     }
                 }
                 "com.xiaomi.mtb" -> {

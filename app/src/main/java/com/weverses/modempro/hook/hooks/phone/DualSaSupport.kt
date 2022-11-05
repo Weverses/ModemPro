@@ -5,17 +5,16 @@ import com.github.kyuubiran.ezxhelper.utils.hookReturnConstant
 import com.weverses.modempro.hook.hooks.BaseHook
 import de.robv.android.xposed.XposedBridge
 
-object N8Band : BaseHook() {
+object DualSaSupport : BaseHook() {
     override fun init() {
         try {
             findMethod("miui.telephony.TelephonyManagerEx") {
-                name == "isN8Supported"
+                name == "isDualSaSupported"
             }.hookReturnConstant(true)
-            XposedBridge.log("ModemX55Pro: Hook isN8Supported success!")
+            XposedBridge.log("ModemX55Pro: Hook phone-isDualSaSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook isN8Supported failed!")
+            XposedBridge.log("ModemX55Pro: Hook phone-isDualSaSupported failed!")
             XposedBridge.log(e)
         }
     }
 }
-
