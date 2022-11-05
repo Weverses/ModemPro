@@ -15,12 +15,14 @@
     <string name="dual_nr_summary">Main and secondary SIM-card enable 5G at the same time(the secondary SIM-card only support NSA)</string>
     <string name="dual_sa_title">Dual SA</string>
     <string name="dual_sa_summary">the secondary SIM-card will support SA NR(test)</string>
-    <string name="n1_title">N1 Band</string>
-    <string name="n1_summary">Support N1 Band(NR)</string>
     <string name="reboot">Reboot</string>
     <string name="reboot_tips">Are you sure to reboot?</string>
     <string name="cancel">Cancel</string>
     <string name="reboot_system">Reboot system</string>
+    <string name="n1_title">N1 Band</string>
+    <string name="n1_summary">Support N1 Band(NR)</string>
+    <string name="n5_n8_title">N5/N8 Bnad</string>
+    <string name="n5_n8_summary">Enter *#*#65686633#*#* on the dial interface to Support N5/N8 Bnad.If it shows "enable N5 and N8 Mode",the feature will enabled successfully.</string>
     <string name="n28_title">N28 Band</string>
     <string name="n28_summary">Support N28 Band(NR)</string>
     <string name="mtb_auth_title">Bypass MTB authentication</string>

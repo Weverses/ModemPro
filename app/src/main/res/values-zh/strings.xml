@@ -18,11 +18,13 @@
     <string name="reboot">重启</string>
     <string name="n1_title">解锁N1频段</string>
     <string name="n1_summary">开启后可支持N1频段</string>
+    <string name="n5_n8_title">解锁N5/N8频段</string>
+    <string name="n5_n8_summary">开启后可支持N5/N8频段,请开启该功能后在拨号界面中输入 *#*#65686633#*#* ,若提示enable N5 and N8 Mode即解锁成功</string>
+    <string name="n28_title">解锁N28频段</string>
+    <string name="n28_summary">开启后可支持部分机型缺失的N28频段</string>
     <string name="reboot_system">重启系统</string>
     <string name="reboot_tips">确定重启系统？</string>
     <string name="cancel">取消</string>
-    <string name="n28_title">解锁N28频段</string>
-    <string name="n28_summary">开启后可支持部分机型缺失的N28频段</string>
     <string name="mtb_auth_title">绕过鲁班(MTB)鉴权</string>
     <string name="mtb_auth_summary">(请注意,此项为高度危险性功能，请务必在使用该功能前完整备份基带!若因该功能导致的基带损坏概不负责!)开启后可解锁鲁班(MTB)功能,可在拨号界面输入 *#*#663368378#*#* (ModemTest) 打开鲁班界面</string>
     <string name="more">实验性功能</string>
