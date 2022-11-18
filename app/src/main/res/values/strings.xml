@@ -6,6 +6,7 @@
     <string name="title3">MTB Settings</string>
     <string name="title4">Test feature Settings</string>
     <string name="title5">Other</string>
+    <string name="title6">Other feature Settings</string>
     <string name="xposed_description">Only Support QCOM SM8250(X55),modem version 2.5.x</string>
     <string name="tips">Tips</string>
     <string name="warning">Warning</string>
@@ -19,6 +20,8 @@
     <string name="reboot_tips">Are you sure to reboot?</string>
     <string name="cancel">Cancel</string>
     <string name="reboot_system">Reboot system</string>
+    <string name="vice_slot_volte_title">Use mobile data during VoLTE calls on the secondary SIM</string>
+    <string name="vice_slot_volte_summary">Settings->SIM cards &amp; mobile networks</string>
     <string name="n1_title">N1 Band</string>
     <string name="n1_summary">Support N1 Band(NR)</string>
     <string name="n5_n8_title">N5/N8 Bnad</string>

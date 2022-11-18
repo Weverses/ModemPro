@@ -6,6 +6,7 @@
     <string name="title3">MTB 设置</string>
     <string name="title4">实验性功能设置</string>
     <string name="title5">其他</string>
+    <string name="title6">其他功能设置</string>
     <string name="xposed_description">为小米系865/870基带版本为2.5.x的且使用MIUI的设备基带解锁一些功能,但理论上大部分MIUI13机型都可用</string>
     <string name="tips">提示</string>
     <string name="warning">警告</string>
@@ -16,6 +17,8 @@
     <string name="dual_sa_summary">开启后,副卡可以开启SA网络(865/870机型不可用)</string>
     <string name="done">确定</string>
     <string name="reboot">重启</string>
+    <string name="vice_slot_volte_title">副卡VoLTE通话时可联网</string>
+    <string name="vice_slot_volte_summary">开启该功能后,需要打开双卡与移动网络->高级设置->副卡高清通话时可联网</string>
     <string name="n1_title">解锁N1频段</string>
     <string name="n1_summary">开启后可支持N1频段</string>
     <string name="n5_n8_title">解锁N5/N8频段</string>

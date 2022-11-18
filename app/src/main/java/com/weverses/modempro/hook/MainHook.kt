@@ -9,6 +9,7 @@ import com.weverses.modempro.hook.hooks.mtb.BypassAuthentication
 import com.weverses.modempro.hook.hooks.mtb.isUserBuild
 import com.weverses.modempro.hook.hooks.phone.DualNrSupport
 import com.weverses.modempro.hook.hooks.phone.N5N8BandPhone
+import com.weverses.modempro.hook.hooks.phone.ViceSlotVolteButton
 import com.weverses.modempro.util.Utils
 import de.robv.android.xposed.IXposedHookLoadPackage
 import de.robv.android.xposed.callbacks.XC_LoadPackage
@@ -60,9 +61,12 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("n5_n8_band", true)) {
                         initHooks(N5N8BandPhone)
                     }
+                    if (Utils.getBoolean("vice_slot_volte", true)) {
+                        initHooks(ViceSlotVolteButton)
+                    }
                 }
                 "com.xiaomi.mtb" -> {
-                    if (Utils.getBoolean("mtb_auth", true)) {
+                    if (Utils.getBoolean("mtb_auth", false)) {
                         initHooks(BypassAuthentication)
                         initHooks(isUserBuild)
                     }

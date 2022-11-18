@@ -67,6 +67,15 @@ class MainActivity : MIUIActivity() {
                     SwitchV("n5_n8_band", true)
                 )
 
+                Line()
+                TitleText(textId = R.string.title6)
+                TextSummaryWithSwitch(
+                    TextSummaryV(
+                        textId = R.string.vice_slot_volte_title,
+                        tipsId = R.string.vice_slot_volte_summary
+                    ),
+                    SwitchV("vice_slot_volte", true)
+                )
 
                 Line()
                 TitleText(textId = R.string.title3)
@@ -75,7 +84,7 @@ class MainActivity : MIUIActivity() {
                         textId = R.string.mtb_auth_title,
                         tipsId = R.string.mtb_auth_summary
                     ),
-                    SwitchV("mtb_auth", true)
+                    SwitchV("mtb_auth", false)
                 )
 
                 Line()
