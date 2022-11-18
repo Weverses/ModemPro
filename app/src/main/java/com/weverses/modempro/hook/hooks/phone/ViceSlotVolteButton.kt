@@ -16,5 +16,14 @@ object ViceSlotVolteButton : BaseHook() {
             XposedBridge.log("ModemX55Pro: Hook phone-shouldHideViceSlotVolteDataButton failed!")
             XposedBridge.log(e)
         }
+        try {
+            findMethod("com.android.phone.MiuiPhoneUtils") {
+                name == "shouldHideSmartDualSimButton"
+            }.hookReturnConstant(false)
+            XposedBridge.log("ModemX55Pro: Hook phone-shouldHideSmartDualSimButton success!")
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemX55Pro: Hook phone-shouldHideSmartDualSimButton failed!")
+            XposedBridge.log(e)
+        }
     }
 }
