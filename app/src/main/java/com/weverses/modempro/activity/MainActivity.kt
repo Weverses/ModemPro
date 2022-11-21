@@ -108,11 +108,11 @@ class MainActivity : MIUIActivity() {
                             setTitle(R.string.mtb_auth_title)
                             setMessage(R.string.mtb_auth_summary)
                             setLButton(R.string.disable) {
-                                setMTBFeature(false)
+                                setMTBFeature(mKey = false)
                                 dismiss()
                             }
                             setRButton(R.string.enable) {
-                                setMTBFeature(true)
+                                setMTBFeature(mKey = true)
                                 dismiss()
                             }
                         }.show()
