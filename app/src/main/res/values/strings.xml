@@ -20,8 +20,12 @@
     <string name="reboot_tips">Are you sure to reboot?</string>
     <string name="cancel">Cancel</string>
     <string name="reboot_system">Reboot system</string>
-    <string name="vice_slot_volte_title">Use mobile data during VoLTE calls on the secondary SIM</string>
-    <string name="vice_slot_volte_summary">Settings->SIM cards &amp; mobile networks</string>
+    <string name="enable">Enable</string>
+    <string name="disable">Disable</string>
+    <string name="vice_slot_volte_title">Vice slot volte</string>
+    <string name="vice_slot_volte_summary">Warning:NEED ROOT!Use mobile data during VoLTE calls on the secondary SIM</string>
+    <string name="smart_dual_sim_title">Smart Dual Sim</string>
+    <string name="smart_dual_sim_summary">Settings->SIM cards &amp; mobile networks->Advanced settings</string>
     <string name="n1_title">N1 Band</string>
     <string name="n1_summary">Support N1 Band(NR)</string>
     <string name="n5_n8_title">N5/N8 Bnad</string>

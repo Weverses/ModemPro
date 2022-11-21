@@ -71,10 +71,26 @@ class MainActivity : MIUIActivity() {
                 TitleText(textId = R.string.title6)
                 TextSummaryWithSwitch(
                     TextSummaryV(
-                        textId = R.string.vice_slot_volte_title,
-                        tipsId = R.string.vice_slot_volte_summary
+                        textId = R.string.smart_dual_sim_title,
+                        tipsId = R.string.smart_dual_sim_summary
                     ),
                     SwitchV("vice_slot_volte", true)
+                )
+
+                TextA(
+                    textId = R.string.vice_slot_volte_title,
+                    onClickListener = {
+                        MIUIDialog(this@MainActivity) {
+                            setTitle(R.string.vice_slot_volte_title)
+                            setMessage(R.string.vice_slot_volte_summary)
+                            setLButton(R.string.disable) {
+                                dismiss()
+                            }
+                            setRButton(R.string.enable) {
+                                Utils.exec("settings put global vice_slot_volte_data_enabled 1")
+                            }
+                        }.show()
+                    }
                 )
 
                 Line()
