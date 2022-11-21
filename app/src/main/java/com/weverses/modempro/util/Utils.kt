@@ -72,7 +72,8 @@ object Utils {
         return getProp("ro.board.platform")
     }
 
-    fun isMTBFeatureOn(boolean: Boolean): Boolean {
-        return (boolean)
+    fun setMTBFeature(mKey: Boolean): Boolean {
+        return  mKey
     }
+
 }

@@ -9,7 +9,7 @@ import cn.fkj233.ui.dialog.MIUIDialog
 import com.weverses.modempro.R
 import com.weverses.modempro.util.Utils
 import com.weverses.modempro.util.Utils.getPlatform
-import com.weverses.modempro.util.Utils.isMTBFeatureOn
+import com.weverses.modempro.util.Utils.setMTBFeature
 import kotlin.system.exitProcess
 
 class MainActivity : MIUIActivity() {
@@ -17,6 +17,7 @@ class MainActivity : MIUIActivity() {
         checkLSPosed()
         super.onCreate(savedInstanceState)
     }
+
 
     @SuppressLint("WorldReadableFiles")
     private fun checkLSPosed() {
@@ -34,6 +35,7 @@ class MainActivity : MIUIActivity() {
             }.show()
         }
     }
+
 
     init {
         initView {
@@ -106,11 +108,11 @@ class MainActivity : MIUIActivity() {
                             setTitle(R.string.mtb_auth_title)
                             setMessage(R.string.mtb_auth_summary)
                             setLButton(R.string.disable) {
-                                isMTBFeatureOn(false)
+                                setMTBFeature(false)
                                 dismiss()
                             }
                             setRButton(R.string.enable) {
-                                isMTBFeatureOn(true)
+                                setMTBFeature(true)
                                 dismiss()
                             }
                         }.show()
