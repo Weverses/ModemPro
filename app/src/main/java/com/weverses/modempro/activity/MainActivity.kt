@@ -84,10 +84,12 @@ class MainActivity : MIUIActivity() {
                             setTitle(R.string.vice_slot_volte_title)
                             setMessage(R.string.vice_slot_volte_summary)
                             setLButton(R.string.disable) {
+                                Utils.exec("settings put global vice_slot_volte_data_enabled 0")
                                 dismiss()
                             }
                             setRButton(R.string.enable) {
                                 Utils.exec("settings put global vice_slot_volte_data_enabled 1")
+                                dismiss()
                             }
                         }.show()
                     }
@@ -95,12 +97,21 @@ class MainActivity : MIUIActivity() {
 
                 Line()
                 TitleText(textId = R.string.title3)
-                TextSummaryWithSwitch(
-                    TextSummaryV(
-                        textId = R.string.mtb_auth_title,
-                        tipsId = R.string.mtb_auth_summary
-                    ),
-                    SwitchV("mtb_auth", false)
+                TextA(
+                    textId = R.string.mtb_auth_title,
+                    onClickListener = {
+                        MIUIDialog(this@MainActivity) {
+                            setTitle(R.string.mtb_auth_title)
+                            setMessage(R.string.mtb_auth_summary)
+                            setLButton(R.string.disable) {
+                                dismiss()
+                            }
+                            setRButton(R.string.enable) {
+                                SwitchV("mtb_auth", false)
+                                dismiss()
+                            }
+                        }.show()
+                    }
                 )
 
                 Line()
