@@ -1,7 +1,9 @@
 package com.weverses.modempro.util
 
+import com.github.kyuubiran.ezxhelper.utils.findMethod
 import com.weverses.modempro.BuildConfig
 import de.robv.android.xposed.XSharedPreferences
+import de.robv.android.xposed.XposedBridge
 import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.IOException
@@ -64,4 +66,13 @@ object Utils {
         return prefs.getBoolean(key, defValue)
     }
 
+    fun getProp(mKey: String): String = Class.forName("android.os.SystemProperties").getMethod("get", String::class.java).invoke(Class.forName("android.os.SystemProperties"), mKey).toString()
+
+    fun getPlatform(): String {
+        return getProp("ro.board.platform")
+    }
+
+    fun isMTBFeatureOn(boolean: Boolean): Boolean {
+        return (boolean)
+    }
 }
