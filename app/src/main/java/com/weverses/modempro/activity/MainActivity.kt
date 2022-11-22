@@ -8,8 +8,6 @@ import cn.fkj233.ui.activity.view.TextSummaryV
 import cn.fkj233.ui.dialog.MIUIDialog
 import com.weverses.modempro.R
 import com.weverses.modempro.util.Utils
-import com.weverses.modempro.util.Utils.getPlatform
-import com.weverses.modempro.util.Utils.setMTBFeature
 import kotlin.system.exitProcess
 
 class MainActivity : MIUIActivity() {
@@ -108,11 +106,11 @@ class MainActivity : MIUIActivity() {
                             setTitle(R.string.mtb_auth_title)
                             setMessage(R.string.mtb_auth_summary)
                             setLButton(R.string.disable) {
-                                setMTBFeature(mKey = false)
+                                SwitchV("mtb_auth", false)
                                 dismiss()
                             }
                             setRButton(R.string.enable) {
-                                setMTBFeature(mKey = true)
+                                SwitchV("mtb_auth", true)
                                 dismiss()
                             }
                         }.show()
