@@ -68,7 +68,7 @@ class MainHook : IXposedHookLoadPackage {
                     }
                 }
                 "com.xiaomi.mtb" -> {
-                    if (Utils.getBoolean("mtb_auth", true))
+                    if (Utils.getBoolean("mtb_auth", false))
                         initHooks(BypassAuthentication)
                         initHooks(isUserBuild)
                     }

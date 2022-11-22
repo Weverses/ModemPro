@@ -104,7 +104,7 @@ class MainActivity : MIUIActivity() {
                         textId = R.string.mtb_auth_title,
                         tipsId = R.string.mtb_auth_summary
                     ),
-                    SwitchV("mtb_auth", true)
+                    SwitchV("mtb_auth", false)
                 )
 
                 if (Utils.getPlatform() == "lahaina") {
