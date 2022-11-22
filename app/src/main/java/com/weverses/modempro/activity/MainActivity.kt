@@ -99,22 +99,12 @@ class MainActivity : MIUIActivity() {
 
                 Line()
                 TitleText(textId = R.string.title3)
-                TextA(
-                    textId = R.string.mtb_auth_title,
-                    onClickListener = {
-                        MIUIDialog(this@MainActivity) {
-                            setTitle(R.string.mtb_auth_title)
-                            setMessage(R.string.mtb_auth_summary)
-                            setLButton(R.string.disable) {
-                                SwitchV("mtb_auth", false)
-                                dismiss()
-                            }
-                            setRButton(R.string.enable) {
-                                SwitchV("mtb_auth", true)
-                                dismiss()
-                            }
-                        }.show()
-                    }
+                TextSummaryWithSwitch(
+                    TextSummaryV(
+                        textId = R.string.mtb_auth_title,
+                        tipsId = R.string.mtb_auth_summary
+                    ),
+                    SwitchV("mtb_auth", true)
                 )
 
                 if (Utils.getPlatform() == "lahaina") {
