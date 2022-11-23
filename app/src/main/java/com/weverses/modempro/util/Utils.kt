@@ -76,4 +76,8 @@ object Utils {
         return (getProp("Build.BRAND") == "MTK")
     }
 
+    fun isMTBFeatureOn(boolean: Boolean): Boolean {
+        return (boolean)
+    }
+
 }
