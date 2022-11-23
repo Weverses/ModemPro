@@ -51,7 +51,6 @@ class MainActivity : MIUIActivity() {
         }
     }
 
-
     init {
         initView {
             registerMain(getString(R.string.app_title), false) {
