@@ -63,15 +63,7 @@ class MainActivity : MIUIActivity() {
                         ),
                         SwitchV("dual_nr", true)
                     )
-                    Line()
-                    TitleText(textId = R.string.title2)
-                    TextSummaryWithSwitch(
-                        TextSummaryV(
-                            textId = R.string.n1_title,
-                            tipsId = R.string.n1_summary
-                        ),
-                        SwitchV("n1_band", true)
-                    )
+
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.n28_title,
@@ -161,8 +153,8 @@ class MainActivity : MIUIActivity() {
                             }
                         }.show()
                     }
-
                 )
+
                 Line()
                 TitleText(textId = R.string.title5)
                 TextA(

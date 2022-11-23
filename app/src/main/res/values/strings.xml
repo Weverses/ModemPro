@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Modem Pro</string>
+    <string name="app_name" translatable="false">Modem Pro</string>
     <string name="app_title" translatable="false">Modem Pro</string>
     <string name="title1">NR Settings</string>
     <string name="title2">Band Settings</string>
