@@ -39,7 +39,7 @@ android {
         release {
             isShrinkResources = true
             isMinifyEnabled = true
-            setProguardFiles(listOf("proguard-rules.pro"))
+            proguardFiles("proguard-rules.pro")
             if (keystorePath != null) {
                 signingConfig = signingConfigs.getByName("release")
             }
