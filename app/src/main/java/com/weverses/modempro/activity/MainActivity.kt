@@ -10,6 +10,7 @@ import cn.fkj233.ui.activity.view.TextSummaryV
 import cn.fkj233.ui.dialog.MIUIDialog
 import com.weverses.modempro.R
 import com.weverses.modempro.util.Utils
+import com.weverses.modempro.util.Utils.isMTBFeatureOn
 import com.weverses.modempro.util.Utils.isMTK
 import kotlin.system.exitProcess
 
@@ -111,17 +112,23 @@ class MainActivity : MIUIActivity() {
                     }
                 )
 
-                if (!isMTK()) {
-                    Line()
-                    TitleText(textId = R.string.title3)
-                    TextSummaryWithSwitch(
-                        TextSummaryV(
-                            textId = R.string.mtb_auth_title,
-                            tipsId = R.string.mtb_auth_summary
-                        ),
-                        SwitchV("mtb_auth", false)
-                    )
-                }
+                TextA(
+                    textId = R.string.mtb_auth_title,
+                    onClickListener = {
+                        MIUIDialog(this@MainActivity) {
+                            setTitle(R.string.mtb_auth_title)
+                            setMessage(R.string.mtb_auth_summary)
+                            setLButton(R.string.disable) {
+                                isMTBFeatureOn(false)
+                                dismiss()
+                            }
+                            setRButton(R.string.enable) {
+                                isMTBFeatureOn(true)
+                                dismiss()
+                            }
+                        }.show()
+                    }
+                )
 
                 if (Utils.getPlatform() == "lahaina") {
                     Line()

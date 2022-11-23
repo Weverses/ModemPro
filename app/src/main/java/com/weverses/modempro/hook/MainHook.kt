@@ -13,6 +13,7 @@ import com.weverses.modempro.hook.hooks.phone.DualNrSupport
 import com.weverses.modempro.hook.hooks.phone.N5N8BandPhone
 import com.weverses.modempro.hook.hooks.phone.ViceSlotVolteButton
 import com.weverses.modempro.util.Utils
+import com.weverses.modempro.util.Utils.isMTBFeatureOn
 import de.robv.android.xposed.IXposedHookLoadPackage
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
@@ -68,7 +69,7 @@ class MainHook : IXposedHookLoadPackage {
                     }
                 }
                 "com.xiaomi.mtb" -> {
-                    if (Utils.getBoolean("mtb_auth", false))
+                    if (isMTBFeatureOn(boolean = true)) {
                         initHooks(BypassAuthentication)
                         initHooks(isUserBuild)
                     }
@@ -87,3 +88,4 @@ class MainHook : IXposedHookLoadPackage {
             }.logexIfThrow("Failed init hook: ${it.javaClass.simpleName}")
         }
     }
+}
