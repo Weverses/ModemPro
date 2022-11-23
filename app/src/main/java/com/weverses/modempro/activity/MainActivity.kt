@@ -64,6 +64,8 @@ class MainActivity : MIUIActivity() {
                         SwitchV("dual_nr", true)
                     )
 
+                    Line()
+                    TitleText(textId = R.string.title2)
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.n28_title,
