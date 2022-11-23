@@ -1,9 +1,9 @@
 package com.weverses.modempro.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
 import cn.fkj233.ui.activity.MIUIActivity
 import cn.fkj233.ui.activity.view.SwitchV
 import cn.fkj233.ui.activity.view.TextSummaryV
@@ -130,10 +130,14 @@ class MainActivity : MIUIActivity() {
                             setTitle(R.string.author_title)
                             setMessage(R.string.love)
                             setLButton(R.string.author_description) {
-                                Uri.parse("http://www.coolapk.com/u/18895441")
+                                val uri = Uri.parse("http://www.coolapk.com/u/18895441")
+                                val author = Intent(Intent.ACTION_VIEW, uri)
+                                startActivity(author)
                             }
                             setRButton(R.string.love_url) {
-                                Uri.parse("https://afdian.net/a/Weverse")
+                                val love = Uri.parse("https://afdian.net/a/Weverse")
+                                val intent = Intent(Intent.ACTION_VIEW, love)
+                                startActivity(intent)
                             }
                         }.show()
                     }
