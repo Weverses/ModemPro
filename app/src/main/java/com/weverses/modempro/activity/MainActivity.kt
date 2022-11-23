@@ -145,7 +145,7 @@ class MainActivity : MIUIActivity() {
                 Line()
                 TitleText(textId = R.string.about)
                 Author(
-                    getDrawable(R.drawable.author)!!, "Weverses", "Hook,Icon...more" ,
+                    getDrawable(R.drawable.author)!!, "Weverse", "Hook,Icon...more" ,
                     onClickListener = {
                         MIUIDialog(this@MainActivity) {
                             setTitle(R.string.author_title)

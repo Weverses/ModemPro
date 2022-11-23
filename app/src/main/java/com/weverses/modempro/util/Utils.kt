@@ -73,10 +73,7 @@ object Utils {
     }
 
     fun isMTK(): Boolean {
-        if (getProp("Build.BRAND") == "MTK") {
-            return true
-        }
-        return false
+        return (getProp("Build.BRAND") == "MTK")
     }
 
 }
