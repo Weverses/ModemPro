@@ -10,11 +10,13 @@ import cn.fkj233.ui.activity.view.TextSummaryV
 import cn.fkj233.ui.dialog.MIUIDialog
 import com.weverses.modempro.R
 import com.weverses.modempro.util.Utils
+import com.weverses.modempro.util.Utils.isMTK
 import kotlin.system.exitProcess
 
 class MainActivity : MIUIActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         checkLSPosed()
+        checkMTK()
         super.onCreate(savedInstanceState)
     }
 
@@ -36,40 +38,57 @@ class MainActivity : MIUIActivity() {
         }
     }
 
+    private fun checkMTK() {
+        if (isMTK()) {
+            MIUIDialog(this) {
+                setTitle(R.string.tips)
+                setMessage(R.string.mtk_device)
+                setCancelable(false)
+                setRButton(R.string.done) {
+                    dismiss()
+                }
+            }.show()
+        }
+    }
+
 
     init {
         initView {
             registerMain(getString(R.string.app_title), false) {
-                TitleText(textId = R.string.title1)
-                TextSummaryWithSwitch(
-                    TextSummaryV(
-                        textId = R.string.dual_nr_title,
-                        tipsId = R.string.dual_nr_summary
-                    ),
-                    SwitchV("dual_nr", true)
-                )
-                Line()
-                TitleText(textId = R.string.title2)
-                TextSummaryWithSwitch(
-                    TextSummaryV(
-                        textId = R.string.n1_title,
-                        tipsId = R.string.n1_summary),
-                    SwitchV("n1_band", true)
-                )
-                TextSummaryWithSwitch(
-                    TextSummaryV(
-                        textId = R.string.n28_title,
-                        tipsId = R.string.n28_summary
-                    ),
-                    SwitchV("n28_band", true)
-                )
+                if (!isMTK()) {
+                    TitleText(textId = R.string.title1)
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.dual_nr_title,
+                            tipsId = R.string.dual_nr_summary
+                        ),
+                        SwitchV("dual_nr", true)
+                    )
+                    Line()
+                    TitleText(textId = R.string.title2)
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.n1_title,
+                            tipsId = R.string.n1_summary
+                        ),
+                        SwitchV("n1_band", true)
+                    )
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.n28_title,
+                            tipsId = R.string.n28_summary
+                        ),
+                        SwitchV("n28_band", true)
+                    )
 
-                TextSummaryWithSwitch(
-                    TextSummaryV(
-                        textId = R.string.n5_n8_title,
-                        tipsId = R.string.n5_n8_summary),
-                    SwitchV("n5_n8_band", true)
-                )
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.n5_n8_title,
+                            tipsId = R.string.n5_n8_summary
+                        ),
+                        SwitchV("n5_n8_band", true)
+                    )
+                }
 
                 Line()
                 TitleText(textId = R.string.title6)
@@ -99,15 +118,17 @@ class MainActivity : MIUIActivity() {
                     }
                 )
 
-                Line()
-                TitleText(textId = R.string.title3)
-                TextSummaryWithSwitch(
-                    TextSummaryV(
-                        textId = R.string.mtb_auth_title,
-                        tipsId = R.string.mtb_auth_summary
-                    ),
-                    SwitchV("mtb_auth", false)
-                )
+                if (!isMTK()) {
+                    Line()
+                    TitleText(textId = R.string.title3)
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.mtb_auth_title,
+                            tipsId = R.string.mtb_auth_summary
+                        ),
+                        SwitchV("mtb_auth", false)
+                    )
+                }
 
                 if (Utils.getPlatform() == "lahaina") {
                     Line()

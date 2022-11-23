@@ -17,6 +17,7 @@
     <string name="tips">提示</string>
     <string name="warning">警告</string>
     <string name="not_support">您似乎正在使用过时的 LSPosed 版本或 LSPosed 未激活，请更新 LSPosed 或者激活后再试。</string>
+    <string name="mtk_device">此设备为MTK机型,5G/频段/MTB设置已自动屏蔽</string>
     <string name="dual_nr_title">双卡5G(SA+NSA)</string>
     <string name="dual_nr_summary">开启后,主卡副卡可以同时开启5G网络(副卡仅NSA),受限于NSA网络覆盖,副卡可能并不能稳定5G驻网</string>
     <string name="dual_sa_title">双卡SA(SA+SA)</string>

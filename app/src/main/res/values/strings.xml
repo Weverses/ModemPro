@@ -17,6 +17,7 @@
     <string name="tips">Tips</string>
     <string name="warning">Warning</string>
     <string name="not_support">You seem to be using an outdated version of LSPosed or LSPosed is not active, please update LSPosed or activate it and try again.</string>
+    <string name="mtk_device">Oops!This is a MTK-DEVICE,some settings are unavailable</string>
     <string name="done">OK</string>
     <string name="dual_nr_title">Dual NR</string>
     <string name="dual_nr_summary">Main and secondary SIM-card enable 5G at the same time(the secondary SIM-card only support NSA)</string>

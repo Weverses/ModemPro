@@ -72,5 +72,11 @@ object Utils {
         return getProp("ro.board.platform")
     }
 
+    fun isMTK(): Boolean {
+        if (getProp("Build.BRAND") == "MTK") {
+            return true
+        }
+        return false
+    }
 
 }
