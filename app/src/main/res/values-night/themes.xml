@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.MaxFreeForm" parent="android:Theme.DeviceDefault.DayNight">
+    <style name="Theme.ModemPro" parent="android:Theme.DeviceDefault.DayNight">
         <item name="android:statusBarColor">@color/black</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:forceDarkAllowed">true</item>

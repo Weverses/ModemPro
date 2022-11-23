@@ -3,13 +3,17 @@ package com.weverses.modempro.hook
 import com.github.kyuubiran.ezxhelper.init.EzXHelperInit
 import com.github.kyuubiran.ezxhelper.utils.Log
 import com.github.kyuubiran.ezxhelper.utils.Log.logexIfThrow
+import com.github.kyuubiran.ezxhelper.utils.findAllMethods
+import com.weverses.modempro.activity.MainActivity
 import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.hook.hooks.android.*
 import com.weverses.modempro.hook.hooks.mtb.BypassAuthentication
 import com.weverses.modempro.hook.hooks.mtb.isUserBuild
 import com.weverses.modempro.hook.hooks.phone.DualNrSupport
 import com.weverses.modempro.hook.hooks.phone.N5N8BandPhone
+import com.weverses.modempro.hook.hooks.phone.ViceSlotVolteButton
 import com.weverses.modempro.util.Utils
+import com.weverses.modempro.util.Utils.isMTBFeatureOn
 import de.robv.android.xposed.IXposedHookLoadPackage
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
@@ -60,9 +64,12 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("n5_n8_band", true)) {
                         initHooks(N5N8BandPhone)
                     }
+                    if (Utils.getBoolean("vice_slot_volte", true)) {
+                        initHooks(ViceSlotVolteButton)
+                    }
                 }
                 "com.xiaomi.mtb" -> {
-                    if (Utils.getBoolean("mtb_auth", true)) {
+                    if (Utils.getBoolean("mtb_auth", false)) {
                         initHooks(BypassAuthentication)
                         initHooks(isUserBuild)
                     }
@@ -70,7 +77,6 @@ class MainHook : IXposedHookLoadPackage {
             }
         }
     }
-
 
     private fun initHooks(vararg hook: BaseHook) {
         hook.forEach {
@@ -82,5 +88,4 @@ class MainHook : IXposedHookLoadPackage {
             }.logexIfThrow("Failed init hook: ${it.javaClass.simpleName}")
         }
     }
-
 }

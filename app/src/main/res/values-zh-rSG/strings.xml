@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title1">5G設定</string>
+    <string name="title2">頻段設定</string>
+    <string name="title3">MTB 設定</string>
+    <string name="title4">實驗性功能設定</string>
+    <string name="title5">其他</string>
+    <string name="title6">其他功能設定</string>
+    <string name="about">關於</string>
+    <string name="author">Weverse</string>
+    <string name="author_description">作者酷安頁面</string>
+    <string name="author_title">作者資訊</string>
+    <string name="love">如果喜歡本模組的話,歡迎進入愛發電網站進行贊助!</string>
+    <string name="love_url">愛發電</string>
+    <string name="xposed_description">為小米S865/870機型且基帶版本為2.5.x,並使用MIUI系統的裝置解鎖一些功能,理論上大部分MIUI13機型都可使用</string>
+    <string name="tips">提示</string>
+    <string name="warning">警告</string>
+    <string name="not_support">您似乎正在使用過時的 LSPosed 版本或 LSPosed 未啟用，請更新 LSPosed 或者啟用後重試</string>
+    <string name="dual_nr_title">雙卡5G(SA+NSA)</string>
+    <string name="dual_nr_summary">開啟後.主卡副卡可以同時開啟5G網路(副卡僅NSA,受限於NSA網路覆蓋,副卡可能並不能5G駐網)</string>
+    <string name="dual_sa_title">雙卡SA(SA+SA)</string>
+    <string name="dual_sa_summary">開啟後,副卡可以開啟SA網路</string>
+    <string name="done">確定</string>
+    <string name="reboot">重啟</string>
+    <string name="enable">開啟</string>
+    <string name="disable">關閉</string>
+    <string name="vice_slot_volte_title">副卡VoLTE通話時可連網</string>
+    <string name="vice_slot_volte_summary">注意:該功能需要Root權限! 開啟該功能後,副卡進行通話時會將數據切換到副卡</string>
+    <string name="smart_dual_sim_title">智慧雙卡切換</string>
+    <string name="smart_dual_sim_summary">開啟該功能後,請在設定->雙卡與行動網路->進階設定裡打開5G智慧切換</string>
+    <string name="n1_title">解鎖N1頻段</string>
+    <string name="n1_summary">開啟後可支援N1頻段</string>
+    <string name="n5_n8_title">解鎖N5/N8頻段</string>
+    <string name="n5_n8_summary">開啟後可支援N5/N8頻段,請開啟該功能後在撥號介面中輸入 *#*#65686633#*#* ,若提示enable N5 and N8 Mode即解鎖成功</string>
+    <string name="n28_title">解鎖N28頻段</string>
+    <string name="n28_summary">開啟後可支援部分機型缺失的N28頻段</string>
+    <string name="reboot_system">重啟系統</string>
+    <string name="reboot_tips">確定重啟系統？</string>
+    <string name="cancel">取消</string>
+    <string name="mtb_auth_title">繞過魯班(MTB)鑒權</string>
+    <string name="mtb_auth_summary">【請注意,此項為高度危險性功能，請務必在使用該功能前完整備份基帶! 若因該功能導致的基帶損壞概不負責!】 開啟後可解鎖魯班(MTB)功能,可在撥號介面輸入 *#*#663368378#*#* (ModemTest) 打開魯班介面</string>
+    <string name="more">實驗性功能</string>
+    <string name="finished">執行完成</string>
+    <string name="mtk_device">此裝置為MTK機型,5G/頻段/MTB設定已自動隱藏</string>
+</resources>

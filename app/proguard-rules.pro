@@ -1,1 +1,1 @@
--keep class com.weverses.modempro.hook.MainHook
+-keep class com.weverses.modempro.hook.MainHook
