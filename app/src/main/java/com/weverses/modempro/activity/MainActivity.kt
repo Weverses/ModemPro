@@ -112,23 +112,17 @@ class MainActivity : MIUIActivity() {
                     }
                 )
 
-                TextA(
-                    textId = R.string.mtb_auth_title,
-                    onClickListener = {
-                        MIUIDialog(this@MainActivity) {
-                            setTitle(R.string.mtb_auth_title)
-                            setMessage(R.string.mtb_auth_summary)
-                            setLButton(R.string.disable) {
-                                isMTBFeatureOn(false)
-                                dismiss()
-                            }
-                            setRButton(R.string.enable) {
-                                isMTBFeatureOn(true)
-                                dismiss()
-                            }
-                        }.show()
-                    }
-                )
+                if (!isMTK()) {
+                    Line()
+                    TitleText(textId = R.string.title3)
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.mtb_auth_title,
+                            tipsId = R.string.mtb_auth_summary
+                        ),
+                        SwitchV("mtb_auth", false)
+                    )
+                }
 
                 if (Utils.getPlatform() == "lahaina") {
                     Line()
