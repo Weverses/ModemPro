@@ -7,6 +7,12 @@
     <string name="title4">实验性功能设置</string>
     <string name="title5">其他</string>
     <string name="title6">其他功能设置</string>
+    <string name="about">关于</string>
+    <string name="author">Weverses</string>
+    <string name="author_description">进入作者信息界面</string>
+    <string name="author_title">作者信息</string>
+    <string name="love">如果喜欢本模块的话,欢迎进入爱发电给作者投喂!</string>
+    <string name="love_url">爱发电</string>
     <string name="xposed_description">为小米系865/870基带版本为2.5.x的且使用MIUI的设备基带解锁一些功能,但理论上大部分MIUI13机型都可用</string>
     <string name="tips">提示</string>
     <string name="warning">警告</string>

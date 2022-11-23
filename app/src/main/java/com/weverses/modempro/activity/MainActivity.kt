@@ -1,7 +1,9 @@
 package com.weverses.modempro.activity
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import cn.fkj233.ui.activity.MIUIActivity
 import cn.fkj233.ui.activity.view.SwitchV
 import cn.fkj233.ui.activity.view.TextSummaryV
@@ -119,6 +121,24 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
+                Line()
+                TitleText(textId = R.string.about)
+                Author(
+                    getDrawable(R.drawable.author)!!, "Weverses", "Hook,Icon...more" ,
+                    onClickListener = {
+                        MIUIDialog(this@MainActivity) {
+                            setTitle(R.string.author_title)
+                            setMessage(R.string.love)
+                            setLButton(R.string.author_description) {
+                                Uri.parse("http://www.coolapk.com/u/18895441")
+                            }
+                            setRButton(R.string.love_url) {
+                                Uri.parse("https://afdian.net/a/Weverse")
+                            }
+                        }.show()
+                    }
+
+                )
                 Line()
                 TitleText(textId = R.string.title5)
                 TextA(

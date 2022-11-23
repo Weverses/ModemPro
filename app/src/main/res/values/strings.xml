@@ -7,6 +7,12 @@
     <string name="title4">Test feature Settings</string>
     <string name="title5">Other</string>
     <string name="title6">Other feature Settings</string>
+    <string name="about">About</string>
+    <string name="author">Author</string>
+    <string name="author_description">coolapk</string>
+    <string name="author_title">Author Informations</string>
+    <string name="love">Donations WELCOME!!</string>
+    <string name="love_url">Donations</string>
     <string name="xposed_description">Only Support QCOM SM8250(X55),modem version 2.5.x</string>
     <string name="tips">Tips</string>
     <string name="warning">Warning</string>
