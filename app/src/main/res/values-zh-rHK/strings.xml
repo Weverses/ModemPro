@@ -42,4 +42,5 @@
     <string name="more">實驗性功能</string>
     <string name="finished">執行完成</string>
     <string name="mtk_device">此裝置為MTK機型,5G/頻段/MTB設定已自動隱藏</string>
+    <string name="antique_version">檢測到不支持的MIUI版本,5G/頻段/其他功能設定已自動隱藏</string>
 </resources>

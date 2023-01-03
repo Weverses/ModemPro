@@ -43,4 +43,5 @@
     <string name="more">More</string>
     <string name="finished">Finished</string>
     <string name="xposed_description">MIUI13 Modem Feature Pro</string>
+    <string name="antique_version">Detected that unsupported miui version of your device,some settings are unavailable!</string>
 </resources>
