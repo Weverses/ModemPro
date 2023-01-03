@@ -2,7 +2,7 @@
 
 # ModemPro 基带进化
 
-这是一个适用于MIUI 13的基带增强型Xposed模块
+这是一个适用于MIUI 13/14的基带增强型Xposed模块
 
 <a href="https://github.com/Weverses/ModemPro/actions"><img alt="Android CI" src="https://github.com/Weverses/ModemPro/workflows/Android%20CI/badge.svg"></a> <a href="https://github.com/Xposed-Modules-Repo/com.weverses.modempro/releases/"><img alt="Github Releases" src="https://img.shields.io/github/v/release/Xposed-Modules-Repo/com.weverses.modempro"></a> <a href="https://github.com/Xposed-Modules-Repo/com.weverses.modempro/releases"><img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Xposed-Modules-Repo/com.weverses.modempro/total?label=Downloads"></a> <a href="https://github.com/Weverses/ModemPro/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Weverses/ModemPro"></a> <a href="https://github.com/Weverses/ModemPro/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Weverses/ModemPro"></a> <a href="https://github.com/Weverses/ModemPro/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Weverses/ModemPro"></a>
 
@@ -16,8 +16,8 @@
 
 ## 注意事项
 - 请勾选<b>全部的作用域</b>，否则可能出现在设置里没有双卡5G开关的问题
-- 本模块针对865/870适配，但是理论上大部分MIUI13机型应该通用
-- 本模块在MIUI13 Android12/13 小米10Ultra 基带版本2.5.c1上测试通过
+- 本模块针对865/870适配，但是理论上大部分MIUI13/14机型应该通用
+- 本模块在MIUI13/14 Android12/13 小米10Ultra 基带版本2.5.c1上测试通过
 
 ## 下载
 - Github Action: https://github.com/Weverses/ModemPro/actions

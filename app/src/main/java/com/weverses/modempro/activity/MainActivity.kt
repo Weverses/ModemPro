@@ -10,14 +10,15 @@ import cn.fkj233.ui.activity.view.TextSummaryV
 import cn.fkj233.ui.dialog.MIUIDialog
 import com.weverses.modempro.R
 import com.weverses.modempro.util.Utils
-import com.weverses.modempro.util.Utils.isMTBFeatureOn
 import com.weverses.modempro.util.Utils.isMTK
+import com.weverses.modempro.util.Utils.isUnSupportedMIUIVersion
 import kotlin.system.exitProcess
 
 class MainActivity : MIUIActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         checkLSPosed()
         checkMTK()
+        checkMIUIVersion()
         super.onCreate(savedInstanceState)
     }
 
@@ -52,10 +53,23 @@ class MainActivity : MIUIActivity() {
         }
     }
 
+    private fun checkMIUIVersion() {
+        if (isUnSupportedMIUIVersion()) {
+            MIUIDialog(this) {
+                setTitle(R.string.tips)
+                setMessage(R.string.antique_version)
+                setCancelable(false)
+                setRButton(R.string.done) {
+                    dismiss()
+                }
+            }.show()
+        }
+    }
+
     init {
         initView {
             registerMain(getString(R.string.app_title), false) {
-                if (!isMTK()) {
+                if (!isMTK() && !isUnSupportedMIUIVersion()) {
                     TitleText(textId = R.string.title1)
                     TextSummaryWithSwitch(
                         TextSummaryV(
@@ -84,33 +98,35 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
-                Line()
-                TitleText(textId = R.string.title6)
-                TextSummaryWithSwitch(
-                    TextSummaryV(
-                        textId = R.string.smart_dual_sim_title,
-                        tipsId = R.string.smart_dual_sim_summary
-                    ),
-                    SwitchV("vice_slot_volte", true)
-                )
+                if (!isUnSupportedMIUIVersion()) {
+                    Line()
+                    TitleText(textId = R.string.title6)
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.smart_dual_sim_title,
+                            tipsId = R.string.smart_dual_sim_summary
+                        ),
+                        SwitchV("vice_slot_volte", true)
+                    )
 
-                TextA(
-                    textId = R.string.vice_slot_volte_title,
-                    onClickListener = {
-                        MIUIDialog(this@MainActivity) {
-                            setTitle(R.string.vice_slot_volte_title)
-                            setMessage(R.string.vice_slot_volte_summary)
-                            setLButton(R.string.disable) {
-                                Utils.exec("settings put global vice_slot_volte_data_enabled 0")
-                                dismiss()
-                            }
-                            setRButton(R.string.enable) {
-                                Utils.exec("settings put global vice_slot_volte_data_enabled 1")
-                                dismiss()
-                            }
-                        }.show()
-                    }
-                )
+                    TextA(
+                        textId = R.string.vice_slot_volte_title,
+                        onClickListener = {
+                            MIUIDialog(this@MainActivity) {
+                                setTitle(R.string.vice_slot_volte_title)
+                                setMessage(R.string.vice_slot_volte_summary)
+                                setLButton(R.string.disable) {
+                                    Utils.exec("settings put global vice_slot_volte_data_enabled 0")
+                                    dismiss()
+                                }
+                                setRButton(R.string.enable) {
+                                    Utils.exec("settings put global vice_slot_volte_data_enabled 1")
+                                    dismiss()
+                                }
+                            }.show()
+                        }
+                    )
+                }
 
                 if (!isMTK()) {
                     Line()

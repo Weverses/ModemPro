@@ -72,12 +72,12 @@ object Utils {
         return getProp("ro.board.platform")
     }
 
-    fun isMTK(): Boolean {
-        return (getProp("Build.BRAND") == "MTK")
+    fun isUnSupportedMIUIVersion(): Boolean {
+        return (getProp("ro.miui.ui.version.code") == "V12") && (getProp("ro.miui.ui.version.code") == "V125" )
     }
 
-    fun isMTBFeatureOn(boolean: Boolean): Boolean {
-        return (boolean)
+    fun isMTK(): Boolean {
+        return (getProp("Build.BRAND") == "MTK")
     }
 
 }

@@ -42,4 +42,5 @@
     <string name="more">实验性功能</string>
     <string name="finished">运行完成</string>
     <string name="smart_dual_sim_title">智能双卡切换</string>
+    <string name="antique_version">检测到不支持的MIUI版本,5G/频段/其他功能设置已自动隐藏</string>
 </resources>
