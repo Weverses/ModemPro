@@ -18,6 +18,7 @@ class MainActivity : MIUIActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         checkLSPosed()
         checkMTK()
+        checkMIUIVersion()
         super.onCreate(savedInstanceState)
     }
 
