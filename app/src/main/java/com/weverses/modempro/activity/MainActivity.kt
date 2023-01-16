@@ -127,7 +127,7 @@ class MainActivity : MIUIActivity() {
                 )
 
                 Line()
-                TitleText(textId = R.string.title5)
+                TitleText(textId = R.string.more)
                 TextA(
                     textId = R.string.reboot_system,
                     onClickListener = {
