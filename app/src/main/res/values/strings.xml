@@ -1,12 +1,13 @@
-<resources>
-    <string name="app_name" translatable="false">Modem Pro</string>
-    <string name="app_title" translatable="false">Modem Pro</string>
-    <string name="title1">NR Settings</string>
-    <string name="title2">Band Settings</string>
-    <string name="title3">MTB Settings</string>
-    <string name="title4">Test feature Settings</string>
-    <string name="title5">Other</string>
-    <string name="title6">Other feature Settings</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" translatable="false">刷新率进化</string>
+    <string name="app_title" translatable="false">刷新率进化</string>
+    <string name="refreshrate">刷新率设置</string>
+    <string name="custom_title">自定义刷新率</string>
+    <string name="custom_summary">如果是老机型，记得开启smart-fps</string>
+    <string name="smartfps_title">SmartFps</string>
+    <string name="smartfps_summary">智能刷新率，2022年及以后的机子默认支持</string>
+    <string name="global_title">全局高刷</string>
+    <string name="global_summary">此功能与自定义刷新率冲突，开启后PowerKeeper将无法调控刷新率</string>
     <string name="about">About</string>
     <string name="author">Weverse</string>
     <string name="author_description">coolapk</string>
@@ -18,30 +19,16 @@
     <string name="not_support">You seem to be using an outdated version of LSPosed or LSPosed is not active, please update LSPosed or activate it and try again.</string>
     <string name="mtk_device">Oops!This is a MTK-DEVICE,some settings are unavailable</string>
     <string name="done">OK</string>
-    <string name="dual_nr_title">Dual NR</string>
-    <string name="dual_nr_summary">Main and secondary SIM-card enable 5G at the same time(the secondary SIM-card only support NSA)</string>
-    <string name="dual_sa_title">Dual SA</string>
-    <string name="dual_sa_summary">the secondary SIM-card will support SA NR(test)</string>
     <string name="reboot">Reboot</string>
     <string name="reboot_tips">Are you sure to reboot?</string>
     <string name="cancel">Cancel</string>
     <string name="reboot_system">Reboot system</string>
     <string name="enable">Enable</string>
     <string name="disable">Disable</string>
-    <string name="vice_slot_volte_title">Vice slot volte</string>
-    <string name="vice_slot_volte_summary">Warning:NEED ROOT!Use mobile data during VoLTE calls on the secondary SIM</string>
-    <string name="smart_dual_sim_title">Smart Dual Sim</string>
-    <string name="smart_dual_sim_summary">Settings->SIM cards &amp; mobile networks->Advanced settings</string>
-    <string name="n1_title">N1 Band</string>
-    <string name="n1_summary">Support N1 Band(NR)</string>
-    <string name="n5_n8_title">N5/N8 Bnad</string>
-    <string name="n5_n8_summary">Enter *#*#65686633#*#* on the dial interface to Support N5/N8 Band.If it shows "enable N5 and N8 Mode",the feature will enabled successfully.</string>
-    <string name="n28_title">N28 Band</string>
-    <string name="n28_summary">Support N28 Band(NR)</string>
-    <string name="mtb_auth_title">Bypass MTB authentication</string>
-    <string name="mtb_auth_summary">(Please note that this is a highly dangerous feature, be sure to fully back up the modem before using this function! We are not responsible for modem damage caused by this function)Enter *#*#MODEMTEST#*#* on the dial interface to open the MTB Settings</string>
     <string name="more">More</string>
     <string name="finished">Finished</string>
+    <string name="oldHz_title" translatable="false">90Hz</string>
+    <string name="oldHz_summary" translatable="false">如果你的机型最高只支持90Hz，则请打开该开关，否则自定义刷新率功能无效！</string>
     <string name="xposed_description">MIUI13 Modem Feature Pro</string>
     <string name="antique_version">Detected that unsupported miui version of your device,some settings are unavailable!</string>
 </resources>

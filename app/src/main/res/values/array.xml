@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="xposed_scope">
-        <item>android</item>
-        <item>com.android.phone</item>
-        <item>com.xiaomi.mtb</item>
+        <item>com.miui.powerkeeper</item>
+        <item>com.xiaomi.misettings</item>
     </string-array>
 </resources>
