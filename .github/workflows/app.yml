@@ -64,14 +64,14 @@ jobs:
         cp ~/work/ModemPro/ModemPro/app/build/outputs/apk/debug/*.apk ~/work/ModemPro/ModemPro/GithubRelease
         cp ~/work/ModemPro/ModemPro/app/build/outputs/apk/release/*.apk ~/work/ModemPro/ModemPro/GithubRelease
         touch /home/runner/work/ModemPro/ModemPro/file.log
-        echo "ModemPro_'$getVersion'_'$getDate'" > /home/runner/work/ModemPro/ModemPro/file.log
+        echo "ModemPro_$getVersion_$getDate" > /home/runner/work/ModemPro/ModemPro/file.log
         
     - name: Upload Github Release
       uses: ncipollo/release-action@main
       with:
         artifacts: ~/work/ModemPro/ModemPro/GithubRelease/*
-        name: "${{ env.date }}"
-        tag: "${{ env.date }}"
+        name: "${{ env.version }}"
+        tag: "${{ env.version }}"
         bodyFile: /home/runner/work/ModemPro/ModemPro/file.log
         allowUpdates: true
         artifactErrorsFailBuild: true
