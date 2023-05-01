@@ -1,31 +1,38 @@
 package com.weverses.modempro.hook.hooks.mtb
 
-import com.github.kyuubiran.ezxhelper.utils.field
-import com.github.kyuubiran.ezxhelper.utils.findMethod
-import com.github.kyuubiran.ezxhelper.utils.hookAfter
-import com.github.kyuubiran.ezxhelper.utils.hookBefore
+import com.github.kyuubiran.ezxhelper.ClassUtils
+import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
+import com.github.kyuubiran.ezxhelper.ObjectHelper.Companion.objectHelper
+import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
+
 import com.weverses.modempro.hook.hooks.BaseHook
 import de.robv.android.xposed.XposedBridge
+import de.robv.android.xposed.XposedHelpers.setStaticBooleanField
 
 object BypassAuthentication : BaseHook() {
     override fun init() {
         try {
-            findMethod("com.xiaomi.mtb.MtbApp") {
+            ClassUtils.loadClass("com.xiaomi.mtb.MtbApp").methodFinder().first {
                 name == "setMiServerPermissionClass"
-            }.hookBefore {
-                it.args[0] = 0
-                XposedBridge.log("ModemX55Pro: Hook mtb-setMiServerPermissionClass success!")
+            }.createHook{
+                before { param ->
+                    param.args[0] = 0
+                }
             }
+            XposedBridge.log("ModemX55Pro: Hook mtb-setMiServerPermissionClass success!")
         }catch (e: Throwable) {
             XposedBridge.log("ModemX55Pro: Hook mtb-setMiServerPermissionClass failed!")
             XposedBridge.log(e)
         }
 
         try {
-            findMethod("com.xiaomi.mtb.activity.ModemTestBoxMainActivity") {
+            ClassUtils.loadClass("com.xiaomi.mtb.activity.ModemTestBoxMainActivity").methodFinder().first {
                 name == "updateClass"
-            }.hookBefore {
-                it.thisObject.field("mClassNet", true).set(it.thisObject, 0)
+            }.createHook{
+                before { param ->
+                    param.args[0] = 0
+                    param.thisObject.objectHelper().setObject("mClassNet", 0)
+                }
                 XposedBridge.log("ModemX55Pro: Hook mtb-updateClass success!")
             }
         }catch (e: Throwable) {
@@ -34,10 +41,12 @@ object BypassAuthentication : BaseHook() {
         }
 
         try {
-            findMethod("com.xiaomi.mtb.activity.ModemTestBoxMainActivity") {
+            ClassUtils.loadClass("com.xiaomi.mtb.activity.ModemTestBoxMainActivity").methodFinder().first {
                 name == "initClassProduct"
-            }.hookAfter {
-                it.thisObject.field("mClassProduct", true).set(it.thisObject, 0)
+            }.createHook{
+                before { param ->
+                    param.thisObject.objectHelper().setObject("mClassProduct", 0)
+                }
                 XposedBridge.log("ModemX55Pro: Hook mtb-initClassProduct success!")
             }
         }catch (e: Throwable) {

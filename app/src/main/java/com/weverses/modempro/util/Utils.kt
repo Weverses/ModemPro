@@ -1,9 +1,7 @@
 package com.weverses.modempro.util
 
-import com.github.kyuubiran.ezxhelper.utils.findMethod
 import com.weverses.modempro.BuildConfig
 import de.robv.android.xposed.XSharedPreferences
-import de.robv.android.xposed.XposedBridge
 import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.IOException

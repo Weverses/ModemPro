@@ -17,4 +17,3 @@ dependencyResolutionManagement {
 include(":app")
 include(":blockmiui")
 rootProject.name = "ModemPro"
-

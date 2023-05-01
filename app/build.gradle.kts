@@ -13,8 +13,8 @@ android {
         applicationId = "com.weverses.modempro"
         minSdk = 29
         targetSdk = 33
-        versionCode = 170
-        versionName = "1.7.0"
+        versionCode = 200
+        versionName = "2.0.0"
     }
 
     val properties = Properties()
@@ -75,6 +75,6 @@ android {
 
 dependencies {
     implementation(project(":blockmiui"))
-    implementation("com.github.kyuubiran:EzXHelper:1.0.3")
+    implementation("com.github.kyuubiran:EzXHelper:2.0.0")
     compileOnly("de.robv.android.xposed:api:82")
 }

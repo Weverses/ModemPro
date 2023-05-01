@@ -1,19 +1,22 @@
 package com.weverses.modempro.hook.hooks.android
 
-import com.github.kyuubiran.ezxhelper.utils.findMethod
-import com.github.kyuubiran.ezxhelper.utils.hookReturnConstant
+import com.github.kyuubiran.ezxhelper.ClassUtils
+import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
+import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
 import com.weverses.modempro.hook.hooks.BaseHook
 import de.robv.android.xposed.XposedBridge
 
 object N1BandPhone : BaseHook() {
     override fun init() {
         try {
-            findMethod("miui.telephony.TelephonyManagerEx") {
+            ClassUtils.loadClass("miui.telephony.TelephonyManagerEx").methodFinder().first {
                 name == "isN1Supported"
-            }.hookReturnConstant(true)
-            XposedBridge.log("ModemX55Pro: Hook phoone-isN1Supported success!")
+            }.createHook{
+                returnConstant(true)
+            }
+            XposedBridge.log("ModemX55Pro: Hook isN1Supported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook phone-isN1Supported failed!")
+            XposedBridge.log("ModemX55Pro: Hook isN1Supported failed!")
             XposedBridge.log(e)
         }
     }

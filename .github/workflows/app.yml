@@ -51,6 +51,32 @@ jobs:
         KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
         KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 
+    - name: prepare upload
+      run: |
+        getDate=$(TZ=UTC-8 date +%Y-%m-%d)
+        getVersion=$(cat ~/work/ModemPro/ModemPro/version.txt)
+        echo "date=$getDate" >> $GITHUB_ENV
+        echo "version=$getVersion" >> $GITHUB_ENV
+        echo "name=ModemPro_'$getVersion'_'$getDate'" >> $GITHUB_ENV
+        mv ~/work/ModemPro/ModemPro/app/build/outputs/apk/debug/*.apk ~/work/ModemPro/ModemPro/app/build/outputs/apk/debug/ModemPro_"$getVersion"_"$getDate"_debug.apk
+        mv ~/work/ModemPro/ModemPro/app/build/outputs/apk/release/*.apk ~/work/ModemPro/ModemPro/app/build/outputs/apk/release/ModemPro_"$getVersion"_"$getDate"_release.apk
+        mkdir -p ~/work/ModemPro/ModemPro/GithubRelease
+        cp ~/work/ModemPro/ModemPro/app/build/outputs/apk/debug/*.apk ~/work/ModemPro/ModemPro/GithubRelease
+        cp ~/work/ModemPro/ModemPro/app/build/outputs/apk/release/*.apk ~/work/ModemPro/ModemPro/GithubRelease
+        touch /home/runner/work/ModemPro/ModemPro/file.log
+        echo "ModemPro_$getVersion_$getDate" > /home/runner/work/ModemPro/ModemPro/file.log
+        
+    - name: Upload Github Release
+      uses: ncipollo/release-action@main
+      with:
+        artifacts: ~/work/ModemPro/ModemPro/GithubRelease/*
+        name: "${{ env.version }}"
+        tag: "${{ env.version }}"
+        bodyFile: /home/runner/work/ModemPro/ModemPro/file.log
+        allowUpdates: true
+        artifactErrorsFailBuild: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Upload release
       uses: actions/upload-artifact@v2
       with:
@@ -62,3 +88,5 @@ jobs:
       with:
         name: ModemPro_Debug
         path: "app/build/outputs/apk/debug/*.apk"
+
+    

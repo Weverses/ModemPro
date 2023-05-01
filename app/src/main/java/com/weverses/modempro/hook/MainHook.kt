@@ -1,8 +1,8 @@
 package com.weverses.modempro.hook
 
-import com.github.kyuubiran.ezxhelper.init.EzXHelperInit
-import com.github.kyuubiran.ezxhelper.utils.Log
-import com.github.kyuubiran.ezxhelper.utils.Log.logexIfThrow
+import com.github.kyuubiran.ezxhelper.EzXHelper
+import com.github.kyuubiran.ezxhelper.Log
+import com.github.kyuubiran.ezxhelper.LogExtensions.logexIfThrow
 import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.hook.hooks.android.*
 import com.weverses.modempro.hook.hooks.mtb.BypassAuthentication
@@ -23,9 +23,9 @@ class MainHook : IXposedHookLoadPackage {
     override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
         if (lpparam.packageName in PACKAGE_NAME_HOOKED) {
             // Init EzXHelper
-            EzXHelperInit.initHandleLoadPackage(lpparam)
-            EzXHelperInit.setLogTag(TAG)
-            EzXHelperInit.setToastTag(TAG)
+            EzXHelper.initHandleLoadPackage(lpparam)
+            EzXHelper.setLogTag(TAG)
+            EzXHelper.setToastTag(TAG)
             // Init hooks
             when (lpparam.packageName) {
                 "android" -> {

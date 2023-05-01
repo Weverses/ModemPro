@@ -1,18 +1,21 @@
 package com.weverses.modempro.hook.hooks.phone
 
-import com.github.kyuubiran.ezxhelper.utils.findMethod
-import com.github.kyuubiran.ezxhelper.utils.hookAfter
+import com.github.kyuubiran.ezxhelper.ClassUtils
+import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
+import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
 import com.weverses.modempro.hook.hooks.BaseHook
 import de.robv.android.xposed.XposedBridge
 
 object ModemFeature : BaseHook() {
     override fun init() {
         try {
-            findMethod("com.android.phone.FiveGManagerBase") {
+            ClassUtils.loadClass("com.android.phone.FiveGManagerBase").methodFinder().first {
                 name == "getModemFeatureMode"
-            }.hookAfter {
-                it.args[0] = -1
-                it.result = true
+            }.createHook{
+                before { param ->
+                    param.args[0] = -1
+                }
+                returnConstant(true)
             }
                 XposedBridge.log("ModemX55Pro: Hook phone-getModemFeatureMode success!")
         } catch (e: Throwable) {
@@ -21,10 +24,12 @@ object ModemFeature : BaseHook() {
         }
 
         try {
-            findMethod("com.android.phone.MiuiPhoneUtils") {
+            ClassUtils.loadClass("com.android.phone.MiuiPhoneUtils").methodFinder().first {
                 name == "isModemFeatureSupported"
-            }.hookAfter {
-                it.args[0] = -1
+            }.createHook{
+                before { param ->
+                    param.args[0] = -1
+                }
             }
             XposedBridge.log("ModemX55Pro: Hook phone-isModemFeatureSupported success!")
         } catch (e: Throwable) {
@@ -33,11 +38,14 @@ object ModemFeature : BaseHook() {
         }
 
         try {
-            findMethod("com.android.phone.MiuiPhoneUtils") {
+            ClassUtils.loadClass("com.android.phone.MiuiPhoneUtils").methodFinder().first {
                 name == "getModemFeatureFromDb"
-            }.hookAfter {
-                it.args[0] = -1
+            }.createHook{
+                before { param ->
+                    param.args[0] = -1
+                }
             }
+
             XposedBridge.log("ModemX55Pro: Hook phone-getModemFeatureFromDb success!")
         } catch (e: Throwable) {
             XposedBridge.log("ModemX55Pro: Hook phone-getModemFeatureFromDb failed!")
