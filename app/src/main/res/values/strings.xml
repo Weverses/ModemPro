@@ -34,7 +34,7 @@
     <string name="smart_dual_sim_summary">Settings->SIM cards &amp; mobile networks->Advanced settings</string>
     <string name="n1_title">N1 Band</string>
     <string name="n1_summary">Support N1 Band(NR)</string>
-    <string name="n5_n8_title">N5/N8 Bnad</string>
+    <string name="n5_n8_title">N5/N8 Band</string>
     <string name="n5_n8_summary">Enter *#*#65686633#*#* on the dial interface to Support N5/N8 Band.If it shows "enable N5 and N8 Mode",the feature will enabled successfully.</string>
     <string name="n28_title">N28 Band</string>
     <string name="n28_summary">Support N28 Band(NR)</string>
