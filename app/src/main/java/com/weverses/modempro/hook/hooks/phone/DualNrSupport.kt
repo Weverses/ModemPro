@@ -1,19 +1,23 @@
 package com.weverses.modempro.hook.hooks.phone
 
-import com.github.kyuubiran.ezxhelper.utils.findMethod
-import com.github.kyuubiran.ezxhelper.utils.hookReturnConstant
+import com.github.kyuubiran.ezxhelper.ClassUtils.loadClass
+import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
+import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
 import com.weverses.modempro.hook.hooks.BaseHook
 import de.robv.android.xposed.XposedBridge
+
 
 object DualNrSupport : BaseHook() {
     override fun init() {
         try {
-            findMethod("miui.telephony.TelephonyManagerEx") {
+            loadClass("miui.telephony.TelephonyManagerEx").methodFinder().first {
                 name == "isDualNrSupported"
-            }.hookReturnConstant(true)
-            XposedBridge.log("ModemX55Pro: Hook phone-isDualNrSupported success!")
+            }.createHook{
+                returnConstant(true)
+            }
+            XposedBridge.log("ModemX55Pro: Hook isDualNrSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook phone-isDualNrSupported failed!")
+            XposedBridge.log("ModemX55Pro: Hook isDualNrSupported failed!")
             XposedBridge.log(e)
         }
     }
