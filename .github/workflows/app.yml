@@ -54,7 +54,7 @@ jobs:
     - name: prepare upload
       run: |
         getDate=$(TZ=UTC-8 date +%Y-%m-%d)
-        getVersion=$(cat ~/version.prop)
+        getVersion=$(cat ~/version.txt)
         echo "date=$getDate" >> $GITHUB_ENV
         echo "version=$getVersion" >> $GITHUB_ENV
         echo "name=ModemPro_'$getVerison'_'$getDate'" >> $GITHUB_ENV
