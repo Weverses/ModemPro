@@ -54,25 +54,25 @@ jobs:
     - name: prepare upload
       run: |
         getDate=$(TZ=UTC-8 date +%Y-%m-%d)
-        getVersion=$(cat ~/version.txt)
+        getVersion=$(cat ~/work/ModemPro/ModemPro/version.txt)
         echo "date=$getDate" >> $GITHUB_ENV
         echo "version=$getVersion" >> $GITHUB_ENV
         echo "name=ModemPro_'$getVerison'_'$getDate'" >> $GITHUB_ENV
-        mv ~/app/build/outputs/apk/debug/*.apk ~/app/build/outputs/apk/debug/ModemPro_"$getVerison"_"$getDate"_debug.apk
-        mv ~/app/build/outputs/apk/release/*.apk ~/app/build/outputs/apk/debug/ModemPro_"$getVerison"_"$getDate"_release.apk
-        mkdir -p ~/GithubRelease
-        cp ~/app/build/outputs/apk/debug/*.apk ~/GithubRelease
-        cp ~/app/build/outputs/apk/release/*.apk ~/GithubRelease
-        touch file.log
-        echo "ModemPro_'$getVerison'_'$getDate'" > file.log
+        mv ~/work/ModemPro/ModemPro/app/build/outputs/apk/debug/*.apk ~/work/ModemPro/ModemPro/app/build/outputs/apk/debug/ModemPro_"$getVerison"_"$getDate"_debug.apk
+        mv ~/work/ModemPro/ModemPro/app/build/outputs/apk/release/*.apk ~/work/ModemPro/ModemPro/app/build/outputs/apk/debug/ModemPro_"$getVerison"_"$getDate"_release.apk
+        mkdir -p ~/work/ModemPro/ModemPro/GithubRelease
+        cp ~/work/ModemPro/ModemPro/app/build/outputs/apk/debug/*.apk ~/work/ModemPro/ModemPro/GithubRelease
+        cp ~/work/ModemPro/ModemPro/app/build/outputs/apk/release/*.apk ~/work/ModemPro/ModemPro/GithubRelease
+        touch ~/work/ModemPro/ModemPro/file.log
+        echo "ModemPro_'$getVerison'_'$getDate'" > ~/work/ModemPro/ModemPro/file.log
         
     - name: Upload Github Release
       uses: ncipollo/release-action@main
       with:
-        artifacts: ${{ github.workspace }}/GithubRelease/*
+        artifacts: ~/work/ModemPro/ModemPro/GithubRelease/*
         name: "${{ env.date }}"
         tag: "${{ env.date }}"
-        bodyFile: ~/file.log"
+        bodyFile: ~/work/ModemPro/ModemPro/file.log
         allowUpdates: true
         artifactErrorsFailBuild: true
         token: ${{ secrets.GITHUB_TOKEN }}
