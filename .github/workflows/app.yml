@@ -51,6 +51,32 @@ jobs:
         KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
         KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 
+    - name: prepare upload
+      run: |
+        getDate=$(TZ=UTC-8 date +%Y-%m-%d)
+        getVersion=$(cat ~/version.prop)
+        echo "date=$getDate" >> $GITHUB_ENV
+        echo "version=$getVersion" >> $GITHUB_ENV
+        echo "name=ModemPro_'$getVerison'_'$getDate'" >> $GITHUB_ENV
+        mv ~/app/build/outputs/apk/debug/*.apk ~/app/build/outputs/apk/debug/ModemPro_"$getVerison"_"$getDate"_debug.apk
+        mv ~/app/build/outputs/apk/release/*.apk ~/app/build/outputs/apk/debug/ModemPro_"$getVerison"_"$getDate"_release.apk
+        mkdir -p ~/GithubRelease
+        cp ~/app/build/outputs/apk/debug/*.apk ~/GithubRelease
+        cp ~/app/build/outputs/apk/release/*.apk ~/GithubRelease
+        touch file.log
+        echo "ModemPro_'$getVerison'_'$getDate'" > file.log
+        
+    - name: Upload Github Release
+      uses: ncipollo/release-action@main
+      with:
+        artifacts: ${{ github.workspace }}/GithubRelease/*
+        name: "${{ env.date }}"
+        tag: "${{ env.date }}"
+        bodyFile: ~/file.log"
+        allowUpdates: true
+        artifactErrorsFailBuild: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Upload release
       uses: actions/upload-artifact@v2
       with:
@@ -62,3 +88,5 @@ jobs:
       with:
         name: ModemPro_Debug
         path: "app/build/outputs/apk/debug/*.apk"
+
+    
