@@ -57,14 +57,14 @@ jobs:
         getVersion=$(cat ~/work/ModemPro/ModemPro/version.txt)
         echo "date=$getDate" >> $GITHUB_ENV
         echo "version=$getVersion" >> $GITHUB_ENV
-        echo "name=ModemPro_'$getVerison'_'$getDate'" >> $GITHUB_ENV
+        echo "name=ModemPro_'$getVersion'_'$getDate'" >> $GITHUB_ENV
         mv ~/work/ModemPro/ModemPro/app/build/outputs/apk/debug/*.apk ~/work/ModemPro/ModemPro/app/build/outputs/apk/debug/ModemPro_"$getVerison"_"$getDate"_debug.apk
         mv ~/work/ModemPro/ModemPro/app/build/outputs/apk/release/*.apk ~/work/ModemPro/ModemPro/app/build/outputs/apk/release/ModemPro_"$getVerison"_"$getDate"_release.apk
         mkdir -p ~/work/ModemPro/ModemPro/GithubRelease
         cp ~/work/ModemPro/ModemPro/app/build/outputs/apk/debug/*.apk ~/work/ModemPro/ModemPro/GithubRelease
         cp ~/work/ModemPro/ModemPro/app/build/outputs/apk/release/*.apk ~/work/ModemPro/ModemPro/GithubRelease
-        touch ~/work/ModemPro/ModemPro/file.log
-        echo "ModemPro_'$getVerison'_'$getDate'" > ~/work/ModemPro/ModemPro/file.log
+        touch /home/runner/work/ModemPro/ModemPro/file.log
+        echo "ModemPro_'$getVersion'_'$getDate'" > /home/runner/work/ModemPro/ModemPro/file.log
         
     - name: Upload Github Release
       uses: ncipollo/release-action@main
@@ -72,7 +72,7 @@ jobs:
         artifacts: ~/work/ModemPro/ModemPro/GithubRelease/*
         name: "${{ env.date }}"
         tag: "${{ env.date }}"
-        bodyFile: ~/work/ModemPro/ModemPro/file.log
+        bodyFile: /home/runner/work/ModemPro/ModemPro/file.log
         allowUpdates: true
         artifactErrorsFailBuild: true
         token: ${{ secrets.GITHUB_TOKEN }}
