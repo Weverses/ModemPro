@@ -83,5 +83,4 @@ object OptimizationSupport : BaseHook() {
               }
            }
         }
-    }
 }
