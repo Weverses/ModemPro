@@ -1,4 +1,4 @@
-package com.weverses.modempro.hook.hooks.phone
+package com.weverses.modempro.hook.hooks.android
 
 import com.github.kyuubiran.ezxhelper.ClassUtils.loadClass
 import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
@@ -6,18 +6,21 @@ import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinde
 import com.weverses.modempro.hook.hooks.BaseHook
 import de.robv.android.xposed.XposedBridge
 
-
-object DualNrSupport : BaseHook() {
+// Platforms Support:
+// sm8450/sm8475/sm7475/sm8550
+// Framework/Telephone Services Support:
+// xm13 series Only
+object DualDataSupport : BaseHook() {
     override fun init() {
         try {
             loadClass("miui.telephony.TelephonyManagerEx").methodFinder().first {
-                name == "isDualNrSupported"
+                name == "isDualDataSupported"
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook-phone isDualNrSupported success!")
+            XposedBridge.log("ModemX55Pro: Hook isDualDataSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-phone isDualNrSupported failed!")
+            XposedBridge.log("ModemX55Pro: Hook isDualDataSupported failed!")
             XposedBridge.log(e)
         }
     }

@@ -44,6 +44,12 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("n5_n8_band", true)) {
                         initHooks(N5N8Band)
                     }
+                    if (Utils.getBoolean("opt", true)) {
+                        initHooks(Optimization)
+                    }
+                    if (Utils.getBoolean("dualdata", true)) {
+                        initHooks(DualData)
+                    }
                 }
                 "com.android.phone" -> {
                     if (Utils.getBoolean("dual_nr", true)) {
@@ -63,6 +69,12 @@ class MainHook : IXposedHookLoadPackage {
                     }
                     if (Utils.getBoolean("vice_slot_volte", true)) {
                         initHooks(ViceSlotVolteButton)
+                    }
+                    if (Utils.getBoolean("opt", true)) {
+                        initHooks(OptimizationSupport)
+                    }
+                    if (Utils.getBoolean("dualdata", true)) {
+                        initHooks(DualDataSupport)
                     }
                 }
                 "com.xiaomi.mtb" -> {

@@ -98,6 +98,7 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
+
                 if (!isUnSupportedMIUIVersion()) {
                     Line()
                     TitleText(textId = R.string.title6)
@@ -140,9 +141,10 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
+
+                Line()
+                TitleText(textId = R.string.title4)
                 if (Utils.getPlatform() == "lahaina") {
-                    Line()
-                    TitleText(textId = R.string.title4)
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.dual_sa_title,
@@ -151,6 +153,27 @@ class MainActivity : MIUIActivity() {
                         SwitchV("dual_sa", false)
                     )
                 }
+
+                if (!isUnSupportedMIUIVersion()){
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.opt_title,
+                            tipsId = R.string.opt_summary
+                        ),
+                        SwitchV("opt", false)
+                    )
+                }
+
+                if (!isUnSupportedMIUIVersion()){
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.smart_dual_data_title,
+                            tipsId = R.string.smart_dual_data_summary
+                        ),
+                        SwitchV("dual_data", false)
+                    )
+                }
+
 
                 Line()
                 TitleText(textId = R.string.about)
