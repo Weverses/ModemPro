@@ -49,6 +49,7 @@ class MainHook : IXposedHookLoadPackage {
                     }
                     if (Utils.getBoolean("dualdata", true)) {
                         initHooks(DualData)
+                        initHooks(DSDA)
                     }
                 }
                 "com.android.phone" -> {
@@ -75,6 +76,7 @@ class MainHook : IXposedHookLoadPackage {
                     }
                     if (Utils.getBoolean("dualdata", true)) {
                         initHooks(DualDataSupport)
+                        initHooks(DsdaSupport)
                     }
                 }
                 "com.xiaomi.mtb" -> {
