@@ -12,6 +12,7 @@ import com.weverses.modempro.R
 import com.weverses.modempro.util.Utils
 import com.weverses.modempro.util.Utils.isKonaPlatform
 import com.weverses.modempro.util.Utils.isMTK
+import com.weverses.modempro.util.Utils.isSupportDevice
 import com.weverses.modempro.util.Utils.isUnSupportedMIUIVersion
 import com.weverses.modempro.util.Utils.islahainaPlatform
 import kotlin.system.exitProcess
@@ -156,7 +157,7 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
-                // if (isDualdataSupportDevices()) {
+                 if (isSupportDevice()) {
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.smart_dual_data_title,
@@ -183,26 +184,26 @@ class MainActivity : MIUIActivity() {
 
 
                     TextSummaryWithSwitch(
-                            TextSummaryV(
-                                textId = R.string.concurrent_title,
-                                tipsId = R.string.concurrent_summary
-                            ),
-                            SwitchV("concurrent", false)
-                        )
+                        TextSummaryV(
+                            textId = R.string.concurrent_title,
+                            tipsId = R.string.concurrent_summary
+                        ),
+                        SwitchV("concurrent", false)
+                    )
 
 
 
-                        TextSummaryWithSwitch(
-                            TextSummaryV(
-                                textId = R.string.redundant_title,
-                                tipsId = R.string.redundant_summary
-                            ),
-                            SwitchV("redundant", false)
-                        )
-                    
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.redundant_title,
+                            tipsId = R.string.redundant_summary
+                        ),
+                        SwitchV("redundant", false)
+                    )
 
 
-                // }
+                }
+
 
                 Line()
                 TitleText(textId = R.string.about)
