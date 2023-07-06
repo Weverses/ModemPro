@@ -1,5 +1,6 @@
 package com.weverses.modempro.util
 
+import android.bluetooth.BluetoothClass.Device
 import android.os.Build
 import com.weverses.modempro.BuildConfig
 import de.robv.android.xposed.XSharedPreferences
@@ -93,15 +94,13 @@ object Utils {
     }
 
 
-    fun isSupportDevice(): Boolean {
-        val DualdataSupportDevices = arrayOf("fuxi","cas")
+    fun isSupportDevice(mDevice: Array<String>): Boolean {
         val device = Build.DEVICE
-        for (device in DualdataSupportDevices) {
-            if (device.equals(DualdataSupportDevices)) {
-                return true
-            }
-        }
-        return false
+        return (mDevice.equals(device))
+    }
+
+    fun isDualdataSupportDevices(): Boolean{
+        return (isSupportDevice(mDevice = arrayOf("fuxi","nuwa","cas")))
     }
 
 
