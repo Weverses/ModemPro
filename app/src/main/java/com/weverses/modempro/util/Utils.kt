@@ -94,10 +94,9 @@ object Utils {
     }
 
 
-    fun isDualdataSupportDevices(): Boolean{
-        val devices: Array<String> = arrayOf("fuxi","cas")
+    fun isSupportDevices(devices: Array<String>): Boolean{
         val mDevice = Build.DEVICE
-        for (mDevice in devices) {
+        for (devices in mDevice) {
             return (mDevice.equals(devices))
         }
         return false
