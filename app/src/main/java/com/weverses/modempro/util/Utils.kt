@@ -1,11 +1,13 @@
 package com.weverses.modempro.util
 
+import android.os.Build
 import com.weverses.modempro.BuildConfig
 import de.robv.android.xposed.XSharedPreferences
 import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.IOException
 import java.io.InputStreamReader
+
 
 object Utils {
     fun exec(command: String): String {
@@ -70,17 +72,35 @@ object Utils {
         return getProp("ro.board.platform")
     }
 
+    fun isSupportDevices(SupportDevices: String?): Boolean {
+        if (SupportDevices != null) {
+            val getDevices = Build.DEVICE
+            if (getDevices == SupportDevices) {
+                return true
+            }
+            if (getDevices == SupportDevices + "in") {
+                return true
+            }
+            if (getDevices == SupportDevices + "pro") {
+                return true
+            }
+            if (getDevices == SupportDevices + "inpro") {
+                return true
+            }
+            val sb = java.lang.StringBuilder()
+            sb.append(SupportDevices)
+            sb.append("n")
+            return getDevices == sb.toString()
+        }
+        return false
+    }
+
     fun isUnSupportedMIUIVersion(): Boolean {
         return (getProp("ro.miui.ui.version.code") == "V12") && (getProp("ro.miui.ui.version.code") == "V125" )
     }
 
     fun isMTK(): Boolean {
         return (getProp("Build.BRAND") == "MTK")
-    }
-
-    fun isDualdataSupportDevices(): Boolean{
-        // 没办法,只有小米13系列支持dualdata和opt,故做了个机型限制
-        return (getProp("ro.product.device") == "fuxi") && (getProp("ro.product.device") == "nuwa" ) && (getProp("ro.product.device") == "ishtar" )
     }
 
     fun isKonaPlatform(): Boolean{
@@ -92,4 +112,7 @@ object Utils {
         // 感觉除了888平台之外其他平台确实用不到这个功能,那就隐藏起来吧:)
         return (getPlatform() == "lahaina")
     }
+
+
+
 }
