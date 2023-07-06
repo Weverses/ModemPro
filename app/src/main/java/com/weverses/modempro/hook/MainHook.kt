@@ -5,14 +5,8 @@ import com.github.kyuubiran.ezxhelper.Log
 import com.github.kyuubiran.ezxhelper.LogExtensions.logexIfThrow
 import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.hook.hooks.android.*
-import com.weverses.modempro.hook.hooks.mtb.BypassAuthentication
-import com.weverses.modempro.hook.hooks.mtb.isUserBuild
-import com.weverses.modempro.hook.hooks.phone.DualNrSupport
-import com.weverses.modempro.hook.hooks.phone.DualdataConcurrent
-import com.weverses.modempro.hook.hooks.phone.DualdataRedundant
-import com.weverses.modempro.hook.hooks.phone.HikingCity
-import com.weverses.modempro.hook.hooks.phone.N5N8BandPhone
-import com.weverses.modempro.hook.hooks.phone.ViceSlotVolteButton
+import com.weverses.modempro.hook.hooks.mtb.*
+import com.weverses.modempro.hook.hooks.phone.*
 import com.weverses.modempro.util.Utils
 import de.robv.android.xposed.IXposedHookLoadPackage
 import de.robv.android.xposed.callbacks.XC_LoadPackage

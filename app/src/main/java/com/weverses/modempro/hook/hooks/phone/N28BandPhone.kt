@@ -1,4 +1,4 @@
-package com.weverses.modempro.hook.hooks.android
+package com.weverses.modempro.hook.hooks.phone
 
 import com.github.kyuubiran.ezxhelper.ClassUtils
 import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
