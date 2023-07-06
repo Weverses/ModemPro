@@ -10,8 +10,12 @@ import cn.fkj233.ui.activity.view.TextSummaryV
 import cn.fkj233.ui.dialog.MIUIDialog
 import com.weverses.modempro.R
 import com.weverses.modempro.util.Utils
+import com.weverses.modempro.util.Utils.getPlatform
+import com.weverses.modempro.util.Utils.isDualdataSupportDevices
+import com.weverses.modempro.util.Utils.isKonaPlatform
 import com.weverses.modempro.util.Utils.isMTK
 import com.weverses.modempro.util.Utils.isUnSupportedMIUIVersion
+import com.weverses.modempro.util.Utils.islahainaPlatform
 import kotlin.system.exitProcess
 
 class MainActivity : MIUIActivity() {
@@ -69,7 +73,7 @@ class MainActivity : MIUIActivity() {
     init {
         initView {
             registerMain(getString(R.string.app_title), false) {
-                if (!isMTK() && !isUnSupportedMIUIVersion()) {
+                if (!isMTK() && !isUnSupportedMIUIVersion() && isKonaPlatform()) {
                     TitleText(textId = R.string.title1)
                     TextSummaryWithSwitch(
                         TextSummaryV(
@@ -144,7 +148,7 @@ class MainActivity : MIUIActivity() {
 
                 Line()
                 TitleText(textId = R.string.title4)
-                if (Utils.getPlatform() == "lahaina") {
+                if (islahainaPlatform()) {
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.dual_sa_title,
@@ -154,17 +158,7 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
-                if (!isUnSupportedMIUIVersion()){
-                    TextSummaryWithSwitch(
-                        TextSummaryV(
-                            textId = R.string.opt_title,
-                            tipsId = R.string.opt_summary
-                        ),
-                        SwitchV("opt", false)
-                    )
-                }
-
-                if (!isUnSupportedMIUIVersion()){
+                if (isDualdataSupportDevices()) {
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.smart_dual_data_title,
@@ -172,8 +166,45 @@ class MainActivity : MIUIActivity() {
                         ),
                         SwitchV("dual_data", false)
                     )
-                }
 
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.opt_title,
+                            tipsId = R.string.opt_summary
+                        ),
+                        SwitchV("opt", false)
+                    )
+
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.hiking_title,
+                            tipsId = R.string.hiking_summary
+                        ),
+                        SwitchV("hiking_city", false)
+                    )
+
+                    if (Utils.getBoolean("redundant", false)) {
+                        TextSummaryWithSwitch(
+                            TextSummaryV(
+                                textId = R.string.concurrent_title,
+                                tipsId = R.string.concurrent_summary
+                            ),
+                            SwitchV("concurrent", false)
+                        )
+                    }
+
+                    if (Utils.getBoolean("concurrent", false)) {
+                        TextSummaryWithSwitch(
+                            TextSummaryV(
+                                textId = R.string.redundant_title,
+                                tipsId = R.string.redundant_summary
+                            ),
+                            SwitchV("redundant", false)
+                        )
+                    }
+
+
+                }
 
                 Line()
                 TitleText(textId = R.string.about)

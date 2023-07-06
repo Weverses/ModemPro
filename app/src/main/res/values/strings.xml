@@ -40,6 +40,12 @@
     <string name="subway_opt_title">地铁优化</string>
     <string name="opt_title">网络场景优化</string>
     <string name="opt_summary">开启后,将支持特殊网络场景优化,在支持的设备上可以开启机场/远足/地铁优化</string>
+    <string name="concurrent_title">全局5G双卡数据并发</string>
+    <string name="concurrent_summary">开启后,将无视APP白名单,全部APP都将支持5G双卡并发数据流量.注意: 您的设备必须支持并且在设置里开启了智能双卡后才能生效</string>
+    <string name="redundant_title">全局5G双卡数据辅助</string>
+    <string name="redundant_summary">开启后,将无视APP白名单,全部APP都将支持5G双卡并发数据流量,与上一个对比区别是这个是副卡的数据流量仅作为辅助使用。注意: 您的设备必须支持并且在设置里开启了智能双卡后才能生效</string>
+    <string name="hiking_title">强制开启hiking场景优化</string>
+    <string name="hiking_summary">开启后,将无视城市白名单,开启hiking网络场景优化.注意: 您的设备必须在设置里开启网络场景优化后才能生效</string>
     <string name="n1_title">N1 Band</string>
     <string name="n1_summary">Support N1 Band(NR)</string>
     <string name="n5_n8_title">N5/N8 Band</string>

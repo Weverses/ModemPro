@@ -8,6 +8,9 @@ import com.weverses.modempro.hook.hooks.android.*
 import com.weverses.modempro.hook.hooks.mtb.BypassAuthentication
 import com.weverses.modempro.hook.hooks.mtb.isUserBuild
 import com.weverses.modempro.hook.hooks.phone.DualNrSupport
+import com.weverses.modempro.hook.hooks.phone.DualdataConcurrent
+import com.weverses.modempro.hook.hooks.phone.DualdataRedundant
+import com.weverses.modempro.hook.hooks.phone.HikingCity
 import com.weverses.modempro.hook.hooks.phone.N5N8BandPhone
 import com.weverses.modempro.hook.hooks.phone.ViceSlotVolteButton
 import com.weverses.modempro.util.Utils
@@ -68,15 +71,24 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("n5_n8_band", true)) {
                         initHooks(N5N8BandPhone)
                     }
-                    if (Utils.getBoolean("vice_slot_volte", true)) {
+                    if (Utils.getBoolean("vice_slot_volte", false)) {
                         initHooks(ViceSlotVolteButton)
                     }
-                    if (Utils.getBoolean("opt", true)) {
+                    if (Utils.getBoolean("opt", false)) {
                         initHooks(OptimizationSupport)
                     }
-                    if (Utils.getBoolean("dualdata", true)) {
+                    if (Utils.getBoolean("dualdata", false)) {
                         initHooks(DualDataSupport)
                         initHooks(DsdaSupport)
+                    }
+                    if (Utils.getBoolean("concurrent", false)) {
+                        initHooks(DualdataConcurrent)
+                    }
+                    if (Utils.getBoolean("redundant", false)) {
+                        initHooks(DualdataRedundant)
+                    }
+                    if (Utils.getBoolean("hiking_city", false)) {
+                        initHooks(HikingCity)
                     }
                 }
                 "com.xiaomi.mtb" -> {

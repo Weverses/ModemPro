@@ -78,4 +78,18 @@ object Utils {
         return (getProp("Build.BRAND") == "MTK")
     }
 
+    fun isDualdataSupportDevices(): Boolean{
+        // 没办法,只有小米13系列支持dualdata和opt,故做了个机型限制
+        return (getProp("ro.product.device") == "fuxi") && (getProp("ro.product.device") == "nuwa" ) && (getProp("ro.product.device") == "ishtar" )
+    }
+
+    fun isKonaPlatform(): Boolean{
+        // 感觉除了865平台之外其他平台确实用不到这个功能,那就隐藏起来吧:)
+        return (getPlatform() == "kona")
+    }
+
+    fun islahainaPlatform(): Boolean{
+        // 感觉除了888平台之外其他平台确实用不到这个功能,那就隐藏起来吧:)
+        return (getPlatform() == "lahaina")
+    }
 }
