@@ -181,17 +181,17 @@ class MainActivity : MIUIActivity() {
                         SwitchV("hiking_city", false)
                     )
 
-                    if (Utils.getBoolean("redundant", false)) {
-                        TextSummaryWithSwitch(
+
+                    TextSummaryWithSwitch(
                             TextSummaryV(
                                 textId = R.string.concurrent_title,
                                 tipsId = R.string.concurrent_summary
                             ),
                             SwitchV("concurrent", false)
                         )
-                    }
 
-                    if (Utils.getBoolean("concurrent", false)) {
+
+
                         TextSummaryWithSwitch(
                             TextSummaryV(
                                 textId = R.string.redundant_title,
@@ -199,7 +199,7 @@ class MainActivity : MIUIActivity() {
                             ),
                             SwitchV("redundant", false)
                         )
-                    }
+                    
 
 
                 // }
