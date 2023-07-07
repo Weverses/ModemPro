@@ -7,7 +7,12 @@ import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.IOException
 import java.io.InputStreamReader
-
+import com.github.kyuubiran.ezxhelper.ClassUtils.loadClass
+import com.github.kyuubiran.ezxhelper.EzXHelper.classLoader
+import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
+import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
+import de.robv.android.xposed.XposedBridge
+import de.robv.android.xposed.XposedHelpers.*
 
 object Utils {
     fun exec(command: String): String {
@@ -102,5 +107,34 @@ object Utils {
             }
         }
         return false
+    }
+
+    fun checkClassIfExists(Class: String,Method: String): Boolean {
+        return try {
+            findClassIfExists(Class, classLoader).methodFinder().first {
+                name == Method
+            }.createHook {
+                // do nothing
+            }
+            true
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemX55Pro: ${Class}.${Method} doesn't exist")
+            XposedBridge.log(e)
+            false
+        }
+    }
+
+    fun hookMethodOfBoolean(Class: String,Method: String,Result: Boolean,Scope: String) {
+        try {
+            loadClass(Class).methodFinder().first {
+                name == Method
+            }.createHook{
+                returnConstant(Result)
+            }
+            XposedBridge.log("ModemX55Pro: Hook-${Scope} ${Class} ${Method} success!")
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemX55Pro: Hook-${Scope} ${Class} ${Method} failed!")
+            XposedBridge.log(e)
+        }
     }
 }
