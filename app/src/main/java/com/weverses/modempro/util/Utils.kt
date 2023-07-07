@@ -92,6 +92,7 @@ object Utils {
         return (getPlatform() == "lahaina")
     }
 
+    val DualdataDevices: Array<String> = arrayOf("fuxi","cas","nuwa","ishtar")
 
     fun isSupportDevices(mDevice: Array<String>): Boolean {
         val device = Build.DEVICE

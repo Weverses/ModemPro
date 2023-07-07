@@ -10,6 +10,7 @@ import cn.fkj233.ui.activity.view.TextSummaryV
 import cn.fkj233.ui.dialog.MIUIDialog
 import com.weverses.modempro.R
 import com.weverses.modempro.util.Utils
+import com.weverses.modempro.util.Utils.DualdataDevices
 import com.weverses.modempro.util.Utils.isKonaPlatform
 import com.weverses.modempro.util.Utils.islahainaPlatform
 import com.weverses.modempro.util.Utils.isMTK
@@ -101,8 +102,7 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
-
-                if (!isUnSupportedMIUIVersion()) {
+                if (!isUnSupportedMIUIVersion() && !isSupportDevices(DualdataDevices)) {
                     Line()
                     TitleText(textId = R.string.title6)
                     TextSummaryWithSwitch(
@@ -158,7 +158,7 @@ class MainActivity : MIUIActivity() {
                 }
 
 
-                if (isSupportDevices(mDevice = arrayOf("cas","fuxi"))) {
+                if (isSupportDevices(DualdataDevices)) {
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.smart_dual_data_title,

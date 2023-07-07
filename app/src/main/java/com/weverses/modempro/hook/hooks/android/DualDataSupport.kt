@@ -23,16 +23,6 @@ object DualDataSupport : BaseHook() {
             XposedBridge.log("ModemX55Pro: Hook isDualDataSupported failed!")
             XposedBridge.log(e)
         }
-        try {
-            loadClass("com.xiaomi.NetworkBoost.StatusManager").methodFinder().first {
-                name == "isDualDataSupported"
-            }.createHook{
-                returnConstant(true)
-            }
-            XposedBridge.log("ModemX55Pro: Hook-services isDualDataSupported success!")
-        } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-services isDualDataSupported failed!")
-            XposedBridge.log(e)
-        }
+
     }
 }
