@@ -16,9 +16,9 @@ object HikingCity : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook-phone isCityWhiteList success!")
+            XposedBridge.log("ModemPro: Hook-phone isCityWhiteList success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-phone isCityWhiteList failed!")
+            XposedBridge.log("ModemPro: Hook-phone isCityWhiteList failed!")
             XposedBridge.log(e)
         }
     }

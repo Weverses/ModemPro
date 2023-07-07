@@ -19,9 +19,9 @@ object OptimizationSupport : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook-phone isAirportOptimizationSupported success!")
+            XposedBridge.log("ModemPro: Hook-phone isAirportOptimizationSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-phone isAirportOptimizationSupported failed!")
+            XposedBridge.log("ModemPro: Hook-phone isAirportOptimizationSupported failed!")
             XposedBridge.log(e)
         }
         try {
@@ -30,9 +30,9 @@ object OptimizationSupport : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook-phone isSubwayOptimizationSupported success!")
+            XposedBridge.log("ModemPro: Hook-phone isSubwayOptimizationSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-phone isSubwayOptimizationSupported failed!")
+            XposedBridge.log("ModemPro: Hook-phone isSubwayOptimizationSupported failed!")
             XposedBridge.log(e)
         }
         try {
@@ -41,9 +41,9 @@ object OptimizationSupport : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook-phone isHikingOptimizationSupported success!")
+            XposedBridge.log("ModemPro: Hook-phone isHikingOptimizationSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-phone isHikingOptimizationSupported failed!")
+            XposedBridge.log("ModemPro: Hook-phone isHikingOptimizationSupported failed!")
             XposedBridge.log(e)
         }
         try {
@@ -52,9 +52,9 @@ object OptimizationSupport : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook-phone isSpecialNetorkOptimizationSupported success!")
+            XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-phone isSpecialNetorkOptimizationSupported failed!")
+            XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupported failed!")
             XposedBridge.log(e)
         }
         if (isMTK()) {
@@ -64,9 +64,9 @@ object OptimizationSupport : BaseHook() {
                 }.createHook {
                     returnConstant(true)
                 }
-                XposedBridge.log("ModemX55Pro: Hook-phone isSpecialNetorkOptimizationSupportedMtk success!")
+                XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupportedMtk success!")
             } catch (e: Throwable) {
-                XposedBridge.log("ModemX55Pro: Hook-phone isSpecialNetorkOptimizationSupportedMtk failed!")
+                XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupportedMtk failed!")
                 XposedBridge.log(e)
             }
         } else {
@@ -76,9 +76,9 @@ object OptimizationSupport : BaseHook() {
                 }.createHook {
                     returnConstant(true)
                 }
-                XposedBridge.log("ModemX55Pro: Hook-phone isSpecialNetorkOptimizationSupportedQcom success!")
+                XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupportedQcom success!")
             } catch (e: Throwable) {
-                XposedBridge.log("ModemX55Pro: Hook-phone isSpecialNetorkOptimizationSupportedQcom failed!")
+                XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupportedQcom failed!")
                 XposedBridge.log(e)
               }
            }

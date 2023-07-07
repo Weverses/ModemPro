@@ -118,7 +118,7 @@ object Utils {
             }
             true
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: ${Class}.${Method} doesn't exist")
+            XposedBridge.log("ModemPro: ${Class}.${Method} doesn't exist")
             XposedBridge.log(e)
             false
         }
@@ -131,9 +131,9 @@ object Utils {
             }.createHook{
                 returnConstant(Result)
             }
-            XposedBridge.log("ModemX55Pro: Hook-${Scope} ${Class} ${Method} success!")
+            XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-${Scope} ${Class} ${Method} failed!")
+            XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} failed!")
             XposedBridge.log(e)
         }
     }

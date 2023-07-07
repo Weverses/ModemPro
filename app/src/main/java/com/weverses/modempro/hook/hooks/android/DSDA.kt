@@ -17,9 +17,9 @@ object DSDA : BaseHook() {
                 }.createHook{
                     returnConstant(true)
                 }
-                XposedBridge.log("ModemX55Pro: Hook isDsdaSupported success!")
+                XposedBridge.log("ModemPro: Hook isDsdaSupported success!")
             } catch (e: Throwable) {
-                XposedBridge.log("ModemX55Pro: Hook isDsdaSupported failed!")
+                XposedBridge.log("ModemPro: Hook isDsdaSupported failed!")
                 XposedBridge.log(e)
             }
         }

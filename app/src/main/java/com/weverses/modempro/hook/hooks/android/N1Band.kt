@@ -14,9 +14,9 @@ object N1Band : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook isN1Supported success!")
+            XposedBridge.log("ModemPro: Hook isN1Supported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook isN1Supported failed!")
+            XposedBridge.log("ModemPro: Hook isN1Supported failed!")
             XposedBridge.log(e)
         }
     }

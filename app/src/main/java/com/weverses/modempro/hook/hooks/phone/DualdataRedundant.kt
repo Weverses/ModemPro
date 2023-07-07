@@ -20,9 +20,9 @@ object DualdataRedundant : BaseHook() {
             }.createHook{
                 returnConstant(false)
             }
-            XposedBridge.log("ModemX55Pro: Hook-phone isConcurrentWhiteListApp success!")
+            XposedBridge.log("ModemPro: Hook-phone isConcurrentWhiteListApp success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-phone isConcurrentWhiteListApp failed!")
+            XposedBridge.log("ModemPro: Hook-phone isConcurrentWhiteListApp failed!")
             XposedBridge.log(e)
         }
         try {
@@ -31,9 +31,9 @@ object DualdataRedundant : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook-phone isRedundantWhiteListApp success!")
+            XposedBridge.log("ModemPro: Hook-phone isRedundantWhiteListApp success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-phone isRedundantWhiteListApp failed!")
+            XposedBridge.log("ModemPro: Hook-phone isRedundantWhiteListApp failed!")
             XposedBridge.log(e)
         }
         try {
@@ -43,10 +43,10 @@ object DualdataRedundant : BaseHook() {
                 before { param ->
                     param.thisObject.objectHelper().setObject("mConcurrentWhiteListForground", false)
                 }
-                XposedBridge.log("ModemX55Pro: Hook-phone mConcurrentWhiteListForground success!")
+                XposedBridge.log("ModemPro: Hook-phone mConcurrentWhiteListForground success!")
             }
         }catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-phone mConcurrentWhiteListForground failed!")
+            XposedBridge.log("ModemPro: Hook-phone mConcurrentWhiteListForground failed!")
             XposedBridge.log(e)
         }
         try {
@@ -56,10 +56,10 @@ object DualdataRedundant : BaseHook() {
                 before { param ->
                     param.thisObject.objectHelper().setObject("mRedundantWhiteListForground", true)
                 }
-                XposedBridge.log("ModemX55Pro: Hook-phone mRedundantWhiteListForground success!")
+                XposedBridge.log("ModemPro: Hook-phone mRedundantWhiteListForground success!")
             }
         }catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-phone mRedundantWhiteListForground failed!")
+            XposedBridge.log("ModemPro: Hook-phone mRedundantWhiteListForground failed!")
             XposedBridge.log(e)
         }
     }

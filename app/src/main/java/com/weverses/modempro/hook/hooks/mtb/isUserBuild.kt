@@ -14,9 +14,9 @@ object isUserBuild : BaseHook() {
             }.createHook{
                 returnConstant(false)
             }
-            XposedBridge.log("ModemX55Pro: Hook mtb-isUserBuild success!")
+            XposedBridge.log("ModemPro: Hook mtb-isUserBuild success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook mtb-isUserBuild failed!")
+            XposedBridge.log("ModemPro: Hook mtb-isUserBuild failed!")
             XposedBridge.log(e)
         }
     }

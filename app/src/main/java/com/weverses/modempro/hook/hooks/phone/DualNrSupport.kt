@@ -15,9 +15,9 @@ object DualNrSupport : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook-phone isDualNrSupported success!")
+            XposedBridge.log("ModemPro: Hook-phone isDualNrSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook-phone isDualNrSupported failed!")
+            XposedBridge.log("ModemPro: Hook-phone isDualNrSupported failed!")
             XposedBridge.log(e)
         }
     }

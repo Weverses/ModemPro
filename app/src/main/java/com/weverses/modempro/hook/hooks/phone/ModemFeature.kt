@@ -17,9 +17,9 @@ object ModemFeature : BaseHook() {
                 }
                 returnConstant(true)
             }
-                XposedBridge.log("ModemX55Pro: Hook phone-getModemFeatureMode success!")
+                XposedBridge.log("ModemPro: Hook phone-getModemFeatureMode success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook phone-getModemFeatureMode failed!")
+            XposedBridge.log("ModemPro: Hook phone-getModemFeatureMode failed!")
             XposedBridge.log(e)
         }
 
@@ -31,9 +31,9 @@ object ModemFeature : BaseHook() {
                     param.args[0] = -1
                 }
             }
-            XposedBridge.log("ModemX55Pro: Hook phone-isModemFeatureSupported success!")
+            XposedBridge.log("ModemPro: Hook phone-isModemFeatureSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook phone-isModemFeatureSupported failed!")
+            XposedBridge.log("ModemPro: Hook phone-isModemFeatureSupported failed!")
             XposedBridge.log(e)
         }
 
@@ -46,9 +46,9 @@ object ModemFeature : BaseHook() {
                 }
             }
 
-            XposedBridge.log("ModemX55Pro: Hook phone-getModemFeatureFromDb success!")
+            XposedBridge.log("ModemPro: Hook phone-getModemFeatureFromDb success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook phone-getModemFeatureFromDb failed!")
+            XposedBridge.log("ModemPro: Hook phone-getModemFeatureFromDb failed!")
             XposedBridge.log(e)
         }
     }

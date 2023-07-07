@@ -14,9 +14,9 @@ object DualSASupport : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook isDualSaSupported success!")
+            XposedBridge.log("ModemPro: Hook isDualSaSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook isDualSaSupported failed!")
+            XposedBridge.log("ModemPro: Hook isDualSaSupported failed!")
             XposedBridge.log(e)
         }
     }

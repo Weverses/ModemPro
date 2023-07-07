@@ -19,9 +19,9 @@ object BypassAuthentication : BaseHook() {
                     param.args[0] = 0
                 }
             }
-            XposedBridge.log("ModemX55Pro: Hook mtb-setMiServerPermissionClass success!")
+            XposedBridge.log("ModemPro: Hook mtb-setMiServerPermissionClass success!")
         }catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook mtb-setMiServerPermissionClass failed!")
+            XposedBridge.log("ModemPro: Hook mtb-setMiServerPermissionClass failed!")
             XposedBridge.log(e)
         }
 
@@ -33,10 +33,10 @@ object BypassAuthentication : BaseHook() {
                     param.args[0] = 0
                     param.thisObject.objectHelper().setObject("mClassNet", 0)
                 }
-                XposedBridge.log("ModemX55Pro: Hook mtb-updateClass success!")
+                XposedBridge.log("ModemPro: Hook mtb-updateClass success!")
             }
         }catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook mtb-updateClass failed!")
+            XposedBridge.log("ModemPro: Hook mtb-updateClass failed!")
             XposedBridge.log(e)
         }
 
@@ -47,10 +47,10 @@ object BypassAuthentication : BaseHook() {
                 before { param ->
                     param.thisObject.objectHelper().setObject("mClassProduct", 0)
                 }
-                XposedBridge.log("ModemX55Pro: Hook mtb-initClassProduct success!")
+                XposedBridge.log("ModemPro: Hook mtb-initClassProduct success!")
             }
         }catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook mtb-initClassProduct failed!")
+            XposedBridge.log("ModemPro: Hook mtb-initClassProduct failed!")
             XposedBridge.log(e)
         }
     }

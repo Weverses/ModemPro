@@ -12,15 +12,15 @@ object ViceSlotVolteButton : BaseHook() {
     override fun init() {
         try {
             Utils.exec("settings put global vice_slot_volte_data_enabled 1")
-            XposedBridge.log("ModemX55Pro: enable ViceSlotVolte success!")
+            XposedBridge.log("ModemPro: enable ViceSlotVolte success!")
             ClassUtils.loadClass("com.android.phone.MiuiPhoneUtils").methodFinder().first {
                 name == "shouldHideViceSlotVolteDataButton"
             }.createHook{
                 returnConstant(false)
             }
-            XposedBridge.log("ModemX55Pro: Hook phone-shouldHideViceSlotVolteDataButton success!")
+            XposedBridge.log("ModemPro: Hook phone-shouldHideViceSlotVolteDataButton success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook phone-shouldHideViceSlotVolteDataButton failed!")
+            XposedBridge.log("ModemPro: Hook phone-shouldHideViceSlotVolteDataButton failed!")
             XposedBridge.log(e)
         }
         try {
@@ -29,9 +29,9 @@ object ViceSlotVolteButton : BaseHook() {
             }.createHook{
                 returnConstant(false)
             }
-            XposedBridge.log("ModemX55Pro: Hook phone-shouldHideSmartDualSimButton success!")
+            XposedBridge.log("ModemPro: Hook phone-shouldHideSmartDualSimButton success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook phone-shouldHideSmartDualSimButton failed!")
+            XposedBridge.log("ModemPro: Hook phone-shouldHideSmartDualSimButton failed!")
             XposedBridge.log(e)
         }
     }

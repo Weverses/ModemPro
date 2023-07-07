@@ -18,9 +18,9 @@ object Optimization : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook isAirportOptimizationSupported success!")
+            XposedBridge.log("ModemPro: Hook isAirportOptimizationSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook isAirportOptimizationSupported failed!")
+            XposedBridge.log("ModemPro: Hook isAirportOptimizationSupported failed!")
             XposedBridge.log(e)
         }
         try {
@@ -29,9 +29,9 @@ object Optimization : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook isSubwayOptimizationSupported success!")
+            XposedBridge.log("ModemPro: Hook isSubwayOptimizationSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook isSubwayOptimizationSupported failed!")
+            XposedBridge.log("ModemPro: Hook isSubwayOptimizationSupported failed!")
             XposedBridge.log(e)
         }
         try {
@@ -40,9 +40,9 @@ object Optimization : BaseHook() {
             }.createHook{
                 returnConstant(true)
             }
-            XposedBridge.log("ModemX55Pro: Hook isHikingOptimizationSupported success!")
+            XposedBridge.log("ModemPro: Hook isHikingOptimizationSupported success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemX55Pro: Hook isHikingOptimizationSupported failed!")
+            XposedBridge.log("ModemPro: Hook isHikingOptimizationSupported failed!")
             XposedBridge.log(e)
         }
     }

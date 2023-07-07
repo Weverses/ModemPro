@@ -17,9 +17,9 @@ object DsdaSupport : BaseHook() {
                 }.createHook {
                     returnConstant(true)
                 }
-                XposedBridge.log("ModemX55Pro: Hook-phone isDsdaSupported success!")
+                XposedBridge.log("ModemPro: Hook-phone isDsdaSupported success!")
             } catch (e: Throwable) {
-                XposedBridge.log("ModemX55Pro: Hook-phone isDsdaSupported failed!")
+                XposedBridge.log("ModemPro: Hook-phone isDsdaSupported failed!")
                 XposedBridge.log(e)
             }
         } else {
@@ -29,9 +29,9 @@ object DsdaSupport : BaseHook() {
                 }.createHook{
                     returnConstant(true)
                 }
-                XposedBridge.log("ModemX55Pro: Hook-phone isDsdaSupported success!")
+                XposedBridge.log("ModemPro: Hook-phone isDsdaSupported success!")
             } catch (e: Throwable) {
-                XposedBridge.log("ModemX55Pro: Hook-phone isDsdaSupported failed!")
+                XposedBridge.log("ModemPro: Hook-phone isDsdaSupported failed!")
                 XposedBridge.log(e)
             }
             try {
@@ -40,9 +40,9 @@ object DsdaSupport : BaseHook() {
                 }.createHook {
                     returnConstant(true)
                 }
-                XposedBridge.log("ModemX55Pro: Hook-phone isDsdaSupported success!")
+                XposedBridge.log("ModemPro: Hook-phone isDsdaSupported success!")
             } catch (e: Throwable) {
-                XposedBridge.log("ModemX55Pro: Hook-phone isDsdaSupported failed!")
+                XposedBridge.log("ModemPro: Hook-phone isDsdaSupported failed!")
                 XposedBridge.log(e)
             }
         }
