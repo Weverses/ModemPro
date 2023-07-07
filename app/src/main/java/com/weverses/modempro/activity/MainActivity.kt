@@ -12,6 +12,7 @@ import com.weverses.modempro.R
 import com.weverses.modempro.util.Check.DualdataDevices
 import com.weverses.modempro.util.Check.isKonaPlatform
 import com.weverses.modempro.util.Check.isMTK
+import com.weverses.modempro.util.Check.isSupportDualdataInServices
 import com.weverses.modempro.util.Check.isUnSupportedMIUIVersion
 import com.weverses.modempro.util.Check.islahainaPlatform
 import com.weverses.modempro.util.Utils
@@ -158,7 +159,7 @@ class MainActivity : MIUIActivity() {
                 }
 
 
-                if (isSupportDevices(DualdataDevices)) {
+                if (isSupportDualdataInServices()) {
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.smart_dual_data_title,
