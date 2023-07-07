@@ -9,13 +9,13 @@ import cn.fkj233.ui.activity.view.SwitchV
 import cn.fkj233.ui.activity.view.TextSummaryV
 import cn.fkj233.ui.dialog.MIUIDialog
 import com.weverses.modempro.R
+import com.weverses.modempro.util.Check.DualdataDevices
+import com.weverses.modempro.util.Check.isKonaPlatform
+import com.weverses.modempro.util.Check.isMTK
+import com.weverses.modempro.util.Check.isUnSupportedMIUIVersion
+import com.weverses.modempro.util.Check.islahainaPlatform
 import com.weverses.modempro.util.Utils
-import com.weverses.modempro.util.Utils.DualdataDevices
-import com.weverses.modempro.util.Utils.isKonaPlatform
-import com.weverses.modempro.util.Utils.islahainaPlatform
-import com.weverses.modempro.util.Utils.isMTK
 import com.weverses.modempro.util.Utils.isSupportDevices
-import com.weverses.modempro.util.Utils.isUnSupportedMIUIVersion
 import kotlin.system.exitProcess
 
 class MainActivity : MIUIActivity() {

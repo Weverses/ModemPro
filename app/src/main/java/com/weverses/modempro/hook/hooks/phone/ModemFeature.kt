@@ -4,52 +4,40 @@ import com.github.kyuubiran.ezxhelper.ClassUtils
 import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
 import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
 import com.weverses.modempro.hook.hooks.BaseHook
+import com.weverses.modempro.util.Utils
+import com.weverses.modempro.util.Utils.hookMethodOfArgs
+import com.weverses.modempro.util.Utils.hookMethodOfBoolean
 import de.robv.android.xposed.XposedBridge
 
 object ModemFeature : BaseHook() {
     override fun init() {
-        try {
-            ClassUtils.loadClass("com.android.phone.FiveGManagerBase").methodFinder().first {
-                name == "getModemFeatureMode"
-            }.createHook{
-                before { param ->
-                    param.args[0] = -1
-                }
-                returnConstant(true)
-            }
-                XposedBridge.log("ModemPro: Hook phone-getModemFeatureMode success!")
-        } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook phone-getModemFeatureMode failed!")
-            XposedBridge.log(e)
-        }
+        hookMethodOfArgs(
+            "com.android.phone.FiveGManagerBase",
+            "getModemFeatureMode",
+            0,
+            "-1",
+            "mtb"
+        )
+        hookMethodOfBoolean(
+            "com.android.phone.FiveGManagerBase",
+            "getModemFeatureMode",
+            true,
+            "mtb"
+        )
 
-        try {
-            ClassUtils.loadClass("com.android.phone.MiuiPhoneUtils").methodFinder().first {
-                name == "isModemFeatureSupported"
-            }.createHook{
-                before { param ->
-                    param.args[0] = -1
-                }
-            }
-            XposedBridge.log("ModemPro: Hook phone-isModemFeatureSupported success!")
-        } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook phone-isModemFeatureSupported failed!")
-            XposedBridge.log(e)
-        }
-
-        try {
-            ClassUtils.loadClass("com.android.phone.MiuiPhoneUtils").methodFinder().first {
-                name == "getModemFeatureFromDb"
-            }.createHook{
-                before { param ->
-                    param.args[0] = -1
-                }
-            }
-
-            XposedBridge.log("ModemPro: Hook phone-getModemFeatureFromDb success!")
-        } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook phone-getModemFeatureFromDb failed!")
-            XposedBridge.log(e)
-        }
+        hookMethodOfArgs(
+            "com.android.phone.MiuiPhoneUtils",
+            "isModemFeatureSupported",
+            0,
+            "-1",
+            "mtb"
+        )
+        hookMethodOfArgs(
+            "com.android.phone.FiveGManagerBase",
+            "getModemFeatureFromDb",
+            0,
+            "-1",
+            "mtb"
+        )
     }
 }

@@ -41,10 +41,10 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("n5_n8_band", true)) {
                         initHooks(N5N8Band)
                     }
-                    if (Utils.getBoolean("opt", true)) {
+                    if (Utils.getBoolean("opt", false)) {
                         initHooks(Optimization)
                     }
-                    if (Utils.getBoolean("dualdata", true)) {
+                    if (Utils.getBoolean("dualdata", false)) {
                         initHooks(DualData)
                         initHooks(DSDA)
                     }

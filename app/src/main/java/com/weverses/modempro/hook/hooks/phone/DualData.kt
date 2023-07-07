@@ -9,7 +9,17 @@ import com.weverses.modempro.util.Utils.hookMethodOfBoolean
 // xm13 series Only
 object DualData : BaseHook() {
     override fun init() {
-        hookMethodOfBoolean("miui.telephony.TelephonyManagerEx","isDualDataSupported",true,"phone")
-        hookMethodOfBoolean("com.android.phone.MiuiPhoneUtils","shouldHideIntelligentDualSimButton",false,"phone")
+        hookMethodOfBoolean(
+            "miui.telephony.TelephonyManagerEx",
+            "isDualDataSupported",
+            true,
+            "phone"
+        )
+        hookMethodOfBoolean(
+            "com.android.phone.MiuiPhoneUtils",
+            "shouldHideIntelligentDualSimButton",
+            false,
+            "phone"
+        )
     }
 }

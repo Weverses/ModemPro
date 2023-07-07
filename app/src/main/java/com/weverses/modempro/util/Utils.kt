@@ -10,6 +10,7 @@ import java.io.InputStreamReader
 import com.github.kyuubiran.ezxhelper.ClassUtils.loadClass
 import com.github.kyuubiran.ezxhelper.EzXHelper.classLoader
 import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
+import com.github.kyuubiran.ezxhelper.ObjectHelper.Companion.objectHelper
 import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
 import de.robv.android.xposed.XposedBridge
 import de.robv.android.xposed.XposedHelpers.*
@@ -77,28 +78,6 @@ object Utils {
         return getProp("ro.board.platform")
     }
 
-
-
-    fun isUnSupportedMIUIVersion(): Boolean {
-        return (getProp("ro.miui.ui.version.code") == "V12") && (getProp("ro.miui.ui.version.code") == "V125" )
-    }
-
-    fun isMTK(): Boolean {
-        return (getProp("Build.BRAND") == "MTK")
-    }
-
-    fun isKonaPlatform(): Boolean{
-        // 感觉除了865平台之外其他平台确实用不到这个功能,那就隐藏起来吧:)
-        return (getPlatform() == "kona")
-    }
-
-    fun islahainaPlatform(): Boolean{
-        // 感觉除了888平台之外其他平台确实用不到这个功能,那就隐藏起来吧:)
-        return (getPlatform() == "lahaina")
-    }
-
-    val DualdataDevices: Array<String> = arrayOf("fuxi","cas","nuwa","ishtar")
-
     fun isSupportDevices(mDevice: Array<String>): Boolean {
         val device = Build.DEVICE
         for (str2 in mDevice) {
@@ -134,6 +113,38 @@ object Utils {
             XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} success!")
         } catch (e: Throwable) {
             XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} failed!")
+            XposedBridge.log(e)
+        }
+    }
+
+    fun hookMethodOfField(Class: String,Method: String,Field: String,Result: String,Scope: String) {
+        try {
+            loadClass(Class).methodFinder().first {
+                name == Method
+            }.createHook{
+                before { param ->
+                    param.thisObject.objectHelper().setObject(Field,Result)
+                }
+                XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} ${Field} success!")
+            }
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} ${Field} failed!")
+            XposedBridge.log(e)
+        }
+    }
+
+    fun hookMethodOfArgs(Class: String,Method: String,Args: Int,Result: String,Scope: String) {
+        try {
+            loadClass(Class).methodFinder().first {
+                name == Method
+            }.createHook {
+                before { param ->
+                    param.args[Args] = Result
+                }
+            }
+            XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} ${Args} success!")
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} ${Args} failed!")
             XposedBridge.log(e)
         }
     }

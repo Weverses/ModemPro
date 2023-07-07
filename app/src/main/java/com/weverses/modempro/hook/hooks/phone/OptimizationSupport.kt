@@ -1,11 +1,8 @@
 package com.weverses.modempro.hook.hooks.phone
 
-import com.github.kyuubiran.ezxhelper.ClassUtils.loadClass
-import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
-import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
 import com.weverses.modempro.hook.hooks.BaseHook
+import com.weverses.modempro.util.Utils.hookMethodOfBoolean
 import com.weverses.modempro.util.Utils.isMTK
-import de.robv.android.xposed.XposedBridge
 
 // Platforms Support:
 // sm8450/sm8475/sm7475/sm8550
@@ -13,74 +10,45 @@ import de.robv.android.xposed.XposedBridge
 // xm13 series Only
 object OptimizationSupport : BaseHook() {
     override fun init() {
-        try {
-            loadClass("miui.telephony.TelephonyManagerEx").methodFinder().first {
-                name == "isAirportOptimizationSupported"
-            }.createHook{
-                returnConstant(true)
-            }
-            XposedBridge.log("ModemPro: Hook-phone isAirportOptimizationSupported success!")
-        } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook-phone isAirportOptimizationSupported failed!")
-            XposedBridge.log(e)
-        }
-        try {
-            loadClass("miui.telephony.TelephonyManagerEx").methodFinder().first {
-                name == "isSubwayOptimizationSupported"
-            }.createHook{
-                returnConstant(true)
-            }
-            XposedBridge.log("ModemPro: Hook-phone isSubwayOptimizationSupported success!")
-        } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook-phone isSubwayOptimizationSupported failed!")
-            XposedBridge.log(e)
-        }
-        try {
-            loadClass("miui.telephony.TelephonyManagerEx").methodFinder().first {
-                name == "isHikingOptimizationSupported"
-            }.createHook{
-                returnConstant(true)
-            }
-            XposedBridge.log("ModemPro: Hook-phone isHikingOptimizationSupported success!")
-        } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook-phone isHikingOptimizationSupported failed!")
-            XposedBridge.log(e)
-        }
-        try {
-            loadClass("com.android.phone.MiuiPhoneUtils").methodFinder().first {
-                name == "isSpecialNetorkOptimizationSupported"
-            }.createHook{
-                returnConstant(true)
-            }
-            XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupported success!")
-        } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupported failed!")
-            XposedBridge.log(e)
-        }
+        hookMethodOfBoolean(
+            "miui.telephony.TelephonyManagerEx",
+            "isAirportOptimizationSupported",
+            true,
+            "phone"
+        )
+        hookMethodOfBoolean(
+            "miui.telephony.TelephonyManagerEx",
+            "isSubwayOptimizationSupported",
+            true,
+            "phone"
+        )
+        hookMethodOfBoolean(
+            "miui.telephony.TelephonyManagerEx",
+            "isHikingOptimizationSupported",
+            true,
+            "phone"
+        )
+        hookMethodOfBoolean(
+            "com.android.phone.MiuiPhoneUtils",
+            "isSpecialNetorkOptimizationSupported",
+            true,
+            "phone"
+        )
+
         if (isMTK()) {
-            try {
-                loadClass("com.android.phone.MiuiPhoneUtils").methodFinder().first {
-                    name == "isSpecialNetorkOptimizationSupportedMtk"
-                }.createHook {
-                    returnConstant(true)
-                }
-                XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupportedMtk success!")
-            } catch (e: Throwable) {
-                XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupportedMtk failed!")
-                XposedBridge.log(e)
-            }
+            hookMethodOfBoolean(
+                "com.android.phone.MiuiPhoneUtils",
+                "isSpecialNetorkOptimizationSupportedMtk",
+                true,
+                "phone"
+            )
         } else {
-            try {
-                loadClass("com.android.phone.MiuiPhoneUtils").methodFinder().first {
-                    name == "isSpecialNetorkOptimizationSupportedQcom"
-                }.createHook {
-                    returnConstant(true)
-                }
-                XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupportedQcom success!")
-            } catch (e: Throwable) {
-                XposedBridge.log("ModemPro: Hook-phone isSpecialNetorkOptimizationSupportedQcom failed!")
-                XposedBridge.log(e)
-              }
-           }
+            hookMethodOfBoolean(
+                "com.android.phone.MiuiPhoneUtils",
+                "isSpecialNetorkOptimizationSupportedQcom",
+                true,
+                "phone"
+            )
         }
+    }
 }

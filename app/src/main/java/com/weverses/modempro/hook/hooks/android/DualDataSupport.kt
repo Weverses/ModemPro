@@ -9,6 +9,11 @@ import com.weverses.modempro.util.Utils.hookMethodOfBoolean
 // xm13 series Only
 object DualDataSupport : BaseHook() {
     override fun init() {
-        hookMethodOfBoolean("miui.telephony.TelephonyManagerEx","isDualDataSupported",true,"framework")
+        hookMethodOfBoolean(
+            "miui.telephony.TelephonyManagerEx",
+            "isDualDataSupported",
+            true,
+            "framework"
+        )
     }
 }
