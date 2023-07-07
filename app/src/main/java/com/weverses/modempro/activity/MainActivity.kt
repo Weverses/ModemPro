@@ -157,7 +157,8 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
-                 if (isSupportDevices(devices= arrayOf("cas","fuxi"))) {
+
+                if (isSupportDevices(mDevice = arrayOf("cas","fuxi"))) {
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.smart_dual_data_title,
