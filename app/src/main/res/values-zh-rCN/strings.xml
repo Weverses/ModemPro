@@ -30,12 +30,12 @@
     <string name="vice_slot_volte_summary">注意:该功能需要Root权限!开启该功能后,副卡进行通话时会将数据切换到副卡</string>
     <string name="smart_dual_sim_summary">开启该功能后,请在设置->双卡与移动网络->高级设置里打开"智能双卡切换"</string>
     <string name="smart_dual_data_title">智能双卡</string>
-    <string name="smart_dual_data_summary">开启后,在支持的设备上双卡数据流量可以并发使用。开启该功能后,请在设置->双卡与移动网络里打开"智能双卡"</string>
+    <string name="smart_dual_data_summary">开启后,在支持的设备上双卡数据流量可以并发使用.开启该功能后,请在设置->双卡与移动网络里打开"智能双卡"</string>
     <string name="airport_opt_title">机场优化</string>
     <string name="hiking_opt_title">远足优化</string>
     <string name="subway_opt_title">地铁优化</string>
     <string name="opt_title">网络场景优化</string>
-    <string name="opt_summary">开启后,将支持特殊网络场景优化,在支持的设备上可以开启机场/远足/地铁优化</string>
+    <string name="opt_summary">开启后,将支持特殊网络场景优化,在支持的设备上可以开启机场/郊野/地铁优化</string>
     <string name="concurrent_title">全局5G双卡数据并发</string>
     <string name="concurrent_summary">开启后,将无视APP白名单,全部APP都将支持5G双卡并发数据流量.注意: 您的设备必须支持并且在设置里开启了智能双卡后才能生效,且这个功能与下面的“全局5G双卡数据辅助”不能同时开启</string>
     <string name="redundant_title">全局5G双卡数据辅助</string>

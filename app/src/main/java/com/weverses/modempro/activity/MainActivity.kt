@@ -191,7 +191,9 @@ class MainActivity : MIUIActivity() {
                             MIUIDialog(this@MainActivity) {
                                 setTitle(R.string.warning)
                                 setMessage(R.string.concurrent_summary)
-                                setLButton(R.string.cancel) {
+                                setLButton(R.string.disable) {
+                                    Utils.exec("settings put global dual_data_concurrent_mode_white_list_pkg_name com.android.providers.downloads.ui,com.ss.android.ugc.aweme,com.android.providers.downloads,tv.danmaku.bili,com.xiaomi.market,org.zwanoo.android.speedtest")
+                                    safeSP.putAny("concurrent","false")
                                     dismiss()
                                 }
                                 setRButton(R.string.done) {
@@ -211,7 +213,9 @@ class MainActivity : MIUIActivity() {
                             MIUIDialog(this@MainActivity) {
                                 setTitle(R.string.warning)
                                 setMessage(R.string.redundant_summary)
-                                setLButton(R.string.cancel) {
+                                setLButton(R.string.disable) {
+                                    Utils.exec("settings put global dual_data_redundant_mode_white_list_pkg_name com.tencent.tmgp.sgame,com.tencent.tmgp.pubgmhd")
+                                    safeSP.putAny("redundant","true")
                                     dismiss()
                                 }
                                 setRButton(R.string.done) {
