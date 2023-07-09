@@ -7,8 +7,12 @@ import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.hook.hooks.android.*
 import com.weverses.modempro.hook.hooks.mtb.*
 import com.weverses.modempro.hook.hooks.phone.*
+import com.weverses.modempro.hook.hooks.phone.Check.mDualdata
+import com.weverses.modempro.util.Check.isSupportDualdataInServices
 import com.weverses.modempro.util.Utils
 import de.robv.android.xposed.IXposedHookLoadPackage
+import de.robv.android.xposed.XC_MethodHook
+import de.robv.android.xposed.XposedBridge
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 
 private const val TAG = "ModemPro"
@@ -50,6 +54,7 @@ class MainHook : IXposedHookLoadPackage {
                     }
                 }
                 "com.android.phone" -> {
+                    // initHooks(Check)
                     if (Utils.getBoolean("dual_nr", true)) {
                         initHooks(DualNrSupport)
                     }

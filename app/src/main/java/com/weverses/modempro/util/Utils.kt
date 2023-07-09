@@ -8,12 +8,12 @@ import java.io.DataOutputStream
 import java.io.IOException
 import java.io.InputStreamReader
 import com.github.kyuubiran.ezxhelper.ClassUtils.loadClass
-import com.github.kyuubiran.ezxhelper.EzXHelper.classLoader
+import com.github.kyuubiran.ezxhelper.ClassUtils.loadClassOrNull
 import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
 import com.github.kyuubiran.ezxhelper.ObjectHelper.Companion.objectHelper
 import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
 import de.robv.android.xposed.XposedBridge
-import de.robv.android.xposed.XposedHelpers.*
+import de.robv.android.xposed.XposedHelpers
 
 object Utils {
     fun exec(command: String): String {
@@ -88,63 +88,62 @@ object Utils {
         return false
     }
 
-    fun checkClassIfExists(Class: String,Method: String): Boolean {
-        return try {
-            findClassIfExists(Class, classLoader).methodFinder().first {
-                name == Method
-            }.createHook {
-                // do nothing
-            }
-            true
-        } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: ${Class}.${Method} doesn't exist")
-            XposedBridge.log(e)
-            false
-        }
+    fun checkClassIfExists(className: String): Boolean {
+        val exist = loadClassOrNull(className)
+        return exist != null
     }
 
-    fun hookMethodOfBoolean(Class: String,Method: String,Result: Boolean,Scope: String) {
+    fun checkMethodIfExists(className: String,methodName: String): Boolean {
+        val exist = loadClass(className).methodFinder().filterByName(methodName).firstOrNull()
+        return exist != null
+    }
+
+    fun getMethodDefReturn(className: String,methodName: String): String {
+        return ""
+    }
+
+    fun hookMethodOfBoolean(className: String,methodName: String,Result: Boolean,Scope: String) {
         try {
-            loadClass(Class).methodFinder().first {
-                name == Method
+            loadClass(className).methodFinder().first {
+                name == methodName
             }.createHook{
                 returnConstant(Result)
             }
-            XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} success!")
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} failed!")
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} failed!")
             XposedBridge.log(e)
         }
     }
 
-    fun hookMethodOfField(Class: String,Method: String,Field: String,Result: String,Scope: String) {
+    fun hookMethodOfField(className: String,methodName: String,fieldName: String,Result: String,Scope: String) {
         try {
-            loadClass(Class).methodFinder().first {
-                name == Method
+            loadClass(className).methodFinder().first {
+                name == methodName
             }.createHook{
                 before { param ->
-                    param.thisObject.objectHelper().setObject(Field,Result)
+                    param.thisObject.objectHelper().setObject(fieldName,Result)
                 }
-                XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} ${Field} success!")
+                XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} ${fieldName} success!")
             }
         } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} ${Field} failed!")
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} ${fieldName} failed!")
             XposedBridge.log(e)
         }
     }
 
-    fun hookMethodOfArgs(Class: String,Method: String,Args: Int,Result: String,Scope: String) {
+    fun hookMethodOfArgs(className: String,methodName: String,Args: Int,Result: String,Scope: String) {
         try {
-            loadClass(Class).methodFinder().first {
-                name == Method
+            loadClass(className).methodFinder().first {
+                name == methodName
             }.createHook {
                 before { param ->
                     param.args[Args] = Result
                 }
             }
-            XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} ${Args} success!")
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className} ${methodName} ${Args} success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook-${Scope} ${Class} ${Method} ${Args} failed!")
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className} ${methodName} ${Args} failed!")
             XposedBridge.log(e)
         }
     }

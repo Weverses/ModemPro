@@ -12,11 +12,11 @@ import com.weverses.modempro.R
 import com.weverses.modempro.util.Check.DualdataDevices
 import com.weverses.modempro.util.Check.isKonaPlatform
 import com.weverses.modempro.util.Check.isMTK
-import com.weverses.modempro.util.Check.isSupportDualdataInServices
 import com.weverses.modempro.util.Check.isUnSupportedMIUIVersion
 import com.weverses.modempro.util.Check.islahainaPlatform
 import com.weverses.modempro.util.Utils
 import com.weverses.modempro.util.Utils.isSupportDevices
+import com.weverses.modempro.util.getPackageNames
 import kotlin.system.exitProcess
 
 class MainActivity : MIUIActivity() {
@@ -24,6 +24,8 @@ class MainActivity : MIUIActivity() {
         checkLSPosed()
         checkMTK()
         checkMIUIVersion()
+        val packageManager = applicationContext.packageManager
+        val allPackageNames = getPackageNames.getAllAppPackageNames(packageManager)
         super.onCreate(savedInstanceState)
     }
 
@@ -103,7 +105,7 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
-                if (!isUnSupportedMIUIVersion() && !isSupportDevices(DualdataDevices)) {
+                if (!isUnSupportedMIUIVersion()) {
                     Line()
                     TitleText(textId = R.string.title6)
                     TextSummaryWithSwitch(
@@ -157,9 +159,8 @@ class MainActivity : MIUIActivity() {
                         SwitchV("dual_sa", false)
                     )
                 }
-
-
-                if (isSupportDualdataInServices()) {
+                // val mDualData = sharedPreferences.getBoolean("mDualData", false)
+                if (isSupportDevices(DualdataDevices)){
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.smart_dual_data_title,
@@ -184,28 +185,47 @@ class MainActivity : MIUIActivity() {
                         SwitchV("hiking_city", false)
                     )
 
-
-                    TextSummaryWithSwitch(
-                        TextSummaryV(
-                            textId = R.string.concurrent_title,
-                            tipsId = R.string.concurrent_summary
-                        ),
-                        SwitchV("concurrent", false)
+                    TextA(
+                        textId = R.string.concurrent_title,
+                        onClickListener = {
+                            MIUIDialog(this@MainActivity) {
+                                setTitle(R.string.warning)
+                                setMessage(R.string.concurrent_summary)
+                                setLButton(R.string.cancel) {
+                                    dismiss()
+                                }
+                                setRButton(R.string.done) {
+                                    val packageManager = applicationContext.packageManager
+                                    val allPackageNames = getPackageNames.getAllThirdPartyAppPackageNames(packageManager)
+                                    Utils.exec("settings put global dual_data_concurrent_mode_white_list_pkg_name ${allPackageNames}")
+                                    safeSP.putAny("concurrent","true")
+                                    dismiss()
+                                }
+                            }.show()
+                        }
                     )
 
-
-
-                    TextSummaryWithSwitch(
-                        TextSummaryV(
-                            textId = R.string.redundant_title,
-                            tipsId = R.string.redundant_summary
-                        ),
-                        SwitchV("redundant", false)
+                    TextA(
+                        textId = R.string.redundant_title,
+                        onClickListener = {
+                            MIUIDialog(this@MainActivity) {
+                                setTitle(R.string.warning)
+                                setMessage(R.string.redundant_summary)
+                                setLButton(R.string.cancel) {
+                                    dismiss()
+                                }
+                                setRButton(R.string.done) {
+                                    val packageManager = applicationContext.packageManager
+                                    val allPackageNames = getPackageNames.getAllThirdPartyAppPackageNames(packageManager)
+                                    Utils.exec("settings put global dual_data_redundant_mode_white_list_pkg_name ${allPackageNames}")
+                                    safeSP.putAny("redundant","true")
+                                    dismiss()
+                                }
+                            }.show()
+                        }
                     )
-
 
                 }
-
 
                 Line()
                 TitleText(textId = R.string.about)

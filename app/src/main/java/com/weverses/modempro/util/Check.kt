@@ -1,6 +1,5 @@
 package com.weverses.modempro.util
 
-import com.weverses.modempro.util.Utils.checkClassIfExists
 import com.weverses.modempro.util.Utils.getPlatform
 import com.weverses.modempro.util.Utils.getProp
 
@@ -25,10 +24,13 @@ object Check {
         return (getPlatform() == "lahaina")
     }
 
-    fun isSupportDualdataInServices(): Boolean {
-        return checkClassIfExists(
-            "miui.telephony.TelephonyManagerEx",
-            "isDualDataSupported"
-        )
+    // 检测是否支持Dualdata,perfers还有问题所以弃用了:)
+    fun isSupportDualdataInServices(mDualdata: Class<*>?) {
+        SharedPrefers.sharedPreferences.getBoolean("mDualData", false)
+        if (mDualdata != null){
+            SharedPrefers.setBoolean("mDualData", true)
+        } else {
+            SharedPrefers.setBoolean("mDualData", false)
+        }
     }
 }
