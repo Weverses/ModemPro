@@ -9,7 +9,7 @@ object N28Band : BaseHook() {
             "miui.telephony.TelephonyManagerEx",
             "isN28Supported",
             true,
-            "phone"
+            "framework"
         )
     }
 }

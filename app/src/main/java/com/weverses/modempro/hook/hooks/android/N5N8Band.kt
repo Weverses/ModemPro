@@ -9,13 +9,13 @@ object N5N8Band : BaseHook() {
             "miui.telephony.TelephonyManagerEx",
             "isN5Supported",
             true,
-            "phone"
+            "framework"
         )
         hookMethodOfBoolean(
             "miui.telephony.TelephonyManagerEx",
             "isN8Supported",
             true,
-            "phone"
+            "framework"
         )
     }
 }

@@ -13,25 +13,25 @@ object Optimization : BaseHook() {
             "miui.telephony.TelephonyManagerEx",
             "isAirportOptimizationSupported",
             true,
-            "phone"
+            "framework"
         )
         hookMethodOfBoolean(
             "miui.telephony.TelephonyManagerEx",
             "isSubwayOptimizationSupported",
             true,
-            "phone"
+            "framework"
         )
         hookMethodOfBoolean(
             "miui.telephony.TelephonyManagerEx",
             "isHikingOptimizationSupported",
             true,
-            "phone"
+            "framework"
         )
         hookMethodOfBoolean(
             "com.android.phone.MiuiPhoneUtils",
             "isSpecialNetorkOptimizationSupported",
             true,
-            "phone"
+            "framework"
         )
     }
 }

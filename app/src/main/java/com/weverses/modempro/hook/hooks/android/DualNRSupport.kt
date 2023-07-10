@@ -9,7 +9,7 @@ object DualNRSupport : BaseHook() {
             "miui.telephony.TelephonyManagerEx",
             "isDualNrSupported",
             true,
-            "phone"
+            "framework"
         )
     }
 }

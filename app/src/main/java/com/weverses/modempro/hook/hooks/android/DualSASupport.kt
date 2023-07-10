@@ -9,7 +9,7 @@ object DualSASupport : BaseHook() {
             "miui.telephony.TelephonyManagerEx",
             "isDualSaSupported",
             true,
-            "phone"
+            "framework"
         )
     }
 }

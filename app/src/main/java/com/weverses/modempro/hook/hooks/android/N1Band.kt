@@ -9,7 +9,7 @@ object N1Band : BaseHook() {
             "miui.telephony.TelephonyManagerEx",
             "isN1Supported",
             true,
-            "phone"
+            "framework"
         )
     }
 }

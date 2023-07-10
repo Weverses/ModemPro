@@ -11,7 +11,7 @@ object DSDA : BaseHook() {
                 "miui.telephony.TelephonyManagerEx",
                 "isDsdaSupported",
                 true,
-                "phone"
+                "framework"
             )
         }
     }
