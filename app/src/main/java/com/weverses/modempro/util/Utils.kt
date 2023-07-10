@@ -12,6 +12,8 @@ import com.github.kyuubiran.ezxhelper.ClassUtils.loadClassOrNull
 import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
 import com.github.kyuubiran.ezxhelper.ObjectHelper.Companion.objectHelper
 import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
+import com.github.kyuubiran.ezxhelper.interfaces.IMethodHookCallback
+import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XposedBridge
 import de.robv.android.xposed.XposedHelpers
 
@@ -98,8 +100,28 @@ object Utils {
         return exist != null
     }
 
-    fun getMethodDefReturn(className: String,methodName: String): String {
-        return ""
+    fun getMethodDefReturn(className: String, methodName: String): String {
+        var originalReturnValue: Any? = null
+
+        loadClass(className).methodFinder()
+            .filterByName(methodName)
+            .first()
+            .createHook {
+                before(object : IMethodHookCallback {
+                    override fun onMethodHooked(param: XC_MethodHook.MethodHookParam) {
+                        originalReturnValue = param.result
+                    }
+                })
+            }
+
+        // 返回结果
+        XposedBridge.log("ModemPro: getMethodDefReturn: ${methodName}.return ${originalReturnValue}")
+        return originalReturnValue?.toString() ?: "null"
+    }
+
+    fun getDefReturn(className: String, methodName: String): String {
+        XposedBridge.log("ModemPro: getDefReturn: ${methodName}.return ${getDefReturn(className,methodName)}")
+        return XposedHelpers.callStaticMethod(loadClass(className),methodName) as String
     }
 
     fun hookMethodOfBoolean(className: String,methodName: String,Result: Boolean,Scope: String) {

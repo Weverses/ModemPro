@@ -20,6 +20,13 @@ import com.weverses.modempro.util.getPackageNames
 import kotlin.system.exitProcess
 
 class MainActivity : MIUIActivity() {
+    // 根据默认是否支持来显示开关，不会有人想关功能的吧:)
+    // byd 先不启用
+    val isN5Support = false
+    val isN8Support = false
+    val isN28Support = false
+    val NR = false
+    val SA = false
     override fun onCreate(savedInstanceState: Bundle?) {
         checkLSPosed()
         checkMTK()
@@ -76,7 +83,7 @@ class MainActivity : MIUIActivity() {
     init {
         initView {
             registerMain(getString(R.string.app_title), false) {
-                if (!isMTK() && !isUnSupportedMIUIVersion() && isKonaPlatform()) {
+                if (isKonaPlatform() && !isUnSupportedMIUIVersion()) {
                     TitleText(textId = R.string.title1)
                     TextSummaryWithSwitch(
                         TextSummaryV(
@@ -95,7 +102,6 @@ class MainActivity : MIUIActivity() {
                         ),
                         SwitchV("n28_band", true)
                     )
-
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.n5_n8_title,
@@ -105,7 +111,7 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
-                if (!isUnSupportedMIUIVersion()) {
+                if (!isSupportDevices(DualdataDevices) && !isUnSupportedMIUIVersion()) {
                     Line()
                     TitleText(textId = R.string.title6)
                     TextSummaryWithSwitch(
@@ -147,20 +153,22 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
-
-                Line()
-                TitleText(textId = R.string.title4)
                 if (islahainaPlatform()) {
-                    TextSummaryWithSwitch(
-                        TextSummaryV(
-                            textId = R.string.dual_sa_title,
-                            tipsId = R.string.dual_sa_summary
-                        ),
-                        SwitchV("dual_sa", false)
-                    )
+                    Line()
+                    TitleText(textId = R.string.title4)
+                        TextSummaryWithSwitch(
+                            TextSummaryV(
+                                textId = R.string.dual_sa_title,
+                                tipsId = R.string.dual_sa_summary
+                            ),
+                            SwitchV("dual_sa", false)
+                        )
                 }
+
                 // val mDualData = sharedPreferences.getBoolean("mDualData", false)
                 if (isSupportDevices(DualdataDevices)){
+                    Line()
+                    TitleText(textId = R.string.title8)
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.smart_dual_data_title,
