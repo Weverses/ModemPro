@@ -29,7 +29,7 @@ object Optimization : BaseHook() {
         )
         hookMethodOfBoolean(
             "com.android.phone.MiuiPhoneUtils",
-            "isSpecialNetorkOptimizationSupported",
+            "isSpecialNetworkOptimizationSupported",
             true,
             "framework"
         )

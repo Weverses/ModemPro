@@ -83,6 +83,7 @@ class MainActivity : MIUIActivity() {
     init {
         initView {
             registerMain(getString(R.string.app_title), false) {
+                TitleText(textId = R.string.title_tips)
                 if (isKonaPlatform() && !isUnSupportedMIUIVersion()) {
                     TitleText(textId = R.string.title1)
                     TextSummaryWithSwitch(
@@ -169,6 +170,7 @@ class MainActivity : MIUIActivity() {
                 if (isSupportDevices(DualdataDevices)){
                     Line()
                     TitleText(textId = R.string.title8)
+                    TitleText(textId = R.string.title8_tips)
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.smart_dual_data_title,
@@ -197,14 +199,14 @@ class MainActivity : MIUIActivity() {
                         textId = R.string.concurrent_title,
                         onClickListener = {
                             MIUIDialog(this@MainActivity) {
-                                setTitle(R.string.warning)
+                                setTitle(R.string.tips)
                                 setMessage(R.string.concurrent_summary)
                                 setLButton(R.string.disable) {
                                     Utils.exec("settings put global dual_data_concurrent_mode_white_list_pkg_name com.android.providers.downloads.ui,com.ss.android.ugc.aweme,com.android.providers.downloads,tv.danmaku.bili,com.xiaomi.market,org.zwanoo.android.speedtest")
                                     safeSP.putAny("concurrent","false")
                                     dismiss()
                                 }
-                                setRButton(R.string.done) {
+                                setRButton(R.string.enable) {
                                     val packageManager = applicationContext.packageManager
                                     val allPackageNames = getPackageNames.getAllThirdPartyAppPackageNames(packageManager)
                                     Utils.exec("settings put global dual_data_concurrent_mode_white_list_pkg_name ${allPackageNames}")
@@ -219,14 +221,14 @@ class MainActivity : MIUIActivity() {
                         textId = R.string.redundant_title,
                         onClickListener = {
                             MIUIDialog(this@MainActivity) {
-                                setTitle(R.string.warning)
+                                setTitle(R.string.tips)
                                 setMessage(R.string.redundant_summary)
                                 setLButton(R.string.disable) {
                                     Utils.exec("settings put global dual_data_redundant_mode_white_list_pkg_name com.tencent.tmgp.sgame,com.tencent.tmgp.pubgmhd")
                                     safeSP.putAny("redundant","true")
                                     dismiss()
                                 }
-                                setRButton(R.string.done) {
+                                setRButton(R.string.enable) {
                                     val packageManager = applicationContext.packageManager
                                     val allPackageNames = getPackageNames.getAllThirdPartyAppPackageNames(packageManager)
                                     Utils.exec("settings put global dual_data_redundant_mode_white_list_pkg_name ${allPackageNames}")

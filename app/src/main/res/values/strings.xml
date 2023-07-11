@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Modem Pro</string>
     <string name="app_title" translatable="false">Modem Pro</string>
+    <string name="title_tips">开关功能后,需重启手机方能生效</string>
     <string name="title1">NR Settings</string>
     <string name="title2">Band Settings</string>
     <string name="title3">MTB Settings</string>
@@ -8,7 +9,8 @@
     <string name="title5">Other</string>
     <string name="title6">Other feature Settings</string>
     <string name="title7">网络场景优化设置</string>
-    <string name="title8">双卡双通功能设置,以下功能需要使用小米13系列机型且升级到最新版本</string>
+    <string name="title8">双卡双通功能设置</string>
+    <string name="title8_tips">以下功能需要使用小米13系列机型且升级到最新版本方可使用</string>
     <string name="about">About</string>
     <string name="author">Weverse</string>
     <string name="author_description">coolapk</string>
@@ -40,7 +42,7 @@
     <string name="hiking_opt_title">远足优化</string>
     <string name="subway_opt_title">地铁优化</string>
     <string name="opt_title">网络场景优化</string>
-    <string name="opt_summary">开启后,将支持特殊网络场景优化,在支持的设备上可以开启机场/远足/地铁优化</string>
+    <string name="opt_summary">开启后,将支持特殊网络场景优化,在支持的设备上可以开启机场/郊野/地铁优化</string>
     <string name="concurrent_title">全局5G双卡数据并发</string>
     <string name="concurrent_summary">开启后,将无视APP白名单,全部APP都将支持5G双卡并发数据流量.注意: 您的设备必须支持并且在设置里开启了智能双卡后才能生效</string>
     <string name="redundant_title">全局5G双卡数据辅助</string>

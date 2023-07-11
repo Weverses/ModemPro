@@ -76,7 +76,7 @@ class MainHook : IXposedHookLoadPackage {
                     }
                     if (Utils.getBoolean("dualdata", false)) {
                         initHooks(DualDataSupport)
-                        initHooks(DsdaSupport)
+                        // initHooks(DsdaSupport)
                     }
                     if (Utils.getBoolean("concurrent", false)) {
                         initHooks(DualdataConcurrent)

@@ -30,7 +30,7 @@ object OptimizationSupport : BaseHook() {
         )
         hookMethodOfBoolean(
             "com.android.phone.MiuiPhoneUtils",
-            "isSpecialNetorkOptimizationSupported",
+            "isSpecialNetworkOptimizationSupported",
             true,
             "phone"
         )
@@ -38,14 +38,14 @@ object OptimizationSupport : BaseHook() {
         if (isMTK()) {
             hookMethodOfBoolean(
                 "com.android.phone.MiuiPhoneUtils",
-                "isSpecialNetorkOptimizationSupportedMtk",
+                "isSpecialNetworkOptimizationSupportedMtk",
                 true,
                 "phone"
             )
         } else {
             hookMethodOfBoolean(
                 "com.android.phone.MiuiPhoneUtils",
-                "isSpecialNetorkOptimizationSupportedQcom",
+                "isSpecialNetworkOptimizationSupportedQcom",
                 true,
                 "phone"
             )
