@@ -8,7 +8,7 @@ import de.robv.android.xposed.XposedBridge
 import de.robv.android.xposed.XposedHelpers
 
 object Check {
-    val DualdataDevices: Array<String> = arrayOf("fuxi","cas","nuwa","ishtar")
+    val DualdataDevices: Array<String> = arrayOf("fuxi","nuwa","ishtar")
 
     fun isUnSupportedMIUIVersion(): Boolean {
         return (getProp("ro.miui.ui.version.code") == "V12") && (getProp("ro.miui.ui.version.code") == "V125" )
