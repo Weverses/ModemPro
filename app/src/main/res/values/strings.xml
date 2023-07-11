@@ -59,6 +59,6 @@
     <string name="mtb_auth_summary">(Please note that this is a highly dangerous feature, be sure to fully back up the modem before using this function! We are not responsible for modem damage caused by this function)Enter *#*#MODEMTEST#*#* on the dial interface to open the MTB Settings</string>
     <string name="more">More</string>
     <string name="finished">Finished</string>
-    <string name="xposed_description">MIUI13 Modem Feature Pro</string>
+    <string name="xposed_description">MIUI13-14 Modem Feature Pro</string>
     <string name="antique_version">Detected that unsupported miui version of your device,some settings are unavailable!</string>
 </resources>
