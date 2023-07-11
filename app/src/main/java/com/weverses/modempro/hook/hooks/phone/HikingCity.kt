@@ -3,14 +3,15 @@ package com.weverses.modempro.hook.hooks.phone
 import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.util.Utils.hookMethodOfBoolean
 
-object DualSaSupport : BaseHook() {
+// Framework/Telephone Services Support:
+// xm13 series Only
+object HikingCity : BaseHook() {
     override fun init() {
         hookMethodOfBoolean(
-            "miui.telephony.TelephonyManagerEx",
-            "isDualSaSupported",
+            "com.android.phone.NetworkModeRecognition",
+            "isCityWhiteList",
             true,
             "phone"
         )
     }
 }
-

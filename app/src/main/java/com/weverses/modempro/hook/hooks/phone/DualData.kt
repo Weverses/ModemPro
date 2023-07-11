@@ -3,20 +3,23 @@ package com.weverses.modempro.hook.hooks.phone
 import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.util.Utils.hookMethodOfBoolean
 
-object N5N8BandPhone : BaseHook() {
+// Platforms Support:
+// sm8450/sm8475/sm7475/sm8550
+// Framework/Telephone Services Support:
+// xm13 series Only
+object DualData : BaseHook() {
     override fun init() {
         hookMethodOfBoolean(
             "miui.telephony.TelephonyManagerEx",
-            "isN5Supported",
+            "isDualDataSupported",
             true,
             "phone"
         )
         hookMethodOfBoolean(
-            "miui.telephony.TelephonyManagerEx",
-            "isN8Supported",
-            true,
+            "com.android.phone.MiuiPhoneUtils",
+            "shouldHideIntelligentDualSimButton",
+            false,
             "phone"
         )
     }
 }
-

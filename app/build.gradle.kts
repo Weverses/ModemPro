@@ -7,14 +7,14 @@ plugins {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.weverses.modempro"
         minSdk = 29
-        targetSdk = 33
-        versionCode = 200
-        versionName = "2.0.0"
+        targetSdk = 34
+        versionCode = 210
+        versionName = "2.1.0"
     }
 
     val properties = Properties()
@@ -71,10 +71,11 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
+    namespace = "com.weverses.modempro"
 }
 
 dependencies {
     implementation(project(":blockmiui"))
-    implementation("com.github.kyuubiran:EzXHelper:2.0.0")
+    implementation("com.github.kyuubiran:EzXHelper:2.0.6")
     compileOnly("de.robv.android.xposed:api:82")
 }

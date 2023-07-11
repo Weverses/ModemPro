@@ -1,11 +1,21 @@
 package com.weverses.modempro.util
 
+import android.os.Build
 import com.weverses.modempro.BuildConfig
 import de.robv.android.xposed.XSharedPreferences
 import java.io.BufferedReader
 import java.io.DataOutputStream
 import java.io.IOException
 import java.io.InputStreamReader
+import com.github.kyuubiran.ezxhelper.ClassUtils.loadClass
+import com.github.kyuubiran.ezxhelper.ClassUtils.loadClassOrNull
+import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
+import com.github.kyuubiran.ezxhelper.ObjectHelper.Companion.objectHelper
+import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
+import com.github.kyuubiran.ezxhelper.interfaces.IMethodHookCallback
+import de.robv.android.xposed.XC_MethodHook
+import de.robv.android.xposed.XposedBridge
+import de.robv.android.xposed.XposedHelpers
 
 object Utils {
     fun exec(command: String): String {
@@ -70,12 +80,93 @@ object Utils {
         return getProp("ro.board.platform")
     }
 
-    fun isUnSupportedMIUIVersion(): Boolean {
-        return (getProp("ro.miui.ui.version.code") == "V12") && (getProp("ro.miui.ui.version.code") == "V125" )
+    fun isSupportDevices(mDevice: Array<String>): Boolean {
+        val device = Build.DEVICE
+        for (str2 in mDevice) {
+            if (device == str2) {
+                return true
+            }
+        }
+        return false
     }
 
-    fun isMTK(): Boolean {
-        return (getProp("Build.BRAND") == "MTK")
+    fun checkClassIfExists(className: String): Boolean {
+        val exist = loadClassOrNull(className)
+        return exist != null
     }
 
+    fun checkMethodIfExists(className: String,methodName: String): Boolean {
+        val exist = loadClass(className).methodFinder().filterByName(methodName).firstOrNull()
+        return exist != null
+    }
+
+    fun getMethodDefReturn(className: String, methodName: String): String {
+        var originalReturnValue: Any? = null
+
+        loadClass(className).methodFinder()
+            .filterByName(methodName)
+            .first()
+            .createHook {
+                before(object : IMethodHookCallback {
+                    override fun onMethodHooked(param: XC_MethodHook.MethodHookParam) {
+                        originalReturnValue = param.result
+                    }
+                })
+            }
+
+        // 返回结果
+        XposedBridge.log("ModemPro: getMethodDefReturn: ${methodName}.return ${originalReturnValue}")
+        return originalReturnValue?.toString() ?: "null"
+    }
+
+    fun getDefReturn(className: String, methodName: String): String {
+        XposedBridge.log("ModemPro: getDefReturn: ${methodName}.return ${getDefReturn(className,methodName)}")
+        return XposedHelpers.callStaticMethod(loadClass(className),methodName) as String
+    }
+
+    fun hookMethodOfBoolean(className: String,methodName: String,Result: Boolean,Scope: String) {
+        try {
+            loadClass(className).methodFinder().first {
+                name == methodName
+            }.createHook{
+                returnConstant(Result)
+            }
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} success!")
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} failed!")
+            XposedBridge.log(e)
+        }
+    }
+
+    fun hookMethodOfField(className: String,methodName: String,fieldName: String,Result: String,Scope: String) {
+        try {
+            loadClass(className).methodFinder().first {
+                name == methodName
+            }.createHook{
+                before { param ->
+                    param.thisObject.objectHelper().setObject(fieldName,Result)
+                }
+                XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} ${fieldName} success!")
+            }
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} ${fieldName} failed!")
+            XposedBridge.log(e)
+        }
+    }
+
+    fun hookMethodOfArgs(className: String,methodName: String,Args: Int,Result: String,Scope: String) {
+        try {
+            loadClass(className).methodFinder().first {
+                name == methodName
+            }.createHook {
+                before { param ->
+                    param.args[Args] = Result
+                }
+            }
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className} ${methodName} ${Args} success!")
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className} ${methodName} ${Args} failed!")
+            XposedBridge.log(e)
+        }
+    }
 }
