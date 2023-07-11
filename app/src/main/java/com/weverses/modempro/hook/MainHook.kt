@@ -48,7 +48,7 @@ class MainHook : IXposedHookLoadPackage {
                     }
                     if (Utils.getBoolean("dualdata", false)) {
                         initHooks(DualData)
-                        initHooks(DSDA)
+                        // initHooks(DSDA)
                     }
                 }
                 "com.android.phone" -> {
