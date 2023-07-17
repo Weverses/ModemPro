@@ -12,36 +12,19 @@ import de.robv.android.xposed.XposedBridge
 
 object BypassAuthentication : BaseHook() {
     override fun init() {
-        hookMethodOfArgs(
-            "com.xiaomi.mtb.MtbApp",
-            "setMiServerPermissionClass",
-            0,
-            "0",
-            "mtb"
-        )
-
         try {
-            ClassUtils.loadClass("com.xiaomi.mtb.activity.ModemTestBoxMainActivity").methodFinder()
+            ClassUtils.loadClass("com.xiaomi.mtb.XiaoMiServerPermissionCheck").methodFinder()
                 .first {
-                    name == "updateClass"
+                    name == "updatePermissionClass"
                 }.createHook {
-                before { param ->
-                    param.args[0] = 0
-                    param.thisObject.objectHelper().setObject("mClassNet", 0)
+                    after {
+                        it.result = 0L
+                    }
+                    XposedBridge.log("ModemPro: Hook mtb-setMiServerPermissionClass success!")
                 }
-                XposedBridge.log("ModemPro: Hook mtb-updateClass success!")
-            }
         } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook mtb-updateClass failed!")
+            XposedBridge.log("ModemPro: Hook mtb-setMiServerPermissionClass failed!")
             XposedBridge.log(e)
         }
-
-        hookMethodOfField(
-            "com.xiaomi.mtb.activity.ModemTestBoxMainActivity",
-            "initClassProduct",
-            "mClassProduct",
-            "0",
-            "mtb"
-        )
     }
 }

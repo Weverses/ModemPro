@@ -129,7 +129,9 @@ object Utils {
             loadClass(className).methodFinder().first {
                 name == methodName
             }.createHook{
-                returnConstant(Result)
+                after {
+                    it.result = Result
+                }
             }
             XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} success!")
         } catch (e: Throwable) {
