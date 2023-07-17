@@ -77,5 +77,6 @@ android {
 dependencies {
     implementation(project(":blockmiui"))
     implementation("com.github.kyuubiran:EzXHelper:2.0.6")
+    implementation("androidx.core:core-ktx:+")
     compileOnly("de.robv.android.xposed:api:82")
 }

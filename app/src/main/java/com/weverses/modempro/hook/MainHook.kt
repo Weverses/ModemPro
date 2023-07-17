@@ -87,6 +87,9 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("hiking_city", false)) {
                         initHooks(HikingCity)
                     }
+                    if (Utils.getBoolean("dualdata_bands", false)) {
+                        initHooks(BandCondition)
+                    }
                 }
                 "com.xiaomi.mtb" -> {
                     if (Utils.getBoolean("mtb_auth", false)) {

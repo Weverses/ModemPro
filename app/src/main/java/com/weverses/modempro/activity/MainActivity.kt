@@ -157,13 +157,13 @@ class MainActivity : MIUIActivity() {
                 if (islahainaPlatform()) {
                     Line()
                     TitleText(textId = R.string.title4)
-                        TextSummaryWithSwitch(
-                            TextSummaryV(
-                                textId = R.string.dual_sa_title,
-                                tipsId = R.string.dual_sa_summary
-                            ),
-                            SwitchV("dual_sa", false)
-                        )
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.dual_sa_title,
+                            tipsId = R.string.dual_sa_summary
+                        ),
+                        SwitchV("dual_sa", false)
+                    )
                 }
 
                 // val mDualData = sharedPreferences.getBoolean("mDualData", false)
@@ -239,6 +239,16 @@ class MainActivity : MIUIActivity() {
                         }
                     )
 
+                    Line()
+                    TitleText(textId = R.string.title4)
+
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.dual_data_bands_title,
+                            tipsId = R.string.dual_data_bands_summary
+                        ),
+                        SwitchV("dualdata_bands", false)
+                    )
                 }
 
                 Line()

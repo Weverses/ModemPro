@@ -34,6 +34,10 @@
     <string name="smart_dual_sim_summary">开启该功能后,请在设置->双卡与移动网络->高级设置里打开"智能双卡切换"</string>
     <string name="smart_dual_data_title">智能双卡</string>
     <string name="smart_dual_data_summary">开启后,在支持的设备上双卡数据流量可以并发使用.开启该功能后,请在设置->双卡与移动网络里打开"智能双卡"</string>
+    <string name="dual_data_bands_title">无视智能双卡频段限制</string>
+    <string name="dual_data_bands_summary">开启后,将无视双卡并发频段限制</string>
+    <string name="dual_data_lte_title">无视智能双卡4G限制</string>
+    <string name="dual_data_lte_summary">开启后,将无视双卡并发4G限制</string>
     <string name="airport_opt_title">机场优化</string>
     <string name="hiking_opt_title">远足优化</string>
     <string name="subway_opt_title">地铁优化</string>
