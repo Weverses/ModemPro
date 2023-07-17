@@ -28,7 +28,7 @@ object Optimization : BaseHook() {
             "framework"
         )
         hookMethodOfBoolean(
-            "com.android.phone.MiuiPhoneUtils",
+            "miui.telephony.TelephonyManagerEx",
             "isSpecialNetworkOptimizationSupported",
             true,
             "framework"
