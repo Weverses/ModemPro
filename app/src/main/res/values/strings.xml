@@ -1,7 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Modem Pro</string>
     <string name="app_title" translatable="false">Modem Pro</string>
-    <string name="title_tips">开关功能后,需重启手机方能生效</string>
     <string name="title1">NR Settings</string>
     <string name="title2">Band Settings</string>
     <string name="title3">MTB Settings</string>
@@ -11,33 +11,36 @@
     <string name="title7">网络场景优化设置</string>
     <string name="title8">双卡双通功能设置</string>
     <string name="title8_tips">以下功能需要使用小米13系列机型且升级到最新版本方可使用</string>
+    <string name="title_tips">开关功能后,需重启手机方能生效</string>
     <string name="about">About</string>
     <string name="author">Weverse</string>
     <string name="author_description">coolapk</string>
     <string name="author_title">Author Informations</string>
     <string name="love">Donations WELCOME!!</string>
     <string name="love_url">Donations</string>
+    <string name="xposed_description">MIUI13-14 Modem Feature Pro</string>
     <string name="tips">Tips</string>
     <string name="warning">Warning</string>
     <string name="not_support">You seem to be using an outdated version of LSPosed or LSPosed is not active, please update LSPosed or activate it and try again.</string>
     <string name="mtk_device">Oops!This is a MTK-DEVICE,some settings are unavailable</string>
-    <string name="done">OK</string>
     <string name="dual_nr_title">Dual NR</string>
     <string name="dual_nr_summary">Main and secondary SIM-card enable 5G at the same time(the secondary SIM-card only support NSA)</string>
     <string name="dual_sa_title">Dual SA</string>
     <string name="dual_sa_summary">the secondary SIM-card will support SA NR(test)</string>
+    <string name="done">OK</string>
     <string name="reboot">Reboot</string>
-    <string name="reboot_tips">Are you sure to reboot?</string>
-    <string name="cancel">Cancel</string>
-    <string name="reboot_system">Reboot system</string>
     <string name="enable">Enable</string>
     <string name="disable">Disable</string>
     <string name="vice_slot_volte_title">Vice slot volte</string>
     <string name="vice_slot_volte_summary">Warning:NEED ROOT!Use mobile data during VoLTE calls on the secondary SIM</string>
+    <string name="disable_crbt_title">关闭视频彩铃</string>
+    <string name="disable_crbt_summary">在设置->更多设置->开发者选项里打开"关闭视频彩铃"后,关闭呼叫过程中的视频彩铃显示功能,仅供测试使用</string>
+    <string name="smart_call_forward_title">智能互转</string>
+    <string name="smart_call_forward_summary">在设置->双卡与移动网络里打开"智能互转"后,一张SIM卡来电无法呼入时,呼叫转移至另一张SIM卡</string>
     <string name="smart_dual_sim_title">Smart Dual Sim</string>
     <string name="smart_dual_sim_summary">Settings->SIM cards &amp; mobile networks->Advanced settings</string>
     <string name="smart_dual_data_title">智能双卡</string>
-    <string name="smart_dual_data_summary">开启后,双卡数据流量可以并发使用。开启该功能后,请在设置->双卡与移动网络里打开"智能双卡"</string>
+    <string name="smart_dual_data_summary">开启后,在支持的设备上双卡数据流量可以并发使用.开启该功能后,请在设置->双卡与移动网络里打开"智能双卡"</string>
     <string name="dual_data_bands_title">无视智能双卡频段限制</string>
     <string name="dual_data_bands_summary">开启后,将无视双卡并发频段限制</string>
     <string name="dual_data_lte_title">无视智能双卡4G限制</string>
@@ -48,9 +51,9 @@
     <string name="opt_title">网络场景优化</string>
     <string name="opt_summary">开启后,将支持特殊网络场景优化,在支持的设备上可以开启机场/郊野/地铁优化</string>
     <string name="concurrent_title">全局5G双卡数据并发</string>
-    <string name="concurrent_summary">开启后,将无视APP白名单,全部APP都将支持5G双卡并发数据流量.注意: 您的设备必须支持并且在设置里开启了智能双卡后才能生效</string>
+    <string name="concurrent_summary">开启后,将无视APP白名单,全部APP都将支持5G双卡并发数据流量.注意: 您的设备必须支持并且在设置里开启了智能双卡后才能生效,且这个功能与下面的“全局5G双卡数据辅助”不能同时开启</string>
     <string name="redundant_title">全局5G双卡数据辅助</string>
-    <string name="redundant_summary">开启后,将无视APP白名单,全部APP都将支持5G双卡并发数据流量,与上一个对比区别是这个是副卡的数据流量仅作为辅助使用。注意: 您的设备必须支持并且在设置里开启了智能双卡后才能生效</string>
+    <string name="redundant_summary">开启后,将无视APP白名单,全部APP都将支持5G双卡并发数据流量,与上一个对比区别是这个是副卡的数据流量仅作为辅助使用.注意: 您的设备必须支持并且在设置里开启了智能双卡后才能生效,且这个功能与上面的“全局5G双卡数据并发”不能同时开启</string>
     <string name="hiking_title">强制支持郊野场景优化</string>
     <string name="hiking_summary">开启后,将无视城市白名单,在不支持的城市中开启郊野网络场景优化.注意: 您的设备必须在设置里开启网络场景优化后才能生效</string>
     <string name="n1_title">N1 Band</string>
@@ -59,10 +62,12 @@
     <string name="n5_n8_summary">Enter *#*#65686633#*#* on the dial interface to Support N5/N8 Band.If it shows "enable N5 and N8 Mode",the feature will enabled successfully.</string>
     <string name="n28_title">N28 Band</string>
     <string name="n28_summary">Support N28 Band(NR)</string>
+    <string name="reboot_system">Reboot system</string>
+    <string name="reboot_tips">Are you sure to reboot?</string>
+    <string name="cancel">Cancel</string>
     <string name="mtb_auth_title">Bypass MTB authentication</string>
     <string name="mtb_auth_summary">(Please note that this is a highly dangerous feature, be sure to fully back up the modem before using this function! We are not responsible for modem damage caused by this function)Enter *#*#MODEMTEST#*#* on the dial interface to open the MTB Settings</string>
     <string name="more">More</string>
     <string name="finished">Finished</string>
-    <string name="xposed_description">MIUI13-14 Modem Feature Pro</string>
     <string name="antique_version">Detected that unsupported miui version of your device,some settings are unavailable!</string>
 </resources>

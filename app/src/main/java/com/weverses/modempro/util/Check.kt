@@ -18,7 +18,7 @@ object Check {
         return (getProp("Build.BRAND") == "MTK")
     }
 
-    fun isKonaPlatform(): Boolean{
+    fun iskonaPlatform(): Boolean{
         // 感觉除了865平台之外其他平台确实用不到这个功能,那就隐藏起来吧:)
         return (getPlatform() == "kona")
     }
@@ -26,6 +26,11 @@ object Check {
     fun islahainaPlatform(): Boolean{
         // 感觉除了888平台之外其他平台确实用不到这个功能,那就隐藏起来吧:)
         return (getPlatform() == "lahaina")
+    }
+
+    fun istaroPlatform(): Boolean{
+        // 感觉除了8+平台之外其他平台确实用不到这个功能,那就隐藏起来吧:)
+        return (getPlatform() == "taro")
     }
 
     val framework = "miui.telephony.TelephonyManagerEx"

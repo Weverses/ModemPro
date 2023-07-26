@@ -10,10 +10,11 @@ import cn.fkj233.ui.activity.view.TextSummaryV
 import cn.fkj233.ui.dialog.MIUIDialog
 import com.weverses.modempro.R
 import com.weverses.modempro.util.Check.DualdataDevices
-import com.weverses.modempro.util.Check.isKonaPlatform
 import com.weverses.modempro.util.Check.isMTK
 import com.weverses.modempro.util.Check.isUnSupportedMIUIVersion
+import com.weverses.modempro.util.Check.iskonaPlatform
 import com.weverses.modempro.util.Check.islahainaPlatform
+import com.weverses.modempro.util.Check.istaroPlatform
 import com.weverses.modempro.util.Utils
 import com.weverses.modempro.util.Utils.isSupportDevices
 import com.weverses.modempro.util.getPackageNames
@@ -84,7 +85,7 @@ class MainActivity : MIUIActivity() {
         initView {
             registerMain(getString(R.string.app_title), false) {
                 TitleText(textId = R.string.title_tips)
-                if (isKonaPlatform() && !isUnSupportedMIUIVersion()) {
+                if (iskonaPlatform() && !isUnSupportedMIUIVersion()) {
                     TitleText(textId = R.string.title1)
                     TextSummaryWithSwitch(
                         TextSummaryV(
@@ -164,6 +165,27 @@ class MainActivity : MIUIActivity() {
                         ),
                         SwitchV("dual_sa", false)
                     )
+                }
+
+                if (istaroPlatform()) {
+                    Line()
+                    TitleText(textId = R.string.title4)
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.smart_call_forward_title,
+                            tipsId = R.string.smart_call_forward_summary
+                        ),
+                        SwitchV("smart_call_forward", false)
+                    )
+
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.disable_crbt_title,
+                            tipsId = R.string.disable_crbt_summary
+                        ),
+                        SwitchV("disable_crbt", false)
+                    )
+
                 }
 
                 // val mDualData = sharedPreferences.getBoolean("mDualData", false)
