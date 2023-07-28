@@ -31,6 +31,11 @@
     <string name="disable">关闭</string>
     <string name="vice_slot_volte_title">副卡VoLTE通话时可联网</string>
     <string name="vice_slot_volte_summary">注意:该功能需要Root权限!开启该功能后,副卡进行通话时会将数据切换到副卡</string>
+    <string name="disable_crbt_title">关闭视频彩铃</string>
+    <string name="disable_crbt_summary">在设置->更多设置->开发者选项里打开"关闭视频彩铃"后,关闭呼叫过程中的视频彩铃显示功能,仅供测试使用</string>
+    <string name="smart_call_forward_title">智能互转</string>
+    <string name="smart_call_forward_summary">在设置->双卡与移动网络里打开"智能互转"后,一张SIM卡来电无法呼入时,呼叫转移至另一张SIM卡</string>
+    <string name="smart_dual_sim_title">智能双卡切换</string>
     <string name="smart_dual_sim_summary">开启该功能后,请在设置->双卡与移动网络->高级设置里打开"智能双卡切换"</string>
     <string name="smart_dual_data_title">智能双卡</string>
     <string name="smart_dual_data_summary">开启后,在支持的设备上双卡数据流量可以并发使用.开启该功能后,请在设置->双卡与移动网络里打开"智能双卡"</string>
@@ -62,6 +67,5 @@
     <string name="mtb_auth_summary">(请注意,此项为高度危险性功能，请务必在使用该功能前完整备份基带!若因该功能导致的基带损坏概不负责!)开启后可解锁鲁班(MTB)功能,可在拨号界面输入 *#*#663368378#*#* (ModemTest) 打开鲁班界面</string>
     <string name="more">实验性功能</string>
     <string name="finished">运行完成</string>
-    <string name="smart_dual_sim_title">智能双卡切换</string>
     <string name="antique_version">检测到不支持的MIUI版本,5G/频段/其他功能设置已自动隐藏</string>
 </resources>

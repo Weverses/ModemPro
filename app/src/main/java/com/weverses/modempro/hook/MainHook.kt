@@ -68,6 +68,12 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("n5_n8_band", true)) {
                         initHooks(N5N8BandPhone)
                     }
+                    if (Utils.getBoolean("smart_call_forward", false)) {
+                        initHooks(SmartCallForwardSupport)
+                    }
+                    if (Utils.getBoolean("disable_crbt", false)) {
+                        initHooks(DisableCrbtSupport)
+                    }
                     if (Utils.getBoolean("vice_slot_volte", false)) {
                         initHooks(ViceSlotVolteButton)
                     }
