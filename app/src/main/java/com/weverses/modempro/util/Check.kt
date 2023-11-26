@@ -11,7 +11,7 @@ object Check {
     val DualdataDevices: Array<String> = arrayOf("fuxi","cas","nuwa","ishtar")
 
     fun isUnSupportedMIUIVersion(): Boolean {
-        return (getProp("ro.miui.ui.version.code") == "V12") && (getProp("ro.miui.ui.version.code") == "V125" )
+        return (getMIUIVersion() < 13f)
     }
 
     fun isMTK(): Boolean {
@@ -73,6 +73,22 @@ object Check {
         val result = FiveG.trimEnd(',')
 
         XposedBridge.log("ModemPro: Def 5G Support: $result")
+    }
+    fun getMIUIVersion(): Float = when (getProp("ro.miui.ui.version.name")){
+        // 为了防止一些早期泄露pre-HyperOS无法识别,故加入V818
+        "V818" -> 14.9f
+        "V816" -> 15f
+        "V140" -> 14f
+        "V130" -> 13f
+        "V125" -> 12.5f
+        "V12" -> 12f
+        "V11" -> 11f
+        "V10" -> 10f
+        else -> 0f
+    }
+
+    fun getAndroidVersion(): String{
+        return (getProp("ro.build.version.release"))
     }
 
     // 检测是否支持Dualdata,perfers还有问题所以弃用了:)

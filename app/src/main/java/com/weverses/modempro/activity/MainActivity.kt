@@ -9,7 +9,9 @@ import cn.fkj233.ui.activity.view.SwitchV
 import cn.fkj233.ui.activity.view.TextSummaryV
 import cn.fkj233.ui.dialog.MIUIDialog
 import com.weverses.modempro.R
+import com.weverses.modempro.util.Check
 import com.weverses.modempro.util.Check.DualdataDevices
+import com.weverses.modempro.util.Check.getMIUIVersion
 import com.weverses.modempro.util.Check.isMTK
 import com.weverses.modempro.util.Check.isUnSupportedMIUIVersion
 import com.weverses.modempro.util.Check.iskonaPlatform
@@ -85,6 +87,15 @@ class MainActivity : MIUIActivity() {
         initView {
             registerMain(getString(R.string.app_title), false) {
                 TitleText(textId = R.string.title_tips)
+                if (getMIUIVersion() > 14f) {
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.fiveg_switch_title,
+                            tipsId = R.string.fiveg_switch_summary
+                        ),
+                        SwitchV("fiveg_switch", true)
+                    )
+                }
                 if (iskonaPlatform() && !isUnSupportedMIUIVersion()) {
                     TitleText(textId = R.string.title1)
                     TextSummaryWithSwitch(
@@ -189,7 +200,7 @@ class MainActivity : MIUIActivity() {
                 }
 
                 // val mDualData = sharedPreferences.getBoolean("mDualData", false)
-                if (isSupportDevices(DualdataDevices)){
+                if (isSupportDevices(DualdataDevices) || Check.getMIUIVersion() > 14f || Check.getAndroidVersion() > "13"){
                     Line()
                     TitleText(textId = R.string.title8)
                     TitleText(textId = R.string.title8_tips)

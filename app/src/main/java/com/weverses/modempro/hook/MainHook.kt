@@ -5,7 +5,7 @@ import com.github.kyuubiran.ezxhelper.Log
 import com.github.kyuubiran.ezxhelper.LogExtensions.logexIfThrow
 import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.hook.hooks.android.*
-import com.weverses.modempro.hook.hooks.android.Check
+import com.weverses.modempro.hook.hooks.android.FiveGSwitch
 import com.weverses.modempro.hook.hooks.mtb.*
 import com.weverses.modempro.hook.hooks.phone.*
 import com.weverses.modempro.util.Utils
@@ -24,6 +24,10 @@ class MainHook : IXposedHookLoadPackage {
             EzXHelper.initHandleLoadPackage(lpparam)
             EzXHelper.setLogTag(TAG)
             EzXHelper.setToastTag(TAG)
+            // init exec
+            if (Utils.getBoolean("vice_slot_volte", false)) {
+                Utils.exec("settings put global vice_slot_volte_data_enabled 1")
+            }
             // Init hooks
             when (lpparam.packageName) {
                 "android" -> {
@@ -49,6 +53,9 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("dualdata", false)) {
                         initHooks(DualData)
                         // initHooks(DSDA)
+                    }
+                    if (Utils.getBoolean("fiveg_switch", false)) {
+                        initHooks(FiveGSwitch)
                     }
                 }
                 "com.android.phone" -> {
@@ -96,11 +103,13 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("dualdata_bands", false)) {
                         initHooks(BandCondition)
                     }
+                    if (Utils.getBoolean("fiveg_switch", false)) {
+                        initHooks(com.weverses.modempro.hook.hooks.phone.FiveGSwitch)
+                    }
                 }
                 "com.xiaomi.mtb" -> {
                     if (Utils.getBoolean("mtb_auth", false)) {
                         initHooks(BypassAuthentication)
-                        initHooks(isUserBuild)
                     }
                 }
             }

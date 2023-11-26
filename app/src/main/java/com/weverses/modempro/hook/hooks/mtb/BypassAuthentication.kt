@@ -1,30 +1,43 @@
 package com.weverses.modempro.hook.hooks.mtb
 
-import com.github.kyuubiran.ezxhelper.ClassUtils
-import com.github.kyuubiran.ezxhelper.HookFactory.`-Static`.createHook
-import com.github.kyuubiran.ezxhelper.ObjectHelper.Companion.objectHelper
-import com.github.kyuubiran.ezxhelper.finders.MethodFinder.`-Static`.methodFinder
-
 import com.weverses.modempro.hook.hooks.BaseHook
-import com.weverses.modempro.util.Utils.hookMethodOfArgs
-import com.weverses.modempro.util.Utils.hookMethodOfField
-import de.robv.android.xposed.XposedBridge
+import com.weverses.modempro.util.Check.getAndroidVersion
+import com.weverses.modempro.util.Check.getMIUIVersion
+import com.weverses.modempro.util.Utils.hookMethodOfBoolean
+import com.weverses.modempro.util.Utils.hookMethodOfLong
+import com.weverses.modempro.util.Utils.hookMethodOfString
 
 object BypassAuthentication : BaseHook() {
     override fun init() {
-        try {
-            ClassUtils.loadClass("com.xiaomi.mtb.XiaoMiServerPermissionCheck").methodFinder()
-                .first {
-                    name == "updatePermissionClass"
-                }.createHook {
-                    after {
-                        it.result = 0L
-                    }
-                    XposedBridge.log("ModemPro: Hook mtb-setMiServerPermissionClass success!")
-                }
-        } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook mtb-setMiServerPermissionClass failed!")
-            XposedBridge.log(e)
+        hookMethodOfLong(
+            "com.xiaomi.mtb.XiaoMiServerPermissionCheck",
+            "updatePermissionClass",
+            0L,
+            "mtb"
+        )
+        // 在HyperOS上
+        if (getMIUIVersion() > 14f || getAndroidVersion() > "13"){
+            hookMethodOfString(
+                "com.xiaomi.mtb.XiaoMiServerPermissionCheck",
+                "getClassErrorString",
+                "null",
+                "mtb"
+            )
+            hookMethodOfBoolean(
+                "com.xiaomi.modem.ModemUtils",
+                "isUserBuild",
+                false,
+                "mtb"
+            )
+        }
+        // 在Android 12上
+        if (getAndroidVersion() < "13") {
+            hookMethodOfBoolean(
+                "com.xiaomi.mtb.MtbUtils",
+                "isUserBuild",
+                false,
+                "mtb"
+            )
         }
     }
 }

@@ -140,6 +140,38 @@ object Utils {
         }
     }
 
+    fun hookMethodOfLong(className: String,methodName: String,Result: Long,Scope: String) {
+        try {
+            loadClass(className).methodFinder().first {
+                name == methodName
+            }.createHook{
+                after {
+                    it.result = Result
+                }
+            }
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} success!")
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} failed!")
+            XposedBridge.log(e)
+        }
+    }
+
+    fun hookMethodOfString(className: String,methodName: String,Result: String,Scope: String) {
+        try {
+            loadClass(className).methodFinder().first {
+                name == methodName
+            }.createHook{
+                after {
+                    it.result = Result
+                }
+            }
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} success!")
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemPro: Hook-${Scope} ${className}.${methodName} failed!")
+            XposedBridge.log(e)
+        }
+    }
+
     fun hookMethodOfField(className: String,methodName: String,fieldName: String,Result: String,Scope: String) {
         try {
             loadClass(className).methodFinder().first {
