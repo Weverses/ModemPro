@@ -1,6 +1,7 @@
 package com.weverses.modempro.hook.hooks.phone
 
 import com.weverses.modempro.hook.hooks.BaseHook
+import com.weverses.modempro.util.Check.getMIUIVersion
 import com.weverses.modempro.util.Utils.hookMethodOfBoolean
 import com.weverses.modempro.util.Check.isMTK
 
@@ -28,27 +29,29 @@ object OptimizationSupport : BaseHook() {
             true,
             "phone"
         )
-        hookMethodOfBoolean(
-            "com.android.phone.MiuiPhoneUtils",
-            "isSpecialNetworkOptimizationSupported",
-            true,
-            "phone"
-        )
 
-        if (isMTK()) {
+        if (getMIUIVersion() < 15f) {
             hookMethodOfBoolean(
                 "com.android.phone.MiuiPhoneUtils",
-                "isSpecialNetworkOptimizationSupportedMtk",
+                "isSpecialNetworkOptimizationSupported",
                 true,
                 "phone"
             )
-        } else {
-            hookMethodOfBoolean(
-                "com.android.phone.MiuiPhoneUtils",
-                "isSpecialNetworkOptimizationSupportedQcom",
-                true,
-                "phone"
-            )
+            if (isMTK()) {
+                hookMethodOfBoolean(
+                    "com.android.phone.MiuiPhoneUtils",
+                    "isSpecialNetworkOptimizationSupportedMtk",
+                    true,
+                    "phone"
+                )
+            } else {
+                hookMethodOfBoolean(
+                    "com.android.phone.MiuiPhoneUtils",
+                    "isSpecialNetworkOptimizationSupportedQcom",
+                    true,
+                    "phone"
+                )
+            }
         }
     }
 }

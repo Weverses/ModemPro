@@ -1,6 +1,7 @@
 package com.weverses.modempro.hook.hooks.android
 
 import com.weverses.modempro.hook.hooks.BaseHook
+import com.weverses.modempro.util.Check.getMIUIVersion
 import com.weverses.modempro.util.Utils.hookMethodOfBoolean
 
 // Platforms Support:
@@ -27,11 +28,13 @@ object Optimization : BaseHook() {
             true,
             "framework"
         )
-        hookMethodOfBoolean(
-            "miui.telephony.TelephonyManagerEx",
-            "isSpecialNetworkOptimizationSupported",
-            true,
-            "framework"
-        )
+        if (getMIUIVersion() < 15f){
+            hookMethodOfBoolean(
+                "miui.telephony.TelephonyManagerEx",
+                "isSpecialNetworkOptimizationSupported",
+                true,
+                "framework"
+            )
+        }
     }
 }
