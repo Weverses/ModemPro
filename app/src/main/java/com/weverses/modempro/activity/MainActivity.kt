@@ -11,6 +11,7 @@ import cn.fkj233.ui.dialog.MIUIDialog
 import com.weverses.modempro.R
 import com.weverses.modempro.util.Check
 import com.weverses.modempro.util.Check.DualdataDevices
+import com.weverses.modempro.util.Check.getAndroidVersion
 import com.weverses.modempro.util.Check.getMIUIVersion
 import com.weverses.modempro.util.Check.isMTK
 import com.weverses.modempro.util.Check.isUnSupportedMIUIVersion
@@ -167,8 +168,10 @@ class MainActivity : MIUIActivity() {
                 }
 
                 if (islahainaPlatform()) {
-                    Line()
-                    TitleText(textId = R.string.title4)
+                    if (getMIUIVersion() < 15f || getAndroidVersion() < "14") {
+                        Line()
+                        TitleText(textId = R.string.title4)
+                    }
                     TextSummaryWithSwitch(
                         TextSummaryV(
                             textId = R.string.dual_sa_title,
@@ -178,29 +181,8 @@ class MainActivity : MIUIActivity() {
                     )
                 }
 
-                if (istaroPlatform()) {
-                    Line()
-                    TitleText(textId = R.string.title4)
-                    TextSummaryWithSwitch(
-                        TextSummaryV(
-                            textId = R.string.smart_call_forward_title,
-                            tipsId = R.string.smart_call_forward_summary
-                        ),
-                        SwitchV("smart_call_forward", false)
-                    )
-
-                    TextSummaryWithSwitch(
-                        TextSummaryV(
-                            textId = R.string.disable_crbt_title,
-                            tipsId = R.string.disable_crbt_summary
-                        ),
-                        SwitchV("disable_crbt", false)
-                    )
-
-                }
-
                 // val mDualData = sharedPreferences.getBoolean("mDualData", false)
-                if (isSupportDevices(DualdataDevices) || Check.getMIUIVersion() > 14f || Check.getAndroidVersion() > "13"){
+                if (isSupportDevices(DualdataDevices) || getMIUIVersion() > 14f || getAndroidVersion() > "13"){
                     Line()
                     TitleText(textId = R.string.title8)
                     TitleText(textId = R.string.title8_tips)
@@ -281,6 +263,22 @@ class MainActivity : MIUIActivity() {
                             tipsId = R.string.dual_data_bands_summary
                         ),
                         SwitchV("dualdata_bands", false)
+                    )
+
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.smart_call_forward_title,
+                            tipsId = R.string.smart_call_forward_summary
+                        ),
+                        SwitchV("smart_call_forward", false)
+                    )
+
+                    TextSummaryWithSwitch(
+                        TextSummaryV(
+                            textId = R.string.disable_crbt_title,
+                            tipsId = R.string.disable_crbt_summary
+                        ),
+                        SwitchV("disable_crbt", false)
                     )
                 }
 
