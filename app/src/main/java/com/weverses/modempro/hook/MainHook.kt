@@ -24,10 +24,6 @@ class MainHook : IXposedHookLoadPackage {
             EzXHelper.initHandleLoadPackage(lpparam)
             EzXHelper.setLogTag(TAG)
             EzXHelper.setToastTag(TAG)
-            // init exec
-            if (Utils.getBoolean("vice_slot_volte", false)) {
-                Utils.exec("settings put global vice_slot_volte_data_enabled 1")
-            }
             // Init hooks
             when (lpparam.packageName) {
                 "android" -> {
