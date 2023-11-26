@@ -5,7 +5,7 @@ import com.github.kyuubiran.ezxhelper.Log
 import com.github.kyuubiran.ezxhelper.LogExtensions.logexIfThrow
 import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.hook.hooks.android.*
-import com.weverses.modempro.hook.hooks.android.Check
+import com.weverses.modempro.hook.hooks.android.FiveGSwitch
 import com.weverses.modempro.hook.hooks.mtb.*
 import com.weverses.modempro.hook.hooks.phone.*
 import com.weverses.modempro.util.Utils
@@ -50,6 +50,9 @@ class MainHook : IXposedHookLoadPackage {
                         initHooks(DualData)
                         // initHooks(DSDA)
                     }
+                    if (Utils.getBoolean("fiveg_switch", false)) {
+                        initHooks(FiveGSwitch)
+                    }
                 }
                 "com.android.phone" -> {
                     // initHooks(Check)
@@ -67,6 +70,12 @@ class MainHook : IXposedHookLoadPackage {
                     }
                     if (Utils.getBoolean("n5_n8_band", true)) {
                         initHooks(N5N8BandPhone)
+                    }
+                    if (Utils.getBoolean("smart_call_forward", false)) {
+                        initHooks(SmartCallForwardSupport)
+                    }
+                    if (Utils.getBoolean("disable_crbt", false)) {
+                        initHooks(DisableCrbtSupport)
                     }
                     if (Utils.getBoolean("vice_slot_volte", false)) {
                         initHooks(ViceSlotVolteButton)
@@ -87,11 +96,16 @@ class MainHook : IXposedHookLoadPackage {
                     if (Utils.getBoolean("hiking_city", false)) {
                         initHooks(HikingCity)
                     }
+                    if (Utils.getBoolean("dualdata_bands", false)) {
+                        initHooks(BandCondition)
+                    }
+                    if (Utils.getBoolean("fiveg_switch", false)) {
+                        initHooks(com.weverses.modempro.hook.hooks.phone.FiveGSwitch)
+                    }
                 }
                 "com.xiaomi.mtb" -> {
                     if (Utils.getBoolean("mtb_auth", false)) {
                         initHooks(BypassAuthentication)
-                        initHooks(isUserBuild)
                     }
                 }
             }

@@ -1,15 +1,16 @@
-package com.weverses.modempro.hook.hooks.mtb
+package com.weverses.modempro.hook.hooks.android
 
 import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.util.Utils.hookMethodOfBoolean
 
-object isUserBuild : BaseHook() {
+object FiveGSwitch : BaseHook() {
     override fun init() {
         hookMethodOfBoolean(
-            "com.xiaomi.mtb.MtbUtils",
-            "isUserBuild",
+            "miui.telephony.TelephonyManagerEx",
+            "isHideFiveGAndNetwork",
             false,
-            "mtb"
+            "framework"
         )
     }
 }
+
