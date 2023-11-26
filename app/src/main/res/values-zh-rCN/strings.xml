@@ -8,7 +8,7 @@
     <string name="title6">其他功能设置</string>
     <string name="title7">网络场景优化设置</string>
     <string name="title8">双卡双通功能设置</string>
-    <string name="title8_tips">以下功能需要使用小米13系列机型且升级到最新版本方可使用</string>
+    <string name="title8_tips">对于以下功能,需要平台支持方可使用(8G2及以上,理论8G1也可以使用但未经测试)</string>
     <string name="title_tips">开关功能后,需重启手机方能生效</string>
     <string name="about">关于</string>
     <string name="author">Weverse</string>
