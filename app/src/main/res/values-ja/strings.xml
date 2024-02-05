@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name" translatable="false">Modem Pro</string>
+  <string name="app_title" translatable="false">Modem Pro</string>
+  <string name="title1">NRの設定</string>
+  <string name="title2">バンドの設定</string>
+  <string name="title3">MTBの設定</string>
+  <string name="title4">テスト機能の設定</string>
+  <string name="title5">その他</string>
+  <string name="title6">その他の機能の設定</string>
+  <string name="title7">ネットワークシナリオ最適化の設定</string>
+  <string name="title8">デュアルSIMデュアルパス機能の設定</string>
+  <string name="title8_tips">以下の機能を使用するには、プラットフォームのサポートが必要です (8G2以上、理論上は8G1も使用可能ですが未検証)</string>
+  <string name="title_tips">オン/オフを切り替え後にシステムを再起動する事で適用されます</string>
+  <string name="about">作者について</string>
+  <string name="author">Weverse</string>
+  <string name="author_description">coolapk</string>
+  <string name="author_title">作者の情報</string>
+  <string name="love">寄付を歓迎します!!</string>
+  <string name="love_url">寄付</string>
+  <string name="xposed_description">MIUI13-14/HyperOS Modem Feature Pro</string>
+  <string name="tips">説明</string>
+  <string name="warning">警告</string>
+  <string name="not_support">LSPosedのバージョンが古いか、LSPosedが有効化されていないようです。LSPosedをアップデートするか、有効化をしてからもう一度お試しください。</string>
+  <string name="mtk_device">おっと!これはMTKデバイスなので、いくつかの設定が使用できません。</string>
+  <string name="dual_nr_title">デュアルNR</string>
+  <string name="dual_nr_summary">メインおよびセカンダリSIMカードで同時に5Gを有効にします (セカンダリSIMカードはNSAのみサポートしています)</string>
+  <string name="dual_sa_title">デュアルSA</string>
+  <string name="dual_sa_summary">セカンダリSIMカードにSA NRをサポートさせます (テスト)</string>
+  <string name="done">OK</string>
+  <string name="reboot">再起動</string>
+  <string name="enable">有効化</string>
+  <string name="disable">無効化</string>
+  <string name="vice_slot_volte_title">バイススロットVoLTE</string>
+  <string name="vice_slot_volte_summary">警告:root権限が必要です!セカンダリSIMでVoLTE通話中にモバイルデータを使用します</string>
+  <string name="disable_crbt_title">ビデオ着信音をオフにする</string>
+  <string name="disable_crbt_summary">「設定→追加設定→開発者向けオプション→セルラーネットワークのデバッグ」で「Turn off profile videos for incoming calls」をオンにする事で通話中のビデオ着信音の表示をオフにします</string>
+  <string name="smart_call_forward_title">他のSIMに転送</string>
+  <string name="smart_call_forward_summary">「設定→モバイルネットワーク」で「他のSIMに転送」をオンにする事で、一方のSIMカードが通話ができない場合に他のSIMに転送をします</string>
+  <string name="smart_dual_sim_title">スマートデュアルSIM</string>
+  <string name="smart_dual_sim_summary">「設定→モバイルネットワーク→詳細設定」で開く事ができます</string>
+  <string name="smart_dual_data_title">スマートデュアルSIM</string>
+  <string name="smart_dual_data_summary">この機能を有効化する事で対応しているデバイスでデュアルSIMデータトラフィックを同時に使用できます。この機能を有効化するには、「設定→モバイルネットワーク」で「スマートデュアルSIM」をオンにしてください</string>
+  <string name="dual_data_bands_title">スマートデュアルSIMのバンド制限を無視</string>
+  <string name="dual_data_bands_summary">オンにする事でスマートデュアルSIMのバンド制限を無視します</string>
+  <string name="dual_data_lte_title">スマートデュアルSIMの4Gの制限を無視</string>
+  <string name="dual_data_lte_summary">オンにする事でスマートデュアルSIMの4Gの同時接続制限を無視します</string>
+  <string name="airport_opt_title">空港の最適化</string>
+  <string name="hiking_opt_title">ハイキングの最適化</string>
+  <string name="subway_opt_title">地下鉄の最適化</string>
+  <string name="opt_title">ネットワークシナリオの最適化</string>
+  <string name="opt_summary">オンにする事で特別な環境のネットワークシナリオの最適化がサポートされます。空港、ハイキング、地下鉄の最適化がサポートされたデバイスで有効化されます</string>
+  <string name="concurrent_title">グローバル5GデュアルSIMデータ同時接続</string>
+  <string name="concurrent_summary">オンにする事でアプリのホワイトリストに関係なく、すべてのアプリで5GデュアルSIMの同時データトラフィックをサポートします。注意:この機能を使用するには、使用をしているデバイスがスマートデュアルSIMをサポートしている事と設定で有効化をしている必要があります。また、この機能は「グローバル5GデュアルSIMデータアシスト」と同時使用はできません</string>
+  <string name="redundant_title">グローバル5GデュアルSIMデータアシスト</string>
+  <string name="redundant_summary">オンにする事でアプリのホワイトリストが無視され、すべてのアプリが5GデュアルSIM同時データ通信をサポートするようになります。以前と異なり、これは補助的な使用としてのセカンダリSIMカードの通信になります。注意:この機能を有効化するには、使用しているデバイスが「スマートデュアルSIM」をサポートされている事と設定で有効化をする必要があります。この機能と上記の「グローバル5GデュアルSIM同時接続」を同時に有効化はできません</string>
+  <string name="hiking_title">ハイキング時のシナリオをサポート</string>
+  <string name="hiking_summary">オンにする事で都市のホワイトリストが無視され、サポートがされていない都市でハイキング時のネットワークシナリオの最適化が有効化されます。注意:この機能を使用するには、デバイスの設定でネットワークシーンの最適化がオンになっている必要があります</string>
+  <string name="fiveg_switch_title" translatable="true">5Gスイッチ</string>
+  <string name="fiveg_switch_summary" translatable="true">一部のモデルのHyperOSは、デフォルトで5Gのオン/オフを切り替える事ができません。この機能をオンにすると5Gの通信を再開させる事ができます</string>
+  <string name="n1_title">バンドN1</string>
+  <string name="n1_summary">バンドN1をサポートします (NR)</string>
+  <string name="n5_n8_title">バンドN5/N8</string>
+  <string name="n5_n8_summary">ダイアルインターフェースで *#*#65686633#*#* と入力でN5/N8のバンドをサポートします。"Enabled N5 and N8 Mode" と表示されれば、機能は正常に有効化されています</string>
+  <string name="n28_title">バンドN28</string>
+  <string name="n28_summary">バンドN28をサポートします (NR)</string>
+  <string name="reboot_system">システムを再起動</string>
+  <string name="reboot_tips">再起動をしますか?</string>
+  <string name="cancel">キャンセル</string>
+  <string name="mtb_auth_title">MTBの認証をバイパスする</string>
+  <string name="mtb_auth_summary">ダイアルインターフェースで *#*#MODEMTEST#*#* と入力で、MTBの設定を開く事ができるようになります (これは非常に危険な機能である事をご理解ください。この機能を使用する前に必ずモデムを完全にバックアップしてください。この機能によって引き起こされたモデムの損傷については責任を一切負いません)</string>
+  <string name="more">その他</string>
+  <string name="finished">完了</string>
+  <string name="antique_version">デバイスがサポートされていないMIUIバージョンが検出されたため、一部の設定が使用できません!</string>
+</resources>
