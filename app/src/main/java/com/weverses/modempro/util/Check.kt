@@ -10,6 +10,10 @@ import de.robv.android.xposed.XposedHelpers
 object Check {
     val DualdataDevices: Array<String> = arrayOf("fuxi","cas","nuwa","ishtar")
 
+    fun isOS2(): Boolean {
+        return (getProp("ro.build.version.release") == "2")
+    }
+    
     fun isUnSupportedMIUIVersion(): Boolean {
         return (getMIUIVersion() < 13f)
     }
@@ -91,13 +95,5 @@ object Check {
         return (getProp("ro.build.version.release"))
     }
 
-    // 检测是否支持Dualdata,perfers还有问题所以弃用了:)
-    fun isSupportDualdataInServices(mDualdata: Class<*>?) {
-        SharedPrefers.sharedPreferences.getBoolean("mDualData", false)
-        if (mDualdata != null){
-            SharedPrefers.setBoolean("mDualData", true)
-        } else {
-            SharedPrefers.setBoolean("mDualData", false)
-        }
-    }
+    
 }
