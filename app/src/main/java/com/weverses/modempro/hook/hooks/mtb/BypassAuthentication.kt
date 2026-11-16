@@ -7,20 +7,97 @@ import com.weverses.modempro.hook.hooks.BaseHook
 import com.weverses.modempro.util.Check.getAndroidVersion
 import com.weverses.modempro.util.Check.getMIUIVersion
 import com.weverses.modempro.util.Check.isOS2
+import com.weverses.modempro.util.Utils.getProp
 import com.weverses.modempro.util.Utils.hookMethodOfBoolean
 import com.weverses.modempro.util.Utils.hookMethodOfLong
-import com.weverses.modempro.util.Utils.hookMethodOfString
 import de.robv.android.xposed.XposedBridge
 
 object BypassAuthentication : BaseHook() {
     override fun init() {
-        
+        if (isOS4OrNewer()) {
+            // HyperOS 4 moved the cached permission class from MtbApp to
+            // MtbAppBase, and moved the permission gate from
+            // XiaoMiServerPermissionCheck to MtbNetworkServerMgrCheck.
+            hookMethodOfLong(
+                "com.xiaomi.mtb.MtbAppBase",
+                "getMiServerPermissionClass",
+                0L,
+                "mtb"
+            )
+
+            // Make the local initial permission calculation return full access
+            // before it contacts Xiaomi's authentication server.
+            hookMethodOfBoolean(
+                "com.xiaomi.modem.ModemUtils",
+                "isFactoryBuild",
+                true,
+                "mtb"
+            )
+
+            // Defensive fallback if the getter above is inlined in a future build.
+            hookMethodOfLong(
+                "com.xiaomi.mtb.MtbNetworkServerMgrCheck",
+                "getInitPermissionClass",
+                0L,
+                "mtb"
+            )
+
+            // class = 0 means "all bits".  If mClassExclude was initialised by
+            // an earlier failed auth, checkClass(0, bit) can still reject some
+            // bits; make class = 0 a true wildcard.
+            try {
+                ClassUtils.loadClass("com.xiaomi.mtb.MtbNetworkServerMgrCheck").methodFinder()
+                    .filterByName("checkClass")
+                    .first()
+                    .createHook {
+                        after {
+                            if (it.args.getOrNull(0) == 0L) {
+                                it.result = true
+                            }
+                        }
+                    }
+                XposedBridge.log("ModemPro: Hook-mtb MtbNetworkServerMgrCheck.checkClass success!")
+            } catch (e: Throwable) {
+                XposedBridge.log("ModemPro: Hook-mtb MtbNetworkServerMgrCheck.checkClass failed!")
+                XposedBridge.log(e)
+            }
+
+            // Keep the cached field at 0 even if the app writes it back.
+            try {
+                ClassUtils.loadClass("com.xiaomi.mtb.MtbAppBase").methodFinder()
+                    .filterByName("setMiServerPermissionClass")
+                    .first()
+                    .createHook {
+                        before { it.args[0] = 0L }
+                    }
+                XposedBridge.log("ModemPro: Hook-mtb MtbAppBase.setMiServerPermissionClass success!")
+            } catch (e: Throwable) {
+                XposedBridge.log("ModemPro: Hook-mtb MtbAppBase.setMiServerPermissionClass failed!")
+                XposedBridge.log(e)
+            }
+
+            // K40/alioth is hard-coded in HyperOS 4's
+            // DEVICE_MTB_NON_HOOK_LIST.  Without this, MtbAppBase.onCreate()
+            // returns before registering OemHookAgent, so no permission hook
+            // can ever run.
+            if (isAlioth()) {
+                hookMethodOfBoolean(
+                    "com.xiaomi.mtb.MtbAppBase",
+                    "isMtbSupported",
+                    true,
+                    "mtb"
+                )
+                bypassAliothNonHookList()
+            }
+            return
+        }
+
         // 在HyperOS1上
-        if (getMIUIVersion() > 14f || getAndroidVersion() > "13"){
+        if (getMIUIVersion() > 14f || getAndroidVersion() > "13") {
             try {
                 ClassUtils.loadClass("com.xiaomi.mtb.XiaoMiServerPermissionCheck").methodFinder().first {
                     name == "getClassErrorString"
-                }.createHook{
+                }.createHook {
                     after {
                         it.result = null
                     }
@@ -44,7 +121,7 @@ object BypassAuthentication : BaseHook() {
             )
         }
         // 在HyperOS2上
-        if (isOS2()){
+        if (isOS2()) {
             hookMethodOfLong(
                 "com.xiaomi.mtb.MtbApp",
                 "getMiServerPermissionClass",
@@ -66,6 +143,45 @@ object BypassAuthentication : BaseHook() {
                 false,
                 "mtb"
             )
+        }
+    }
+
+    private fun isOS4OrNewer(): Boolean {
+        // HyperOS uses values such as "OS4.0.29.0.XFRCNXM".
+        val osName = getProp("ro.mi.os.version.name")
+        Regex("""OS(\d+)""").find(osName)?.groupValues?.getOrNull(1)?.toIntOrNull()?.let {
+            return it >= 4
+        }
+        // Fallback for port ROMs that removed ro.mi.os.version.name.
+        val android = getAndroidVersion().substringBefore('.').toIntOrNull() ?: 0
+        return android >= 16
+    }
+
+    private fun isAlioth(): Boolean {
+        return getProp("ro.product.device").contains("alioth")
+    }
+
+    private fun bypassAliothNonHookList() {
+        try {
+            ClassUtils.loadClass("com.xiaomi.modem.ModemUtils").methodFinder()
+                .filterByName("stringContainStringList")
+                .first {
+                    parameterTypes.size == 2 &&
+                        parameterTypes[0] == String::class.java &&
+                        parameterTypes[1] == String::class.java
+                }
+                .createHook {
+                    after {
+                        val list = it.args.getOrNull(0)?.toString()
+                        if (list != null && list.contains("alioth")) {
+                            it.result = false
+                        }
+                    }
+                }
+            XposedBridge.log("ModemPro: Hook-mtb alioth non-hook-list bypass success!")
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemPro: Hook-mtb alioth non-hook-list bypass failed!")
+            XposedBridge.log(e)
         }
     }
 }
