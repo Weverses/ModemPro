@@ -10,7 +10,9 @@ import com.weverses.modempro.util.Check.isOS2
 import com.weverses.modempro.util.Utils.getProp
 import com.weverses.modempro.util.Utils.hookMethodOfBoolean
 import com.weverses.modempro.util.Utils.hookMethodOfLong
+import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XposedBridge
+import de.robv.android.xposed.XposedHelpers
 
 object BypassAuthentication : BaseHook() {
     override fun init() {
@@ -111,18 +113,16 @@ object BypassAuthentication : BaseHook() {
             XposedBridge.log(e)
         }
 
-        // K40/alioth is hard-coded in HyperOS 3/4's DEVICE_MTB_NON_HOOK_LIST.
-        // Without this, MtbAppBase.onCreate() returns before registering
-        // OemHookAgent, so no permission hook can ever run.
-        if (isAlioth()) {
-            hookMethodOfBoolean(
-                "com.xiaomi.mtb.MtbAppBase",
-                "isMtbSupported",
-                true,
-                "mtb"
-            )
-            bypassAliothNonHookList()
-        }
+        // Some models are hard-coded in MTB's DEVICE_MTB_NON_HOOK_LIST or
+        // DEVICE_MTB_NOT_SUPPORT_LIST.  Bypass both lists; otherwise
+        // MtbAppBase.onCreate() returns before registering OemHookAgent.
+        hookMethodOfBoolean(
+            "com.xiaomi.mtb.MtbAppBase",
+            "isMtbSupported",
+            true,
+            "mtb"
+        )
+        bypassMtbDeviceLists()
         return true
     }
 
@@ -219,11 +219,16 @@ object BypassAuthentication : BaseHook() {
         return ClassUtils.loadClassOrNull(className) != null
     }
 
-    private fun isAlioth(): Boolean {
-        return getProp("ro.product.device").contains("alioth")
-    }
-
-    private fun bypassAliothNonHookList() {
+    /**
+     * MTB has two device filters:
+     *   DEVICE_MTB_NON_HOOK_LIST  -> checked via ModemUtils.stringContainStringList()
+     *   DEVICE_MTB_NOT_SUPPORT_LIST -> checked via String.contains()
+     *
+     * Bypass both for the current device.  This is broader than the previous
+     * alioth-only workaround: models such as K20 Pro can be blocked by either
+     * list depending on the MTB build.
+     */
+    private fun bypassMtbDeviceLists() {
         try {
             ClassUtils.loadClass("com.xiaomi.modem.ModemUtils").methodFinder()
                 .filterByName("stringContainStringList")
@@ -234,16 +239,53 @@ object BypassAuthentication : BaseHook() {
                 }
                 .createHook {
                     after {
-                        val list = it.args.getOrNull(0)?.toString()
-                        if (list != null && list.contains("alioth")) {
+                        val list = it.args.getOrNull(0)?.toString() ?: return@after
+                        val device = it.args.getOrNull(1)?.toString() ?: return@after
+                        if (isMtbDeviceList(list) && matchesDevice(list, device)) {
                             it.result = false
                         }
                     }
                 }
-            XposedBridge.log("ModemPro: Hook-mtb alioth non-hook-list bypass success!")
+            XposedBridge.log("ModemPro: Hook-mtb device-list helper bypass success!")
         } catch (e: Throwable) {
-            XposedBridge.log("ModemPro: Hook-mtb alioth non-hook-list bypass failed!")
+            XposedBridge.log("ModemPro: Hook-mtb device-list helper bypass failed!")
             XposedBridge.log(e)
+        }
+
+        // MtbAppBase / ModemTestBoxMainBaseActivity use the list directly:
+        //   DEVICE_MTB_NOT_SUPPORT_LIST.contains(deviceName)
+        try {
+            XposedHelpers.findAndHookMethod(
+                String::class.java,
+                "contains",
+                CharSequence::class.java,
+                object : XC_MethodHook() {
+                    override fun afterHookedMethod(param: MethodHookParam) {
+                        val list = param.thisObject as? String ?: return
+                        val needle = param.args.getOrNull(0)?.toString() ?: return
+                        if (needle.isEmpty()) return
+                        if (isMtbDeviceList(list) && list.indexOf(needle) >= 0) {
+                            param.result = false
+                        }
+                    }
+                }
+            )
+            XposedBridge.log("ModemPro: Hook-mtb device-list contains bypass success!")
+        } catch (e: Throwable) {
+            XposedBridge.log("ModemPro: Hook-mtb device-list contains bypass failed!")
+            XposedBridge.log(e)
+        }
+    }
+
+    private fun isMtbDeviceList(list: String): Boolean {
+        return (list.indexOf("psyche") >= 0 && list.indexOf("alioth") >= 0) ||
+            (list.indexOf("vayu") >= 0 && list.indexOf("yupei") >= 0)
+    }
+
+    private fun matchesDevice(list: String, device: String): Boolean {
+        return list.split(",").any { item ->
+            val codename = item.trim()
+            codename.isNotEmpty() && device.indexOf(codename) >= 0
         }
     }
 }
